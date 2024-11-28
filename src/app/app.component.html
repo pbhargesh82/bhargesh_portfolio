@@ -13,7 +13,7 @@
       class="card w-full py-6 px-4 flex gap-2 md:gap-4 items-center justify-evenly lg:row-start-5 lg:col-start-3 lg:col-span-2">
       @for (item of socials; track $index) {
       <a [href]="item.url" target="_blank" class="cursor-pointer flex flex-col items-center gap-4">
-        <img [src]="item.icon" [alt]="item.name" [title]="item.name" class="w-8">
+        <img [src]="item.icon" [alt]="item.alt" [title]="item.name" class="w-8">
         <span class="text-xs">{{item.name}}</span>
       </a>
       }
@@ -22,7 +22,7 @@
       class="card w-full p-6 hidden lg:flex lg:col-span-1 lg:row-span-2 lg:items-center lg:justify-center hover:border-4 hover:border-red-500"
       (mouseenter)="onHover(true)" (mouseleave)="onHover(false)">
       <!-- <img src="assets/icons/cheerful.svg" class="w-40 animate-pulse"> -->
-      <img [src]="smileyIcon" class="w-40">
+      <img [src]="smileyIcon" class="w-40" alt="Smiley Icon">
     </div>
     <div
       class="card w-full py-6 px-4 flex flex-col gap-2 lg:row-start-3 lg:row-span-2 lg:col-start-2 lg:col-span-2 lg:p-8 lg:gap-4">
