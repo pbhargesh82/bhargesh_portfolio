@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Doto';
+    src: url('assets/fonts/Doto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Quantico';
+    src: url('assets/fonts/Quantico-Regular.ttf') format('truetype');
+}
+
+body {
+    height: 100dvh;
+    cursor: url('assets/icons/cursor.svg') 0 0, auto;
+    
+}
