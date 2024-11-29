@@ -27,6 +27,9 @@
       "@constants/*": [
         "app/shared/constants/*"
       ],
+      "@routes/*": [
+        "app/routes/*"
+      ],
     }
   },
   "angularCompilerOptions": {

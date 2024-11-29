@@ -1,0 +1,40 @@
+<div class="card overflow-auto w-full py-6 px-4 flex flex-col gap-2 lg:row-start-1 lg:row-span-5 lg:col-start-5">
+	<div class="flex justify-between items-center lg:mb-4">
+		<div class="text-2xl">Projects</div>
+	</div>
+	<div class="overflow-auto flex gap-4 lg:flex-col">
+		@for (item of projects; track $index) {
+		<div class="p-4 border-[1px] border-gray-500 rounded flex flex-col gap-2 overflow-auto">
+			<div class="flex items-center gap-4">
+				<!-- <img [src]="item.image" [alt]="item.name" [title]="item.name" class="w-10"> -->
+				<div class="underline underline-offset-4">{{item.name}}</div>
+			</div>
+			<div class="flex items-center gap-4">
+				<div class="text-sm leading-6">{{item.description}}</div>
+			</div>
+			<div class="text-sm leading-6">Built with</div>
+			<div class="flex items-center gap-4">
+				@for (item of item.stack; track $index) {
+				<img [src]="item.imageUrl" [alt]="item.name" [title]="item.name" class="w-8">
+				}
+			</div>
+			<div class="flex items-center gap-4">
+				<a href="{{item.uiRepoUrl}}" target="_blank"
+					class="flex items-center gap-2 border-[1px] border-gray-500 px-2 py-1 rounded-sm w-fit">
+					Code
+				</a>
+				@if (item.apiRepoUrl) {
+				<a href="{{item.apiRepoUrl}}" target="_blank"
+					class="flex items-center gap-2 border-[1px] border-gray-500 px-2 py-1 rounded-sm w-fit">
+					API
+				</a>
+				}
+				<a href="{{item.url}}" target="_blank"
+					class="flex items-center gap-2 border-[1px] border-gray-500 px-2 py-1 rounded-sm w-fit">
+					Run
+				</a>
+			</div>
+		</div>
+		}
+	</div>
+</div>

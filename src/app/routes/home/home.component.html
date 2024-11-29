@@ -1,0 +1,87 @@
+<div class="main w-dvw md:h-full md:flex md:items-center">
+    <div class="p-4 mx-auto my-0 max-w-[1600px] text-white font-[quantico] grid gap-4 grid-rows-none md:grid-cols-2 lg:max-h-full lg:grid-cols-5 
+  lg:grid-rows-[repeat(5,_120px)]">
+        <div class="card w-full py-6 flex items-center lg:col-span-2 lg:row-span-2 lg:p-4">
+            <img src="assets/image/avatar.png" alt="Bharagesh Patel Avatar" class="w-32 lg:w-60">
+            <div class="flex flex-col gap-2">
+                <div class="font-[doto] text-2xl lg:text-4xl">Bhargesh Patel</div>
+                <div class="text-lg lg:text-2xl">Frontend Developer</div>
+                <div class="text-md lg:text-lg">Turning ideas into polished experiences.</div>
+            </div>
+        </div>
+        <div
+            class="card w-full py-6 px-4 flex gap-2 md:gap-4 items-center justify-evenly lg:row-start-5 lg:col-start-3 lg:col-span-2">
+            @for (item of socials; track $index) {
+            <a [href]="item.url" target="_blank" class="cursor-pointer flex flex-col items-center gap-4">
+                <img [src]="item.icon" [alt]="item.alt" [title]="item.name" class="w-8">
+                <span class="text-xs">{{item.name}}</span>
+            </a>
+            }
+        </div>
+        <div class="card w-full p-6 hidden lg:flex lg:col-span-1 lg:row-span-2 lg:items-center lg:justify-center hover:border-4 hover:border-red-500"
+            (mouseenter)="onHover(true)" (mouseleave)="onHover(false)">
+            <img [src]="smileyIcon" class="w-40" [ngClass]="{'vibrate-1': isHovered, 'wobble-hor-bottom': !isHovered}"
+                alt="Smiley Icon">
+        </div>
+        <div
+            class="card skulls w-full py-6 px-4 flex flex-col gap-2 lg:row-start-3 lg:row-span-2 lg:col-start-2 lg:col-span-2 lg:p-8 lg:gap-4">
+            <div class="text-2xl">Today's Joke</div>
+            <pre
+                class="whitespace-pre-wrap break-words max-w-full overflow-auto font-[quantico]">{{jokeData?.joke}}</pre>
+        </div>
+        <div
+            class="card w-full py-6 px-4 flex flex-col gap-4 lg:row-start-3 lg:row-span-2 lg:col-span-1 lg:p-8 lg:justify-between">
+            <div class="text-2xl">Tech Stack</div>
+            <div class="grid grid-cols-4 gap-4 justify-items-center">
+                @for (item of techStacks; track $index) {
+                <img [src]="item.imageUrl" [alt]="item.name" [title]="item.name"
+                    class="h-12 w-12 hover:scale-110 transition">
+                }
+            </div>
+        </div>
+        <div
+            class="card overflow-auto topography w-full py-6 px-4 flex flex-col gap-2 lg:row-start-1 lg:row-span-5 lg:col-start-5">
+            <div class="flex justify-between items-center lg:mb-4">
+                <div class="text-2xl mb-2">Projects</div>
+            </div>
+            <div class="flex gap-4 flex-col">
+                @for (item of projects; track $index) {
+                <div class="p-4 border-[1px] border-gray-500 rounded flex flex-col gap-2 ">
+                    <a class="text-lg" [routerLink]="['/projects']"
+                        routerLinkActive="router-link-active">{{item.name}}</a>
+                    <!-- <div class="text-sm leading-6">{{item.description}}</div> -->
+                </div>
+                }
+            </div>
+        </div>
+        <div
+            class="card overflow-auto w-full py-6 px-4 flex flex-col gap-2 lg:row-start-1 lg:row-span-4 lg:col-start-4">
+            <div class="flex justify-between items-center lg:mb-4">
+                <div class="text-2xl">Work Experiences</div>
+                <!-- <img src="assets/icons/work.svg"class="w-8"> -->
+            </div>
+            <div class="overflow-auto flex gap-4 lg:flex-col">
+                @for (item of workExperiences; track $index) {
+                <div class="min-w-max p-2 border-[1px] border-gray-500 rounded lg:border-none lg:p-0">
+                    <div class="underline underline-offset-8 text-lg leading-8">{{item.company}}</div>
+                    <div class="text-lg leading-8">{{item.title}}</div>
+                    <div class="text-sm leading-6">{{item.period}} @if(item.duration){/} {{item.duration}}</div>
+                    <div class="text-sm leading-6">{{item.type}}</div>
+                </div>
+                }
+            </div>
+        </div>
+        <div
+            class="card w-full py-6 px-4 flex flex-col gap-4 md:col-span-2 lg:col-span-2 lg:row-span-1 lg:items-center lg:justify-center">
+            <div class="text-2xl">Like what you see?</div>
+            <div class="text-lg">
+                Let’s
+                <a href="mailto:pbhargesh82@gmail.com">
+                    <strong class="underline underline-offset-4">connect</strong>
+                </a>
+                and make something amazing together!
+            </div>
+
+        </div>
+    </div>
+</div>

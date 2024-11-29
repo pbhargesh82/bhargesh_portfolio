@@ -1,36 +1,85 @@
+import { TechStack } from '@constants/stack';
+
 export interface Project {
+    id: number;
     name: string;
     description: string;
-    image: string;
     url: string;
     uiRepoUrl: string;
     apiRepoUrl?: string;
-    stack: string[];
+    stack: TechStack[];
 }
 
 export const projects: Project[] = [
     {
+        id: 1,
         name: 'Clash Spy',
         description: 'A web application that allows users to spy on their friends in the Clash of Clans game.',
-        image: '/assets/icons/clashroyale.png',
         url: 'https://clash-spy.netlify.app/',
         uiRepoUrl: 'https://github.com/pbhargesh82/clash-royale-ui',
         apiRepoUrl: 'https://github.com/pbhargesh82/clash-royale-api',
         stack: [
-            '/assets/icons/svelte.svg',
-            '/assets/icons/tailwindcss.svg',
+            { name: 'Svelte', imageUrl: '/assets/icons/svelte.svg', alt: 'Svelte logo' },
+            { name: 'Tailwind CSS', imageUrl: '/assets/icons/tailwindcss.svg', alt: 'Tailwind CSS logo' },
         ]
     },
     {
+        id: 2,
         name: 'Portfolio',
-        description: 'A web application that allows users to spy on their friends in the Clash of Clans game.',
-        image: '/assets/icons/clashroyale.png',
-        url: 'https://clash-spy.netlify.app/',
-        uiRepoUrl: 'https://github.com/pbhargesh82/clash-royale-ui',
-        apiRepoUrl: 'https://github.com/pbhargesh82/clash-royale-api',
+        description: 'My personal portfolio website.',
+        url: 'https://pbhargesh82.netlify.app/',
+        uiRepoUrl: 'https://github.com/pbhargesh82/bhargesh_portfolio',
         stack: [
-            '/assets/icons/svelte.svg',
-            '/assets/icons/tailwindcss.svg',
+            { name: 'Angular', imageUrl: '/assets/icons/angular.svg', alt: 'Svelte logo' },
+            { name: 'Tailwind CSS', imageUrl: '/assets/icons/tailwindcss.svg', alt: 'Tailwind CSS logo' },
+        ]
+    },
+    {
+        id: 3,
+        name: 'Resources',
+        description: 'My resources website for web development.',
+        url: 'https://pbhargesh82.netlify.app/',
+        uiRepoUrl: 'https://github.com/pbhargesh82/bhargesh_portfolio',
+        stack: [
+            { name: 'HTML', imageUrl: '/assets/icons/html5.svg', alt: 'HTML5 logo' },
+            { name: 'CSS', imageUrl: '/assets/icons/css.svg', alt: 'CSS logo' },
+            { name: 'SASS', imageUrl: '/assets/icons/sass.svg', alt: 'SASS logo' },
+        ]
+    },
+    {
+        id: 4,
+        name: 'Natours',
+        description: 'Tour website template.',
+        url: 'https://natours-pbhargesh82.netlify.app/',
+        uiRepoUrl: 'https://github.com/pbhargesh82/Natours',
+        stack: [
+            { name: 'HTML', imageUrl: '/assets/icons/html5.svg', alt: 'HTML5 logo' },
+            { name: 'CSS', imageUrl: '/assets/icons/css.svg', alt: 'CSS logo' },
+            { name: 'SASS', imageUrl: '/assets/icons/sass.svg', alt: 'SASS logo' },
+        ]
+    },
+    {
+        id: 5,
+        name: 'Nexter',
+        description: 'Template using CSS Grid.',
+        url: 'https://nexter-pbhargesh82.netlify.app/',
+        uiRepoUrl: 'https://github.com/pbhargesh82/Nexter',
+        stack: [
+            { name: 'HTML', imageUrl: '/assets/icons/html5.svg', alt: 'HTML5 logo' },
+            { name: 'CSS', imageUrl: '/assets/icons/css.svg', alt: 'CSS logo' },
+            { name: 'SASS', imageUrl: '/assets/icons/sass.svg', alt: 'SASS logo' },
+        ]
+    },
+    {
+        id: 6,
+        name: 'Trillo',
+        description: 'Template using CSS Flex.',
+        url: 'https://trillo-pbhargesh82.netlify.app/',
+        uiRepoUrl: 'https://pbhargesh82.github.io/Trillo',
+        stack: [
+            { name: 'HTML', imageUrl: '/assets/icons/html5.svg', alt: 'HTML5 logo' },
+            { name: 'CSS', imageUrl: '/assets/icons/css.svg', alt: 'CSS logo' },
+            { name: 'SASS', imageUrl: '/assets/icons/sass.svg', alt: 'SASS logo' },
         ]
     },
 ];
