@@ -1,36 +1,43 @@
-<div class="card overflow-auto w-full py-6 px-4 flex flex-col gap-2 lg:row-start-1 lg:row-span-5 lg:col-start-5">
-	<div class="flex justify-between items-center lg:mb-4">
-		<div class="text-2xl">Projects</div>
-	</div>
-	<div class="overflow-auto flex gap-4 lg:flex-col">
+<div class="card text-white p-4 flex items-center gap-4 border-none">
+	<img src="assets/icons/arrow-right.svg" alt="Back icon" class="rotate-180 w-6" [routerLink]="['/home']"
+		routerLinkActive="router-link-active">
+	<div class="text-3xl">Projects</div>
+</div>
+<div class="overflow-auto w-full py-6 px-4 text-white flex flex-col gap-2 lg:row-start-1 lg:row-span-5 lg:col-start-5">
+	<div class="overflow-auto grid lg:grid-cols-2 gap-4">
 		@for (item of projects; track $index) {
-		<div class="p-4 border-[1px] border-gray-500 rounded flex flex-col gap-2 overflow-auto">
+		<div class="card p-4 border-[1px] border-gray-500 rounded flex flex-col gap-2 overflow-auto">
 			<div class="flex items-center gap-4">
 				<!-- <img [src]="item.image" [alt]="item.name" [title]="item.name" class="w-10"> -->
-				<div class="underline underline-offset-4">{{item.name}}</div>
+				<div class="underline underline-offset-8 text-xl lg:text-2xl">{{item.name}}</div>
+			</div>
+			<div class="flex items-center gap-4 flex-1">
+				<div class="py-4 text-md leading-6 lg:text-lg">{{item.description}}</div>
+			</div>
+			<div class="py-4 flex gap-4">
+				<div class="text-sm leading-6">Built with:</div>
+				<div class="flex items-center gap-4">
+					@for (item of item.stack; track $index) {
+					<img [src]="item.imageUrl" [alt]="item.name" [title]="item.name" class="w-6">
+					}
+				</div>
 			</div>
 			<div class="flex items-center gap-4">
-				<div class="text-sm leading-6">{{item.description}}</div>
-			</div>
-			<div class="text-sm leading-6">Built with</div>
-			<div class="flex items-center gap-4">
-				@for (item of item.stack; track $index) {
-				<img [src]="item.imageUrl" [alt]="item.name" [title]="item.name" class="w-8">
-				}
-			</div>
-			<div class="flex items-center gap-4">
-				<a href="{{item.uiRepoUrl}}" target="_blank"
+				<a href="{{item.uiRepoUrl}}" target="_blank" title="Open GitHub Repository"
 					class="flex items-center gap-2 border-[1px] border-gray-500 px-2 py-1 rounded-sm w-fit">
+					<img src="assets/icons/code.svg" alt="Run the project icon" class="w-4">
 					Code
 				</a>
 				@if (item.apiRepoUrl) {
-				<a href="{{item.apiRepoUrl}}" target="_blank"
+				<a href="{{item.apiRepoUrl}}" target="_blank" title="Open GitHub Repository"
 					class="flex items-center gap-2 border-[1px] border-gray-500 px-2 py-1 rounded-sm w-fit">
+					<img src="assets/icons/code.svg" alt="Run the project icon" class="w-4">
 					API
 				</a>
 				}
-				<a href="{{item.url}}" target="_blank"
+				<a href="{{item.url}}" target="_blank" title="Run the project"
 					class="flex items-center gap-2 border-[1px] border-gray-500 px-2 py-1 rounded-sm w-fit">
+					<img src="assets/icons/play.svg" alt="Run the project icon" class="w-4">
 					Run
 				</a>
 			</div>

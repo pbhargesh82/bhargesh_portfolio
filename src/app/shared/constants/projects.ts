@@ -21,6 +21,8 @@ export const projects: Project[] = [
         stack: [
             { name: 'Svelte', imageUrl: '/assets/icons/svelte.svg', alt: 'Svelte logo' },
             { name: 'Tailwind CSS', imageUrl: '/assets/icons/tailwindcss.svg', alt: 'Tailwind CSS logo' },
+            { name: 'Express JS', imageUrl: '/assets/icons/expressjs.svg', alt: 'Express JS logo' },
+            { name: 'AWS', imageUrl: '/assets/icons/aws.svg', alt: 'Amazon Web Services logo' },
         ]
     },
     {

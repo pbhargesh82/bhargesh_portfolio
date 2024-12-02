@@ -1,12 +1,12 @@
-<div class="main w-dvw lg:h-full lg:flex lg:items-center">
+<div class="w-dvw md:h-dvh md:flex md:items-center">
     <div class="p-4 mx-auto my-0 max-w-[1600px] text-white font-[quantico] grid gap-4 grid-rows-none md:grid-cols-2 lg:max-h-full lg:grid-cols-5 
   lg:grid-rows-[repeat(5,_120px)]">
         <div class="card w-full py-6 flex items-center lg:col-span-2 lg:row-span-2 lg:p-4">
-            <img src="assets/image/avatar.png" alt="Bharagesh Patel Avatar" class="w-32 lg:w-60">
+            <img src="assets/image/avatar.png" alt="Bharagesh Patel Avatar" class="w-32 lg:w-36 xl:w-60">
             <div class="flex flex-col gap-2">
-                <div class="font-[doto] text-2xl lg:text-4xl">Bhargesh Patel</div>
-                <div class="text-lg lg:text-2xl">Frontend Developer</div>
-                <div class="text-md lg:text-lg">Turning ideas into polished experiences.</div>
+                <div class="font-[doto] text-2xl xl:text-4xl">Bhargesh Patel</div>
+                <div class="text-lg xl:text-2xl">Frontend Developer</div>
+                <div class="text-md xl:text-lg">Turning ideas into polished experiences.</div>
             </div>
         </div>
         <div
@@ -30,7 +30,7 @@
                 class="whitespace-pre-wrap break-words max-w-full overflow-auto font-[quantico]">{{jokeData?.joke}}</pre>
         </div>
         <div
-            class="card w-full py-6 px-4 flex flex-col gap-4 lg:row-start-3 lg:row-span-2 lg:col-span-1 lg:p-8 lg:justify-between">
+            class="card w-full py-6 px-4 flex flex-col gap-4 lg:row-start-3 lg:row-span-2 lg:col-span-1 lg:p-6 xl:p-8 lg:justify-evenly">
             <div class="text-2xl">Tech Stack</div>
             <div class="grid grid-cols-4 gap-4 justify-items-center">
                 @for (item of techStacks; track $index) {
@@ -40,29 +40,14 @@
             </div>
         </div>
         <div
-            class="card overflow-auto topography w-full py-6 px-4 flex flex-col gap-2 lg:row-start-1 lg:row-span-5 lg:col-start-5">
-            <div class="flex justify-between items-center lg:mb-4">
-                <div class="text-2xl mb-2">Projects</div>
-            </div>
-            <div class="flex gap-4 flex-col">
-                @for (item of projects; track $index) {
-                <div class="p-4 border-[1px] border-gray-500 rounded flex flex-col gap-2 ">
-                    <a class="text-lg" [routerLink]="['/projects']"
-                        routerLinkActive="router-link-active">{{item.name}}</a>
-                    <!-- <div class="text-sm leading-6">{{item.description}}</div> -->
-                </div>
-                }
-            </div>
-        </div>
-        <div
             class="card overflow-auto w-full py-6 px-4 flex flex-col gap-2 lg:row-start-1 lg:row-span-4 lg:col-start-4">
             <div class="flex justify-between items-center lg:mb-4">
-                <div class="text-2xl">Work Experiences</div>
+                <div class="text-2xl mb-2">Work Experiences</div>
                 <!-- <img src="assets/icons/work.svg"class="w-8"> -->
             </div>
             <div class="overflow-auto flex gap-4 lg:flex-col">
                 @for (item of workExperiences; track $index) {
-                <div class="min-w-max p-2 border-[1px] border-gray-500 rounded lg:border-none lg:p-0">
+                <div class="flex-1 min-w-max p-2 border-[1px] border-gray-500 rounded lg:border-none lg:p-0">
                     <div class="underline underline-offset-8 text-lg leading-8">{{item.company}}</div>
                     <div class="text-lg leading-8">{{item.title}}</div>
                     <div class="text-sm leading-6">{{item.period}} @if(item.duration){/} {{item.duration}}</div>
@@ -72,9 +57,27 @@
             </div>
         </div>
         <div
+            class="card overflow-auto topography w-full py-6 px-4 flex flex-col gap-2 lg:row-start-1 lg:row-span-5 lg:col-start-5">
+            <div class="flex justify-between items-center lg:mb-4">
+                <div class="text-2xl mb-2">Projects</div>
+            </div>
+            <div class="flex gap-4 flex-wrap items-center justify-around">
+                @for (item of projects; track $index) {
+                <div class="group p-4 cursor-pointer flex-1 min-w-32 border-2 border-gray-500 rounded flex justify-between gap-2 transition lg:min-w-full hover:border-dashed hover:border-2 hover:scale-105"
+                    [routerLink]="['/projects']" routerLinkActive="router-link-active">
+                    <a class="text-lg">{{item.name}}
+                    </a>
+                    <!-- <div class="text-sm leading-6">{{item.description}}</div> -->
+                    <img src="assets/icons/arrow-right.svg" alt="Go to project icon"
+                        class="hidden md:block w-6 transition duration-300 ease-in-out group-hover:rotate-[-45deg]">
+                </div>
+                }
+            </div>
+        </div>
+        <div
             class="card w-full py-6 px-4 flex flex-col gap-4 md:col-span-2 lg:col-span-2 lg:row-span-1 lg:items-center lg:justify-center">
             <div class="text-2xl">Like what you see?</div>
-            <div class="text-lg">
+            <div class="text-lg text-center">
                 Let’s
                 <a href="mailto:pbhargesh82@gmail.com">
                     <strong class="underline underline-offset-4">connect</strong>
