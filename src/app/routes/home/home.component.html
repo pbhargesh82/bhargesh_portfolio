@@ -66,15 +66,13 @@
             </div>
             <div class="flex gap-4 flex-wrap items-center justify-around">
                 @for (item of projects; track $index) {
-                <div
-                    class="group p-4 cursor-pointer flex-1 min-w-32 border-2 border-gray-500 rounded flex justify-between gap-2 transition lg:min-w-full hover:border-dashed hover:border-2 hover:scale-105">
-                    <a [routerLink]="['/projects']" href="/projects" routerLinkActive="router-link-active"
-                        class="text-lg flex items-center gap-2">
-                        {{ item.name }}
-                        <img src="assets/icons/arrow-right.svg" alt="Go to project icon"
-                            class="hidden md:block w-6 transition duration-300 ease-in-out group-hover:rotate-[-45deg]">
-                    </a>
-                </div>
+                <a class="group p-4 cursor-pointer flex-1 min-w-32 border-2 border-gray-500 rounded flex justify-between gap-2 transition lg:min-w-full hover:border-dashed hover:border-2 hover:scale-105"
+                    [routerLink]="['/projects']" routerLinkActive="router-link-active" href="/projects">
+                    <span class="text-lg">{{item.name}}</span>
+                    <!-- <div class="text-sm leading-6">{{item.description}}</div> -->
+                    <img src="assets/icons/arrow-right.svg" alt="Go to project icon"
+                        class="hidden md:block w-6 transition duration-300 ease-in-out group-hover:rotate-[-45deg]">
+                </a>
                 }
             </div>
         </div>
