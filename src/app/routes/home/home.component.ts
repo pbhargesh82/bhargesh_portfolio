@@ -17,7 +17,7 @@ import { RouterModule } from '@angular/router';
 })
 export class HomeComponent {
 
-  title = 'Bhargesj Patel';
+  title = 'Bhargesh Patel';
   apiUrl: string = 'https://v2.jokeapi.dev/joke/Programming?type=single';
   jokeData: any;
   techStacks: TechStack[] = techStacks;
