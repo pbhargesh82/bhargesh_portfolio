@@ -32,7 +32,7 @@ export const socials: Social[] = [
     },
     {
         name: 'Resume',
-        url: 'https://rxresu.me/pbhargesh82/bhargesh-patel',
+        url: 'assets/cv.pdf',
         icon: '/assets/icons/resume.svg',
         alt: 'Resume link for profile.'
     }

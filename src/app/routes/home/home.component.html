@@ -2,7 +2,7 @@
     <div class="p-4 mx-auto my-0 max-w-[1600px] text-white font-[quantico] grid gap-4 grid-rows-none md:grid-cols-2 lg:max-h-full lg:grid-cols-5 
   lg:grid-rows-[repeat(5,_120px)]">
         <div class="card w-full py-6 flex items-center lg:col-span-2 lg:row-span-2 lg:p-4">
-            <img src="assets/image/avatar.png" alt="Bharagesh Patel Avatar" class="w-32 lg:w-36 xl:w-60">
+            <img src="assets/image/avatar.webp" alt="Bharagesh Patel Avatar" class="w-32 lg:w-36 xl:w-60">
             <div class="flex flex-col gap-2">
                 <div class="font-[doto] text-2xl xl:text-4xl">Bhargesh Patel</div>
                 <div class="text-lg xl:text-2xl">Frontend Developer</div>
@@ -12,12 +12,15 @@
         <div
             class="card w-full py-6 px-4 flex gap-2 md:gap-4 items-center justify-evenly lg:row-start-5 lg:col-start-3 lg:col-span-2">
             @for (item of socials; track $index) {
-            <a [href]="item.url" target="_blank" class="cursor-pointer flex flex-col items-center gap-4">
+            <a [href]="item.url" target="_blank"
+                [attr.download]="item.name === 'Resume' ? 'Bhargesh Patel Resume.pdf' : null"
+                class="cursor-pointer flex flex-col items-center gap-4">
                 <img [src]="item.icon" [alt]="item.alt" [title]="item.name" class="w-8">
-                <span class="text-xs">{{item.name}}</span>
+                <span class="text-xs">{{ item.name }}</span>
             </a>
             }
         </div>
+
         <div class="card w-full p-6 hidden lg:flex lg:col-span-1 lg:row-span-2 lg:items-center lg:justify-center hover:border-4 hover:border-red-500"
             (mouseenter)="onHover(true)" (mouseleave)="onHover(false)">
             <img [src]="smileyIcon" class="w-40" [ngClass]="{'vibrate-1': isHovered, 'wobble-hor-bottom': !isHovered}"
@@ -63,13 +66,14 @@
             </div>
             <div class="flex gap-4 flex-wrap items-center justify-around">
                 @for (item of projects; track $index) {
-                <div class="group p-4 cursor-pointer flex-1 min-w-32 border-2 border-gray-500 rounded flex justify-between gap-2 transition lg:min-w-full hover:border-dashed hover:border-2 hover:scale-105"
-                    [routerLink]="['/projects']" routerLinkActive="router-link-active">
-                    <a class="text-lg">{{item.name}}
+                <div
+                    class="group p-4 cursor-pointer flex-1 min-w-32 border-2 border-gray-500 rounded flex justify-between gap-2 transition lg:min-w-full hover:border-dashed hover:border-2 hover:scale-105">
+                    <a [routerLink]="['/projects']" href="/projects" routerLinkActive="router-link-active"
+                        class="text-lg flex items-center gap-2">
+                        {{ item.name }}
+                        <img src="assets/icons/arrow-right.svg" alt="Go to project icon"
+                            class="hidden md:block w-6 transition duration-300 ease-in-out group-hover:rotate-[-45deg]">
                     </a>
-                    <!-- <div class="text-sm leading-6">{{item.description}}</div> -->
-                    <img src="assets/icons/arrow-right.svg" alt="Go to project icon"
-                        class="hidden md:block w-6 transition duration-300 ease-in-out group-hover:rotate-[-45deg]">
                 </div>
                 }
             </div>
