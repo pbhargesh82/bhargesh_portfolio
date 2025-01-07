@@ -4,7 +4,7 @@
         <div class="card w-full py-6 flex items-center lg:col-span-2 lg:row-span-2 lg:p-4">
             <img src="assets/image/avatar.webp" alt="Bharagesh Patel Avatar" class="w-32 lg:w-36 xl:w-60">
             <div class="flex flex-col gap-2">
-                <div class="font-[doto] text-2xl xl:text-4xl">Bhargesh Patel</div>
+                <div class="font-[doto] font-bold text-2xl xl:text-4xl">Bhargesh Patel</div>
                 <div class="text-lg xl:text-2xl">Frontend Developer</div>
                 <div class="text-md xl:text-lg">Turning ideas into polished experiences.</div>
             </div>
@@ -21,7 +21,7 @@
             }
         </div>
 
-        <div class="card w-full p-6 hidden lg:flex lg:col-span-1 lg:row-span-2 lg:items-center lg:justify-center hover:border-4 hover:border-red-500"
+        <div class="card no-shadow w-full p-6 hidden lg:flex lg:col-span-1 lg:row-span-2 lg:items-center lg:justify-center hover:border-2 hover:border-red-500 transition-all"
             (mouseenter)="onHover(true)" (mouseleave)="onHover(false)">
             <img [src]="smileyIcon" class="w-40" [ngClass]="{'vibrate-1': isHovered, 'wobble-hor-bottom': !isHovered}"
                 alt="Smiley Icon">
@@ -32,13 +32,12 @@
             <pre
                 class="whitespace-pre-wrap break-words max-w-full overflow-auto font-[quantico]">{{jokeData?.joke}}</pre>
         </div>
-        <div
-            class="card w-full py-6 px-4 flex flex-col gap-4 lg:row-start-3 lg:row-span-2 lg:col-span-1 lg:p-6 xl:p-8 lg:justify-evenly">
+        <div class="card w-full py-6 px-4 flex flex-col gap-4 lg:row-start-3 lg:row-span-2 lg:col-span-1 lg:p-6 xl:p-8">
             <div class="text-2xl">Tech Stack</div>
-            <div class="grid grid-cols-4 gap-4 justify-items-center">
+            <div class="flex-1 grid grid-cols-4 gap-4 place-content-center">
                 @for (item of techStacks; track $index) {
                 <img [src]="item.imageUrl" [alt]="item.name" [title]="item.name"
-                    class="h-12 w-12 hover:scale-110 transition">
+                    class="h-10 w-10 hover:scale-110 transition">
                 }
             </div>
         </div>
