@@ -27,6 +27,17 @@ export const projects: Project[] = [
     },
     {
         id: 2,
+        name: 'Angular CRUD',
+        description: 'Angular CRUD application.',
+        url: 'https://a19-crud.netlify.app/',
+        uiRepoUrl: 'https://github.com/pbhargesh82/angular-crud',
+        stack: [
+            { name: 'Angular', imageUrl: '/assets/icons/angular.svg', alt: 'Svelte logo' },
+            { name: 'Tailwind CSS', imageUrl: '/assets/icons/tailwindcss.svg', alt: 'Tailwind CSS logo' },
+        ]
+    },
+    {
+        id: 3,
         name: 'Portfolio',
         description: 'My personal portfolio website.',
         url: 'https://pbhargesh82.netlify.app/',
@@ -37,7 +48,7 @@ export const projects: Project[] = [
         ]
     },
     {
-        id: 3,
+        id: 4,
         name: 'Resources',
         description: 'My resources website for web development.',
         url: 'https://pbhargesh82.netlify.app/',
@@ -49,7 +60,7 @@ export const projects: Project[] = [
         ]
     },
     {
-        id: 4,
+        id: 5,
         name: 'Natours',
         description: 'Tour website template.',
         url: 'https://natours-pbhargesh82.netlify.app/',
@@ -61,7 +72,7 @@ export const projects: Project[] = [
         ]
     },
     {
-        id: 5,
+        id: 6,
         name: 'Nexter',
         description: 'Template using CSS Grid.',
         url: 'https://nexter-pbhargesh82.netlify.app/',
@@ -73,7 +84,7 @@ export const projects: Project[] = [
         ]
     },
     {
-        id: 6,
+        id: 7,
         name: 'Trillo',
         description: 'Template using CSS Flex.',
         url: 'https://trillo-pbhargesh82.netlify.app/',
