@@ -25,7 +25,7 @@ export const workExperiences: WorkExperience[] = [
         company: 'Bridginex',
         title: 'Frontend Developer',
         period: 'Oct 2023 - Present',
-        duration: '1yr 1mo',
+        duration: '1yr 3mo',
         type: 'Full Time / Remote',
     },
 ];
