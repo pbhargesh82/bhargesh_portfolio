@@ -53,7 +53,6 @@ export class HomeComponent {
 
   onHover(state: boolean): void {
     this.isHovered = state;
-    console.log(this.isHovered);
     if (this.isHovered) {
       this.smileyIcon = this.angrySmiley;
     } else {
@@ -64,7 +63,6 @@ export class HomeComponent {
   getJokeData(): any {
     this.http.get(`${this.apiUrl}`).subscribe({
       next: (response) => {
-        console.log('Data:', response);
         this.jokeData = response;
       },
       error: (error) => {
