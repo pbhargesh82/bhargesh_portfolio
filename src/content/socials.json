@@ -1,0 +1,34 @@
+[
+  {
+    "name": "GitHub",
+    "url": "https://github.com/pbhargesh82",
+    "icon": "github",
+    "alt": "GitHub profile"
+  },
+  {
+    "name": "LinkedIn",
+    "url": "https://www.linkedin.com/in/bhargesh-patel-2b6a111b9/",
+    "icon": "linkedin",
+    "alt": "LinkedIn profile"
+  },
+  {
+    "name": "Daily Dev",
+    "url": "https://app.daily.dev/pbhargesh82",
+    "icon": "dailydotdev",
+    "alt": "Daily Dev profile"
+  },
+  {
+    "name": "WhatsApp",
+    "url": "https://wa.me/919033719592",
+    "icon": "whatsapp",
+    "alt": "WhatsApp contact"
+  },
+  {
+    "name": "Resume",
+    "url": "/cv.pdf",
+    "icon": "description",
+    "iconSet": "material",
+    "alt": "Download resume",
+    "download": "Bhargesh Patel Resume.pdf"
+  }
+]

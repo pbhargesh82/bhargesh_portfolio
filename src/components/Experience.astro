@@ -1,0 +1,52 @@
+---
+import experience from '../content/experience.json';
+---
+
+<section id="experience" class="border-t border-border bg-surface">
+  <div class="mx-auto w-full max-w-6xl px-6 py-20 md:py-28">
+    <header class="mb-14 max-w-xl">
+      <h2 class="font-display text-3xl font-semibold tracking-[-0.01em] text-ink md:text-4xl">
+        Where I've built
+      </h2>
+      <p class="mt-4 text-lg leading-relaxed text-ink-muted">
+        Five years from on-site frontend work to end-to-end product builds, now shipping full
+        features, not just UI.
+      </p>
+    </header>
+
+    <ol class="relative space-y-0">
+      {
+        experience.map((job) => (
+          <li class="relative grid gap-4 border-l border-border pb-12 pl-8 last:pb-0 md:grid-cols-[12rem_1fr] md:gap-8 md:pl-10">
+            <span
+              class:list={[
+                'absolute top-1.5 -left-[5px] size-2.5 rounded-full border-2 border-surface',
+                job.current ? 'bg-accent' : 'bg-ink-subtle',
+              ]}
+              aria-hidden="true"
+            />
+            <div class="text-sm text-ink-subtle">
+              <time>{job.period}</time>
+              <p class="mt-1 text-xs text-ink-subtle">{job.duration}</p>
+            </div>
+            <div>
+              <h3 class="font-display text-2xl font-semibold text-ink">{job.title}</h3>
+              <p class="mt-1 text-ink-muted">
+                {job.company}
+                <span class="text-ink-subtle"> · {job.type}</span>
+              </p>
+              {job.summary && (
+                <p class="mt-3 max-w-prose text-sm leading-relaxed text-ink-muted">{job.summary}</p>
+              )}
+              {job.current && (
+                <span class="mt-3 inline-block rounded-sm bg-accent/10 px-2.5 py-1 text-xs font-medium text-accent">
+                  Current
+                </span>
+              )}
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

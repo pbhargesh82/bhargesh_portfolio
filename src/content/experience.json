@@ -1,0 +1,29 @@
+[
+  {
+    "company": "Bridginex",
+    "title": "Software Engineer",
+    "period": "Oct 2023 – Present",
+    "duration": "2yr 8mo",
+    "type": "Full Time · Remote",
+    "current": true,
+    "summary": "End-to-end client web apps and SaaS features: UI in Angular or React, APIs and data with Node, Supabase, and PostgreSQL."
+  },
+  {
+    "company": "Quatntsapp Pvt. Ltd.",
+    "title": "Frontend Developer",
+    "period": "Jun 2023 – Sep 2023",
+    "duration": "4mo",
+    "type": "Full Time · On Site",
+    "current": false,
+    "summary": "Four-month contract building product UI in Angular: forms, routing, and feature delivery with the team on site."
+  },
+  {
+    "company": "Adis Technology",
+    "title": "Frontend Developer",
+    "period": "May 2021 – May 2023",
+    "duration": "2yr 1mo",
+    "type": "Full Time · On Site",
+    "current": false,
+    "summary": "Two years on enterprise Angular apps: dashboards, internal tools, and long-lived codebases with a small on-site team."
+  }
+]

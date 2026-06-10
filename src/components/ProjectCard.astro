@@ -1,0 +1,66 @@
+---
+import MaterialIcon from './MaterialIcon.astro';
+
+interface Props {
+  name: string;
+  description: string;
+  url: string;
+  uiRepoUrl: string;
+  apiRepoUrl?: string;
+  stack: string[];
+}
+
+const { name, description, url, uiRepoUrl, apiRepoUrl, stack } = Astro.props;
+---
+
+<article class="group flex h-full flex-col rounded-md border border-border bg-surface p-6 transition-colors hover:border-ink-subtle">
+  <header>
+    <h3 class="font-display text-2xl font-semibold text-ink">{name}</h3>
+    <p class="mt-3 text-base leading-relaxed text-ink-muted">{description}</p>
+  </header>
+
+  <ul class="mt-5 flex flex-wrap gap-2" aria-label={`${name} tech stack`}>
+    {
+      stack.map((tech) => (
+        <li>
+          <span class="rounded-sm bg-paper px-2.5 py-1 text-xs font-medium text-ink-muted">
+            {tech}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <footer class="mt-auto flex flex-wrap items-center gap-4 pt-8 text-sm">
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-1.5 font-medium text-accent transition-colors hover:text-accent-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+    >
+      Live site
+      <MaterialIcon name="open_in_new" size={14} class="opacity-70" />
+    </a>
+    <a
+      href={uiRepoUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-1.5 text-ink-muted transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+    >
+      <MaterialIcon name="code" size={14} class="opacity-60" />
+      Code
+    </a>
+    {
+      apiRepoUrl && (
+        <a
+          href={apiRepoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 text-ink-muted transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          API
+        </a>
+      )
+    }
+  </footer>
+</article>

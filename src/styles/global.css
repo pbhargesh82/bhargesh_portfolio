@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(html[data-theme="dark"], html[data-theme="dark"] *));
+
+@theme {
+  --animate-*: initial;
+
+  --color-paper: #f7f5f2;
+  --color-ink: #1c1917;
+  --color-ink-muted: #57534e;
+  --color-ink-subtle: #78716c;
+  --color-border: #e7e5e4;
+  --color-accent: #0d6e6e;
+  --color-accent-hover: #0a5555;
+  --color-surface: #ffffff;
+
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body: "Public Sans", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  html[data-theme="dark"] {
+    color-scheme: dark;
+    --color-paper: #1c1917;
+    --color-ink: #fafaf9;
+    --color-ink-muted: #a8a29e;
+    --color-ink-subtle: #78716c;
+    --color-border: #44403c;
+    --color-accent: #2dd4bf;
+    --color-accent-hover: #5eead4;
+    --color-surface: #292524;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme="light"]) {
+      color-scheme: dark;
+      --color-paper: #1c1917;
+      --color-ink: #fafaf9;
+      --color-ink-muted: #a8a29e;
+      --color-ink-subtle: #78716c;
+      --color-border: #44403c;
+      --color-accent: #2dd4bf;
+      --color-accent-hover: #5eead4;
+      --color-surface: #292524;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    font-family: "Public Sans", system-ui, sans-serif;
+    @apply bg-paper text-ink antialiased;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body {
+      transition: none;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-accent) 20%, transparent);
+  }
+
+  .material-symbols-outlined {
+    font-family: "Material Symbols Outlined";
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    font-variation-settings:
+      "FILL" 0,
+      "wght" 400,
+      "GRAD" 0,
+      "opsz" 20;
+  }
+}

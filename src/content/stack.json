@@ -1,0 +1,13 @@
+{
+  "frontend": [
+    { "name": "TypeScript", "icon": "typescript" },
+    { "name": "JavaScript", "icon": "javascript" },
+    { "name": "Angular", "icon": "angular" },
+    { "name": "React", "icon": "react" }
+  ],
+  "backend": [
+    { "name": "Node.js", "icon": "nodedotjs" },
+    { "name": "Supabase", "icon": "supabase" },
+    { "name": "PostgreSQL", "icon": "postgresql" }
+  ]
+}

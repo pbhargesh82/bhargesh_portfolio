@@ -1,0 +1,33 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import projects from '../content/projects.json';
+---
+
+<section id="projects" class="border-t border-border">
+  <div class="mx-auto w-full max-w-6xl px-6 py-20 md:py-28">
+    <header class="mb-14 max-w-xl">
+      <h2 class="font-display text-3xl font-semibold tracking-[-0.01em] text-ink md:text-4xl">
+        Selected work
+      </h2>
+      <p class="mt-4 text-lg leading-relaxed text-ink-muted">
+        Two apps where I explored product ideas outside client work: one full-stack, one
+        interaction-heavy frontend.
+      </p>
+    </header>
+
+    <div class="grid gap-6 sm:grid-cols-2">
+      {
+        projects.map((project) => (
+          <ProjectCard
+            name={project.name}
+            description={project.description}
+            url={project.url}
+            uiRepoUrl={project.uiRepoUrl}
+            apiRepoUrl={project.apiRepoUrl}
+            stack={project.stack}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

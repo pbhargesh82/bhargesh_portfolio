@@ -1,0 +1,24 @@
+---
+interface Props {
+  name: string;
+  size?: number;
+  class?: string;
+}
+
+const { name, size = 20, class: className } = Astro.props;
+---
+
+<span
+  class:list={[
+    'material-symbols-outlined leading-none',
+    size === 14 && 'text-sm',
+    size === 16 && 'text-base',
+    size === 18 && 'text-lg',
+    size === 20 && 'text-xl',
+    size === 24 && 'text-2xl',
+    className,
+  ]}
+  aria-hidden="true"
+>
+  {name}
+</span>

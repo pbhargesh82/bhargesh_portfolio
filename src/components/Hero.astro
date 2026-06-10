@@ -1,0 +1,136 @@
+---
+import stack from '../content/stack.json';
+import socials from '../content/socials.json';
+import BrandIcon from './BrandIcon.astro';
+import SocialIcon from './SocialIcon.astro';
+
+const email = 'pbhargesh82@gmail.com';
+
+const focusRing =
+  'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent';
+const btnTransition = 'transition-[color,background-color,border-color,transform] duration-200 ease-out';
+---
+
+<section
+  id="top"
+  class="mx-auto w-full max-w-6xl px-6 pb-[clamp(4rem,10vw,5.5rem)] pt-[clamp(3rem,8vw,4.5rem)]"
+>
+  <div class="grid items-start gap-6 md:grid-cols-[minmax(0,1fr)_auto] md:gap-14">
+    <div class="max-w-2xl">
+      <h1
+        class="font-display text-5xl font-semibold leading-[1.02] tracking-[-0.03em] text-balance text-ink sm:text-6xl"
+      >
+        Bhargesh Patel
+      </h1>
+      <span
+        class="mt-4 block h-1 w-[3.2rem] rounded-full bg-accent opacity-[0.48]"
+        aria-hidden="true"
+      ></span>
+      <p class="mt-5 text-sm font-medium text-ink-muted">Software engineer · Bridginex · Surat</p>
+      <p class="mt-5 max-w-prose text-pretty text-lg leading-relaxed text-ink-muted">
+        Five years in web development, now shipping full features for client products. React
+        and Angular on the front, Node and Supabase on the back. I like owning a feature from
+        UI through to the database.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a
+          href={`mailto:${email}`}
+          class:list={[
+            'inline-flex min-h-11 items-center justify-center rounded-sm bg-accent px-6 py-2.5 text-sm font-medium text-surface',
+            btnTransition,
+            'hover:bg-accent-hover active:scale-[0.98]',
+            focusRing,
+          ]}
+        >
+          Get in touch
+        </a>
+        <a
+          href="/cv.pdf"
+          download="Bhargesh Patel Resume.pdf"
+          class:list={[
+            'inline-flex min-h-11 items-center justify-center rounded-sm border border-border bg-surface px-6 py-2.5 text-sm font-medium text-ink-muted',
+            btnTransition,
+            'hover:border-ink-subtle hover:text-ink active:scale-[0.98]',
+            focusRing,
+          ]}
+        >
+          Download resume
+        </a>
+      </div>
+      <div class="mt-8 space-y-4">
+        <div>
+          <p class="mb-2 text-sm font-medium text-ink-muted">Frontend</p>
+          <ul class="flex flex-wrap gap-2" aria-label="Frontend skills">
+            {
+              stack.frontend.map((item) => (
+                <li>
+                  <span class="inline-flex items-center gap-2 rounded-sm border border-border bg-surface px-3 py-2 text-xs font-medium text-ink-muted">
+                    <BrandIcon slug={item.icon} size={14} class="opacity-75" />
+                    {item.name}
+                  </span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div>
+          <p class="mb-2 text-sm font-medium text-ink-muted">Backend &amp; data</p>
+          <ul class="flex flex-wrap gap-2" aria-label="Backend and data skills">
+            {
+              stack.backend.map((item) => (
+                <li>
+                  <span class="inline-flex items-center gap-2 rounded-sm border border-border bg-surface px-3 py-2 text-xs font-medium text-ink-muted">
+                    <BrandIcon slug={item.icon} size={14} class="opacity-75" />
+                    {item.name}
+                  </span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center gap-4 md:items-end">
+      <img
+        src="/images/avatar.webp"
+        alt="Bhargesh Patel"
+        width="200"
+        height="200"
+        class="size-40 rounded-md object-cover sm:size-44"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <ul class="flex items-center gap-0.5" aria-label="Social links">
+        {
+          socials
+            .filter((s) => s.name !== 'Resume')
+            .map((social) => (
+              <li>
+                <a
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class:list={[
+                    'flex size-11 items-center justify-center rounded-sm text-ink-muted',
+                    btnTransition,
+                    'hover:bg-surface hover:text-accent active:scale-95',
+                    focusRing,
+                  ]}
+                  aria-label={social.alt}
+                >
+                  <SocialIcon
+                    icon={social.icon}
+                    iconSet={social.iconSet}
+                    size={20}
+                    class="opacity-80"
+                  />
+                </a>
+              </li>
+            ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

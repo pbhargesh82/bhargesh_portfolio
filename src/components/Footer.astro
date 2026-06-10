@@ -1,0 +1,65 @@
+---
+import socials from '../content/socials.json';
+import SocialIcon from './SocialIcon.astro';
+
+const email = 'pbhargesh82@gmail.com';
+const year = new Date().getFullYear();
+---
+
+<footer id="contact" class="border-t border-border bg-surface">
+  <div class="mx-auto w-full max-w-6xl px-6 py-20 md:py-24">
+    <div class="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
+      <div class="max-w-lg">
+        <h2 class="font-display text-3xl font-semibold tracking-[-0.01em] text-ink md:text-4xl">
+          Say hello
+        </h2>
+        <p class="mt-4 text-ink-muted">
+          Open to contract and freelance projects. Based in Surat, happy to work remote.
+          Email is the fastest way to reach me.
+        </p>
+        <a
+          href={`mailto:${email}`}
+          class="mt-6 inline-block font-display text-xl font-semibold text-accent transition-colors hover:text-accent-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+        >
+          {email}
+        </a>
+      </div>
+
+      <nav aria-label="Footer navigation">
+        <ul class="flex flex-wrap gap-2">
+          {
+            socials.map((social) => (
+              <li>
+                <a
+                  href={social.url}
+                  target={social.name === 'Resume' ? undefined : '_blank'}
+                  rel={social.name === 'Resume' ? undefined : 'noopener noreferrer'}
+                  download={social.download}
+                  class="inline-flex items-center gap-2 rounded-sm border border-border px-4 py-2.5 text-sm text-ink-muted transition-colors hover:border-ink-subtle hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                >
+                  <SocialIcon
+                    icon={social.icon}
+                    iconSet={social.iconSet}
+                    size={16}
+                    class="opacity-70"
+                  />
+                  {social.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+
+    <div class="mt-16 flex flex-col gap-4 border-t border-border pt-8 text-sm text-ink-subtle sm:flex-row sm:items-center sm:justify-between">
+      <p>&copy; {year} Bhargesh Patel</p>
+      <a
+        href="#top"
+        class="transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      >
+        Back to top
+      </a>
+    </div>
+  </div>
+</footer>
