@@ -2,48 +2,60 @@
 import experience from '../content/experience.json';
 ---
 
-<section id="experience" class="border-t border-border bg-surface">
-  <div class="mx-auto w-full max-w-6xl px-6 py-20 md:py-28">
-    <header class="mb-14 max-w-xl">
-      <h2 class="font-display text-3xl font-semibold tracking-[-0.01em] text-ink md:text-4xl">
-        Where I've built
+<section id="experience" class="section-rule bg-paper py-20 md:py-24">
+  <div class="mx-auto w-full max-w-7xl px-6">
+    <header class="mb-12 border-b-8 border-ink pb-8 md:mb-16">
+      <h2 class="text-[clamp(2rem,6vw,4rem)] font-extrabold uppercase leading-none tracking-[-0.03em]">
+        Career logs
       </h2>
-      <p class="mt-4 text-lg leading-relaxed text-ink-muted">
-        Five years from on-site frontend work to end-to-end product builds, now shipping full
+      <p class="mt-4 max-w-2xl text-lg font-semibold leading-relaxed text-ink-muted">
+        Five years from on-site frontend work to end-to-end product builds — now shipping full
         features, not just UI.
       </p>
     </header>
 
-    <ol class="relative space-y-0">
+    <ol class="divide-y-4 divide-ink border-t-4 border-ink">
       {
         experience.map((job) => (
-          <li class="relative grid gap-4 border-l border-border pb-12 pl-8 last:pb-0 md:grid-cols-[12rem_1fr] md:gap-8 md:pl-10">
-            <span
+          <li>
+            <article
               class:list={[
-                'absolute top-1.5 -left-[5px] size-2.5 rounded-full border-2 border-surface',
-                job.current ? 'bg-accent' : 'bg-ink-subtle',
+                'group grid items-center gap-4 px-2 py-10 transition-colors hover:bg-ink hover:text-paper md:grid-cols-12 md:gap-6 md:px-4',
+                job.current && 'bg-accent/15',
               ]}
-              aria-hidden="true"
-            />
-            <div class="text-sm text-ink-subtle">
-              <time>{job.period}</time>
-              <p class="mt-1 text-xs text-ink-subtle">{job.duration}</p>
-            </div>
-            <div>
-              <h3 class="font-display text-2xl font-semibold text-ink">{job.title}</h3>
-              <p class="mt-1 text-ink-muted">
-                {job.company}
-                <span class="text-ink-subtle"> · {job.type}</span>
-              </p>
-              {job.summary && (
-                <p class="mt-3 max-w-prose text-sm leading-relaxed text-ink-muted">{job.summary}</p>
-              )}
-              {job.current && (
-                <span class="mt-3 inline-block rounded-sm bg-accent/10 px-2.5 py-1 text-xs font-medium text-accent">
-                  Current
+            >
+              <div class="text-lg font-extrabold tabular-nums md:col-span-3 md:text-xl">
+                <time datetime={job.period.replace(' – ', '/').replace('Present', '')}>
+                  {job.period}
+                </time>
+                <p class="mt-1 text-sm font-semibold text-ink-subtle group-hover:text-paper/70">
+                  {job.duration}
+                </p>
+              </div>
+              <div class="md:col-span-6">
+                <h3 class="text-2xl font-extrabold uppercase tracking-tight md:text-3xl">
+                  {job.title}
+                </h3>
+                <p class="mt-1 text-lg font-bold uppercase text-ink-muted group-hover:text-accent">
+                  {job.company}
+                </p>
+                {job.summary && (
+                  <p class="mt-3 max-w-prose text-base font-medium leading-relaxed text-ink-muted group-hover:text-paper/85">
+                    {job.summary}
+                  </p>
+                )}
+              </div>
+              <div class="md:col-span-3 md:text-right">
+                <span class="text-sm font-bold uppercase text-ink-subtle group-hover:text-paper/70">
+                  {job.type}
                 </span>
-              )}
-            </div>
+                {job.current && (
+                  <p class="mt-2 text-xs font-extrabold uppercase text-ink group-hover:text-accent">
+                    Current role
+                  </p>
+                )}
+              </div>
+            </article>
           </li>
         ))
       }

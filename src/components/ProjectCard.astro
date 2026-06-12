@@ -2,65 +2,96 @@
 import MaterialIcon from './MaterialIcon.astro';
 
 interface Props {
+  index: number;
   name: string;
   description: string;
   url: string;
   uiRepoUrl: string;
   apiRepoUrl?: string;
   stack: string[];
+  thumbnail?: string;
+  thumbnailAlt?: string;
 }
 
-const { name, description, url, uiRepoUrl, apiRepoUrl, stack } = Astro.props;
+const { index, name, description, url, uiRepoUrl, stack, thumbnail, thumbnailAlt } = Astro.props;
+
+const focusRing =
+  'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink';
+
+const paddedIndex = String(index).padStart(2, '0');
 ---
 
-<article class="group flex h-full flex-col rounded-md border border-border bg-surface p-6 transition-colors hover:border-ink-subtle">
-  <header>
-    <h3 class="font-display text-2xl font-semibold text-ink">{name}</h3>
-    <p class="mt-3 text-base leading-relaxed text-ink-muted">{description}</p>
-  </header>
+<article
+  class="group relative overflow-hidden border-r-4 border-b-4 border-ink bg-paper transition-colors hover:bg-accent"
+>
+  {
+    thumbnail && (
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class:list={['block h-56 overflow-hidden border-b-4 border-ink sm:h-64', focusRing]}
+      >
+        <img
+          src={thumbnail}
+          alt={thumbnailAlt ?? `${name} screenshot`}
+          width={800}
+          height={500}
+          class="size-full object-cover object-top contrast-125 grayscale transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 motion-reduce:transform-none"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+    )
+  }
 
-  <ul class="mt-5 flex flex-wrap gap-2" aria-label={`${name} tech stack`}>
-    {
-      stack.map((tech) => (
-        <li>
-          <span class="rounded-sm bg-paper px-2.5 py-1 text-xs font-medium text-ink-muted">
-            {tech}
-          </span>
-        </li>
-      ))
-    }
-  </ul>
+  <div class="p-6 sm:p-8">
+    <p class="mb-2 text-xs font-extrabold uppercase tracking-widest text-ink-subtle">
+      Case {paddedIndex}
+    </p>
+    <h3 class="mb-4 text-2xl font-extrabold uppercase tracking-tight sm:text-3xl">{name}</h3>
+    <p class="mb-6 text-base font-semibold leading-relaxed text-ink-muted">{description}</p>
 
-  <footer class="mt-auto flex flex-wrap items-center gap-4 pt-8 text-sm">
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="inline-flex items-center gap-1.5 font-medium text-accent transition-colors hover:text-accent-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-    >
-      Live site
-      <MaterialIcon name="open_in_new" size={14} class="opacity-70" />
-    </a>
-    <a
-      href={uiRepoUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="inline-flex items-center gap-1.5 text-ink-muted transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-    >
-      <MaterialIcon name="code" size={14} class="opacity-60" />
-      Code
-    </a>
-    {
-      apiRepoUrl && (
+    <ul class="mb-6 flex flex-wrap gap-2" aria-label={`${name} tech stack`}>
+      {
+        stack.map((tech) => (
+          <li>
+            <span class="border-2 border-ink bg-paper px-2.5 py-1 text-xs font-bold uppercase group-hover:bg-paper">
+              {tech}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+
+    <footer class="flex items-center justify-between border-t-2 border-ink pt-5">
+      <div class="flex flex-wrap gap-4 text-sm font-extrabold uppercase">
         <a
-          href={apiRepoUrl}
+          href={url}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-1.5 text-ink-muted transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          class:list={['hover:underline', focusRing]}
         >
-          API
+          Live
         </a>
-      )
-    }
-  </footer>
+        <a
+          href={uiRepoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class:list={['text-ink-muted hover:underline', focusRing]}
+        >
+          Code
+        </a>
+      </div>
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class:list={[focusRing]}
+        aria-label={`Open ${name}`}
+      >
+        <MaterialIcon name="arrow_outward" size={28} />
+      </a>
+    </footer>
+  </div>
 </article>

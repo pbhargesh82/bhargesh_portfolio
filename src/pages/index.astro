@@ -1,55 +1,403 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
-import Experience from '../components/Experience.astro';
-import Projects from '../components/Projects.astro';
-import Footer from '../components/Footer.astro';
-import ThemeToggle from '../components/ThemeToggle.astro';
 ---
 
 <BaseLayout>
-  <a
-    href="#main"
-    class="fixed left-4 top-4 z-50 -translate-y-[200%] rounded-sm bg-accent px-4 py-2 text-sm font-medium text-surface transition-transform focus:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-  >
-    Skip to content
-  </a>
-
-  <header class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-6">
-    <a
-      href="#top"
-      class="font-display text-sm font-semibold tracking-tight text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-    >
-      BP
-    </a>
-    <div class="flex items-center gap-4">
-      <nav aria-label="Primary">
-        <ul class="flex items-center gap-6 text-sm text-ink-muted">
-          <li>
-            <a href="#experience" class="transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
-              Experience
-            </a>
-          </li>
-          <li>
-            <a href="#projects" class="transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
-              Projects
-            </a>
-          </li>
-          <li>
-            <a href="#contact" class="transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
-              Contact
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <ThemeToggle />
-    </div>
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-surface border-b-heavy border-black">
+    <nav class="max-w-full mx-auto flex justify-between items-center h-20 px-6">
+      <a class="text-2xl font-extrabold tracking-tighter uppercase" href="#">BHARGESH.LAB</a>
+      <div class="hidden md:flex items-center space-x-1">
+        <a
+          class="px-4 py-2 hover:bg-accent border-l-4 border-black font-bold uppercase transition-colors"
+          href="#about">ABOUT</a
+        >
+        <a
+          class="px-4 py-2 hover:bg-accent border-l-4 border-black font-bold uppercase transition-colors"
+          href="#projects">WORK</a
+        >
+        <a
+          class="px-4 py-2 hover:bg-accent border-l-4 border-black font-bold uppercase transition-colors"
+          href="#experience">LOGS</a
+        >
+        <a
+          class="px-6 py-2 bg-accent border-l-4 border-black font-extrabold uppercase hover:translate-y-[-2px] transition-transform"
+          href="#">RESUME.PDF</a
+        >
+      </div>
+      <button class="md:hidden" type="button" aria-label="Menu">
+        <span class="material-symbols-outlined text-4xl">menu</span>
+      </button>
+    </nav>
   </header>
 
-  <main id="main">
-    <Hero />
-    <Experience />
-    <Projects />
-    <Footer />
+  <main>
+    <!-- Hero Section -->
+    <section
+      class="relative min-h-screen overflow-x-hidden bg-white pt-10 md:pt-14"
+      id="hero"
+    >
+      <div class="absolute inset-0 glitch-bg opacity-50 pointer-events-none"></div>
+      <div
+        class="container relative mx-auto grid gap-0 px-6 py-12 md:grid-cols-12 md:py-16 lg:py-20"
+      >
+        <div class="z-10 md:col-span-8">
+          <div
+            class="bg-accent inline-block px-4 py-1 brutal-border mb-6 font-bold uppercase tracking-widest"
+          >
+            SYSTEMS_ONLINE // V2.0
+          </div>
+          <h1 class="text-6xl md:text-9xl font-black uppercase leading-none mb-8 break-words">
+            SHIPPING CODE THAT <span class="bg-black text-white px-4">WORKS.</span>
+          </h1>
+          <p
+            class="text-xl md:text-2xl font-bold max-w-2xl mb-12 border-l-brutal border-black pl-6"
+          >
+            RAW ENGINEERING. NO FLUFF. JUST HIGH-PERFORMANCE, SCALABLE ARCHITECTURE THAT DOESN'T
+            BREAK UNDER PRESSURE.
+          </p>
+          <div class="flex flex-wrap gap-6">
+            <a
+              class="bg-black text-white px-10 py-5 text-xl font-black brutal-shadow-yellow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase"
+              href="#projects">GET THE STACK</a
+            >
+            <a
+              class="bg-white border-brutal border-black px-10 py-5 text-xl font-black brutal-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase"
+              href="#contact">WAKE ME UP</a
+            >
+          </div>
+        </div>
+        <div class="relative hidden min-h-[28rem] md:col-span-4 md:block md:pt-8">
+          <div
+            class="absolute top-8 right-0 z-0 h-[110%] w-full -rotate-3 bg-accent brutal-border"
+          >
+          </div>
+          <div
+            class="relative top-16 z-10 rotate-3 overflow-hidden border-heavy border-black bg-white p-6 brutal-shadow"
+          >
+            <img
+              alt="Glitch art technical diagram"
+              class="w-full grayscale contrast-150 brightness-75 mix-blend-multiply"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbQqh5-McPPVrI6jGNCg83aqpqHhXmTEg0DCLn_5ndom9dUXrYWRPov74SIcH5UV5vUFadxWxqw_D17jHvkBeKuqvmy6mqN20iA2IWamJHLysxsuDNsYzJp6lscJTNWcLz9KXjKk0wB3z_KlrKTYHkXkakEnZnIfRTVrxdKsrDsaPpcAUpHd9_IpsUm9CwGggetimV5QmsRzi94I18EWWFgz8AQLRAnFq6Hmc9pMgslTEh4qazkq46l8BYS3vDlpTxZp4IfwrUOg"
+            />
+            <div class="mt-4 font-mono text-sm leading-tight uppercase font-bold">
+              UNIT_ID: BP-77<br />
+              STATUS: ACTIVE<br />
+              CORE: RUST_GO_AWS
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="bg-black text-accent py-4 border-b-heavy border-black overflow-hidden select-none">
+      <div class="marquee">
+        <div class="marquee-content flex gap-20 items-center">
+          <span class="text-2xl font-black uppercase">ZERO DOWNTIME</span>
+          <span class="text-2xl font-black uppercase">SCALABLE ARCHITECTURE</span>
+          <span class="text-2xl font-black uppercase">BRUTAL EFFICIENCY</span>
+          <span class="text-2xl font-black uppercase">ZERO DOWNTIME</span>
+          <span class="text-2xl font-black uppercase">SCALABLE ARCHITECTURE</span>
+          <span class="text-2xl font-black uppercase">BRUTAL EFFICIENCY</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="py-24 bg-white relative" id="about">
+      <div class="container mx-auto px-6">
+        <div class="grid lg:grid-cols-12 gap-12 items-start">
+          <div class="lg:col-span-5">
+            <h2 class="text-5xl md:text-7xl font-black uppercase mb-12 leading-tight">
+              THE <span class="bg-accent px-2">MANIFESTO</span>
+            </h2>
+            <div class="space-y-8 text-xl font-bold leading-relaxed">
+              <p>I DON'T JUST WRITE CODE. I BUILD SYSTEMS THAT SURVIVE THE REAL WORLD.</p>
+              <p class="border-l-brutal border-black pl-6">
+                MY JOURNEY ISN'T ABOUT POLISHED SLIDES. IT'S ABOUT SOLVING COMPLEX PROBLEMS WITH
+                ELEGANT, UNBREAKABLE LOGIC.
+              </p>
+              <p>
+                IF IT DOESN'T SCALE, IT'S BROKEN. IF IT'S SLOW, IT'S TRASH. I LIVE FOR PERFORMANCE
+                AND SYSTEM INTEGRITY.
+              </p>
+            </div>
+          </div>
+          <div class="lg:col-span-7 grid grid-cols-2 gap-6">
+            <div class="p-8 border-brutal border-black bg-accent brutal-shadow-hover transition-all">
+              <div class="text-7xl font-black mb-2">05+</div>
+              <div class="text-xl font-black uppercase underline">YEARS_EXP</div>
+            </div>
+            <div class="p-8 border-brutal border-black bg-white brutal-shadow-hover transition-all">
+              <div class="text-7xl font-black mb-2">50+</div>
+              <div class="text-xl font-black uppercase underline">SHIPPED_PROJS</div>
+            </div>
+            <div class="p-8 border-brutal border-black bg-white brutal-shadow-hover transition-all">
+              <div class="text-7xl font-black mb-2">10+</div>
+              <div class="text-xl font-black uppercase underline">OSS_CONTRIBS</div>
+            </div>
+            <div class="p-8 border-brutal border-black bg-accent brutal-shadow-hover transition-all">
+              <div class="text-7xl font-black mb-2">99%</div>
+              <div class="text-xl font-black uppercase underline">UPTIME_KPI</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-24 bg-white" id="projects">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+          <div>
+            <h2 class="text-5xl md:text-8xl font-black uppercase leading-none">THE_VAULT</h2>
+            <p class="text-xl font-bold mt-4 uppercase">SELECTED DEPLOYMENTS /// [2021-2024]</p>
+          </div>
+          <a
+            class="group flex items-center gap-4 bg-accent border-brutal border-black px-8 py-4 font-black uppercase hover:bg-black hover:text-white transition-all"
+            href="#">
+            OPEN_REPOS.SH
+            <span class="material-symbols-outlined group-hover:rotate-45 transition-transform"
+              >arrow_forward</span
+            >
+          </a>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-0 border-t-brutal border-l-brutal border-black">
+          <!-- Project Card 1 -->
+          <div
+            class="group border-r-brutal border-b-brutal border-black p-0 relative overflow-hidden bg-white hover:bg-accent transition-colors"
+          >
+            <div class="h-64 border-b-brutal border-black grayscale contrast-125 overflow-hidden">
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc0eLKpRNowCY91_UrNbuh07W8Bxo4tbClx2ZvK-QEXnQIz3I515NByZhng-haqMeKrj2k5MiOUF0hY_-Cwf03dFaL6L5ecXAZJjCNkLzZAe22SqmIBC-5xLEsM6XV8gKDcOAwujbHZ0JKtIVHKjEq7GTs5ktIYEfscMZH39dEwT5U20VHZPv9-ne-hfuoJSZvwr6Q8cFpneYX0POL3JAiYIgVBxPTXaNQhJr0GMARNAY_WTbgnfv9j7zQhMtdA0IPhQdoFaFKNQ"
+                alt=""
+              />
+            </div>
+            <div class="p-8">
+              <div class="text-sm font-black uppercase mb-2">INFRASTRUCTURE // 01</div>
+              <h3 class="text-3xl font-black uppercase mb-4">CLOUDSCALE_ENG</h3>
+              <p class="text-lg font-bold mb-8">
+                AUTONOMOUS K8S SCALING. -40% LATENCY REDUCTION ON CORE SERVICES.
+              </p>
+              <div class="flex items-center justify-between border-t-2 border-black pt-6">
+                <span class="font-black uppercase">RUST / AWS</span>
+                <span class="material-symbols-outlined text-4xl">arrow_outward</span>
+              </div>
+            </div>
+          </div>
+          <!-- Project Card 2 -->
+          <div
+            class="group border-r-brutal border-b-brutal border-black p-0 relative overflow-hidden bg-white hover:bg-accent transition-colors"
+          >
+            <div class="h-64 border-b-brutal border-black grayscale contrast-125 overflow-hidden">
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWj_vsMMo_AKocGuw-Bx9RzFViyjlOXbTO-8FGNuo2Iswo5lfc_FjFaQfA1eWona-gj3llz83oIE4g-wugMobKyUum9OzbGs2fXptdm3IcM6fc1JCzwqtl9QMK3AfU7gvoxDE4etJtHQvvfrJUkjwH55aaqAEwndbDb2JxEx56CjekjkJ0YmlDhLjtNO6a0IZKxLMnQXvUtDouNJvJF4xGHYzgNUa-mXPtedaHyHlIwqu90RIpwOpaJtKwpZ05CPTk0AQATtFPAQ"
+                alt=""
+              />
+            </div>
+            <div class="p-8">
+              <div class="text-sm font-black uppercase mb-2">FINTECH // 02</div>
+              <h3 class="text-3xl font-black uppercase mb-4">LUMINA_ANALYTICS</h3>
+              <p class="text-lg font-bold mb-8">
+                REAL-TIME DASHBOARDING. PREDICTIVE MODELS BUILT FOR HIGH-FREQUENCY DATA.
+              </p>
+              <div class="flex items-center justify-between border-t-2 border-black pt-6">
+                <span class="font-black uppercase">REACT / D3</span>
+                <span class="material-symbols-outlined text-4xl">arrow_outward</span>
+              </div>
+            </div>
+          </div>
+          <!-- Project Card 3 -->
+          <div
+            class="group border-r-brutal border-b-brutal border-black p-0 relative overflow-hidden bg-white hover:bg-accent transition-colors"
+          >
+            <div class="h-64 border-b-brutal border-black grayscale contrast-125 overflow-hidden">
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbQqh5-McPPVrI6jGNCg83aqpqHhXmTEg0DCLn_5ndom9dUXrYWRPov74SIcH5UV5vUFadxWxqw_D17jHvkBeKuqvmy6mqN20iA2IWamJHLysxsuDNsYzJp6lscJTNWcLz9KXjKk0wB3z_KlrKTYHkXkakEnZnIfRTVrxdKsrDsaPpcAUpHd9_IpsUm9CwGggetimV5QmsRzi94I18EWWFgz8AQLRAnFq6Hmc9pMgslTEh4qazkq46l8BYS3vDlpTxZp4IfwrUOg"
+                alt=""
+              />
+            </div>
+            <div class="p-8">
+              <div class="text-sm font-black uppercase mb-2">WEB 3.0 // 03</div>
+              <h3 class="text-3xl font-black uppercase mb-4">NEXUS_PROTOCOL</h3>
+              <p class="text-lg font-bold mb-8">
+                DECENTRALIZED IDENTITY. HIGH-THROUGHPUT FOR ENTERPRISE INTEGRATION.
+              </p>
+              <div class="flex items-center justify-between border-t-2 border-black pt-6">
+                <span class="font-black uppercase">NEXT.JS / SOLIDITY</span>
+                <span class="material-symbols-outlined text-4xl">arrow_outward</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="py-24 bg-white" id="experience">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-5xl md:text-8xl font-black uppercase mb-20 border-b-heavy border-black pb-8"
+        >
+          CAREER_LOGS
+        </h2>
+        <div class="space-y-0">
+          <!-- Log 1 -->
+          <div
+            class="group grid md:grid-cols-12 gap-0 border-b-brutal border-black hover:bg-black hover:text-white transition-colors py-12 px-4 items-center"
+          >
+            <div class="md:col-span-3 text-2xl font-black">2021 — NOW</div>
+            <div class="md:col-span-6">
+              <h3 class="text-4xl font-black uppercase mb-2">SNR_SW_ENGINEER</h3>
+              <div class="text-xl font-bold uppercase text-accent group-hover:text-accent">
+                TECHCORP_SOLUTIONS
+              </div>
+            </div>
+            <div class="md:col-span-3 text-right">
+              <span class="text-lg font-bold opacity-70">CORE_ARCHITECTURE</span>
+            </div>
+          </div>
+          <!-- Log 2 -->
+          <div
+            class="group grid md:grid-cols-12 gap-0 border-b-brutal border-black hover:bg-black hover:text-white transition-colors py-12 px-4 items-center"
+          >
+            <div class="md:col-span-3 text-2xl font-black">2019 — 2021</div>
+            <div class="md:col-span-6">
+              <h3 class="text-4xl font-black uppercase mb-2">FULL_STACK_DEV</h3>
+              <div class="text-xl font-bold uppercase text-accent group-hover:text-accent">
+                INNOVATE_LABS
+              </div>
+            </div>
+            <div class="md:col-span-3 text-right">
+              <span class="text-lg font-bold opacity-70">APP_DEVELOPMENT</span>
+            </div>
+          </div>
+          <!-- Log 3 -->
+          <div
+            class="group grid md:grid-cols-12 gap-0 border-b-brutal border-black hover:bg-black hover:text-white transition-colors py-12 px-4 items-center"
+          >
+            <div class="md:col-span-3 text-2xl font-black">2018 — 2019</div>
+            <div class="md:col-span-6">
+              <h3 class="text-4xl font-black uppercase mb-2">JR_ENGINEER</h3>
+              <div class="text-xl font-bold uppercase text-accent group-hover:text-accent">
+                STARTUP_INC
+              </div>
+            </div>
+            <div class="md:col-span-3 text-right">
+              <span class="text-lg font-bold opacity-70">UI_ARCHITECTURE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-24 bg-accent" id="contact">
+      <div class="container mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+          <div class="lg:sticky lg:top-32">
+            <h2 class="text-6xl md:text-9xl font-black uppercase leading-none mb-12">SEND_IT.</h2>
+            <p class="text-2xl font-black mb-12">
+              HAVE A PROBLEM? NEED A SYSTEM THAT ACTUALLY SCALES? DON'T WAIT.
+            </p>
+            <div class="space-y-8">
+              <div class="flex items-center gap-6">
+                <div
+                  class="w-16 h-16 border-brutal border-black flex items-center justify-center bg-white"
+                >
+                  <span class="material-symbols-outlined text-4xl">mail</span>
+                </div>
+                <div>
+                  <div class="text-sm font-black uppercase opacity-60">COMMS_LINK</div>
+                  <a
+                    class="text-2xl font-black underline hover:bg-black hover:text-white"
+                    href="mailto:hello@bhargesh.dev">HELLO@BHARGESH.DEV</a
+                  >
+                </div>
+              </div>
+              <div class="flex items-center gap-6">
+                <div
+                  class="w-16 h-16 border-brutal border-black flex items-center justify-center bg-white"
+                >
+                  <span class="material-symbols-outlined text-4xl">location_on</span>
+                </div>
+                <div>
+                  <div class="text-sm font-black uppercase opacity-60">COORD_LOC</div>
+                  <span class="text-2xl font-black">REMOTE / GLOBAL_NODE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <form class="bg-white border-heavy border-black p-10 brutal-shadow space-y-8">
+            <div class="space-y-4">
+              <label class="block text-xl font-black uppercase">NAME_INPUT</label>
+              <input
+                class="w-full p-4 border-brutal border-black bg-white focus:bg-accent focus:outline-none text-xl font-bold uppercase placeholder:text-black/30"
+                placeholder="IDENTIFY YOURSELF"
+                type="text"
+              />
+            </div>
+            <div class="space-y-4">
+              <label class="block text-xl font-black uppercase">EMAIL_INPUT</label>
+              <input
+                class="w-full p-4 border-brutal border-black bg-white focus:bg-accent focus:outline-none text-xl font-bold uppercase placeholder:text-black/30"
+                placeholder="REPLY_TO@DOMAIN.COM"
+                type="email"
+              />
+            </div>
+            <div class="space-y-4">
+              <label class="block text-xl font-black uppercase">MESSAGE_PAYLOAD</label>
+              <textarea
+                class="w-full p-4 border-brutal border-black bg-white focus:bg-accent focus:outline-none text-xl font-bold uppercase placeholder:text-black/30"
+                placeholder="DESCRIBE THE MISSION"
+                rows="6"></textarea>
+            </div>
+            <button
+              class="w-full bg-black text-white py-6 text-2xl font-black uppercase hover:bg-accent hover:text-black transition-colors brutal-shadow-yellow active:translate-x-1 active:translate-y-1 active:shadow-none"
+              type="submit">EXECUTE_SEND</button
+            >
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white py-12">
+    <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+      <div class="text-xl font-black uppercase">
+        © 2024 BHARGESH.LAB // [BUILT_WITH_BRUTALITY]
+      </div>
+      <div class="flex gap-12 text-lg font-black uppercase">
+        <a class="hover:text-accent underline decoration-4 underline-offset-4" href="#">GITHUB</a>
+        <a class="hover:text-accent underline decoration-4 underline-offset-4" href="#">LINKEDIN</a>
+        <a class="hover:text-accent underline decoration-4 underline-offset-4" href="#">TWITTER</a>
+      </div>
+    </div>
+  </footer>
+
+  <script is:inline>
+    const reveal = () => {
+      const items = document.querySelectorAll('section');
+      items.forEach((item) => {
+        const rect = item.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          item.style.opacity = '1';
+          item.style.transform = 'translateY(0)';
+        }
+      });
+    };
+
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', () => {
+      document.querySelectorAll('section').forEach((s) => {
+        s.style.transition = 'all 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67)';
+      });
+      reveal();
+    });
+  </script>
 </BaseLayout>

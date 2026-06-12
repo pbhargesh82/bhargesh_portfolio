@@ -1,0 +1,115 @@
+---
+import MaterialIcon from './MaterialIcon.astro';
+
+const focusRing =
+  'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent';
+
+const links = [
+  { href: '#top', label: 'About' },
+  { href: '#projects', label: 'Work' },
+  { href: '#experience', label: 'Logs' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<button
+  type="button"
+  id="nav-open"
+  class:list={['flex items-center justify-center md:hidden', focusRing]}
+  aria-label="Open menu"
+  aria-expanded="false"
+  aria-controls="nav-drawer"
+>
+  <MaterialIcon name="menu" size={32} />
+</button>
+
+<nav
+  id="nav-drawer"
+  class="fixed inset-y-0 left-0 z-(--z-drawer) flex w-[min(85vw,20rem)] -translate-x-full flex-col border-r-8 border-ink bg-paper p-6 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] md:hidden"
+  aria-label="Mobile"
+  hidden
+>
+  <div class="mb-8 flex items-center justify-between">
+    <span class="text-lg font-extrabold uppercase tracking-tighter">Menu</span>
+    <button
+      type="button"
+      id="nav-close"
+      class:list={[focusRing]}
+      aria-label="Close menu"
+    >
+      <MaterialIcon name="close" size={28} />
+    </button>
+  </div>
+  <ul class="flex flex-col gap-3">
+    {
+      links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class:list={[
+              'block brutal-border px-4 py-3 text-sm font-bold uppercase transition-colors hover:bg-accent',
+              focusRing,
+              'nav-drawer-link',
+            ]}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))
+    }
+    <li class="mt-4">
+      <a
+        href="/cv.pdf"
+        download="Bhargesh Patel Resume.pdf"
+        class:list={[
+          'block bg-accent brutal-border px-4 py-3 text-center text-sm font-extrabold uppercase',
+          focusRing,
+        ]}
+      >
+        Resume
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div
+  id="nav-backdrop"
+  class="fixed inset-0 z-40 bg-ink/40 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"
+  hidden
+  aria-hidden="true"
+></div>
+
+<script>
+  const openBtn = document.getElementById('nav-open');
+  const closeBtn = document.getElementById('nav-close');
+  const drawer = document.getElementById('nav-drawer');
+  const backdrop = document.getElementById('nav-backdrop');
+  const drawerLinks = document.querySelectorAll('.nav-drawer-link');
+
+  function setOpen(open: boolean) {
+    if (!drawer || !backdrop || !openBtn) return;
+
+    drawer.hidden = !open;
+    backdrop.hidden = !open;
+    openBtn.setAttribute('aria-expanded', String(open));
+
+    if (open) {
+      drawer.classList.remove('-translate-x-full');
+      backdrop.classList.remove('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = 'hidden';
+    } else {
+      drawer.classList.add('-translate-x-full');
+      backdrop.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+    }
+  }
+
+  openBtn?.addEventListener('click', () => setOpen(true));
+  closeBtn?.addEventListener('click', () => setOpen(false));
+  backdrop?.addEventListener('click', () => setOpen(false));
+  drawerLinks.forEach((link) => link.addEventListener('click', () => setOpen(false)));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+</script>

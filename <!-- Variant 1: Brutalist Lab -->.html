@@ -1,0 +1,745 @@
+<!-- Variant 1: Brutalist Lab -->
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BHARGESH.LAB | RAW ENGINEERING</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#000000",
+                        "accent": "#ffff00", // Neon Yellow
+                        "surface": "#ffffff",
+                        "warning": "#ffff00"
+                    },
+                    "borderWidth": {
+                        "DEFAULT": "1px",
+                        "brutal": "4px",
+                        "heavy": "8px"
+                    },
+                    "spacing": {
+                        "container-max": "1200px",
+                        "margin-mobile": "16px",
+                        "content-gap": "32px",
+                        "gutter": "0px",
+                        "section-gap": "0px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "mono": ["'JetBrains Mono'", "monospace"],
+                        "headline": ["'JetBrains Mono'", "monospace"],
+                        "display": ["'JetBrains Mono'", "monospace"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .brutal-border {
+            border: 4px solid #000000;
+        }
+        .brutal-shadow {
+            box-shadow: 8px 8px 0px 0px #000000;
+        }
+        .brutal-shadow-yellow {
+            box-shadow: 8px 8px 0px 0px #ffff00;
+        }
+        .brutal-shadow-hover:hover {
+            box-shadow: 12px 12px 0px 0px #000000;
+            transform: translate(-4px, -4px);
+        }
+        .glitch-bg {
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.03) 0px,
+                rgba(0, 0, 0, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+        }
+        .text-outline {
+            -webkit-text-stroke: 1px black;
+            color: transparent;
+        }
+        section {
+            border-bottom: 4px solid black;
+        }
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+</head>
+<body class="bg-surface text-primary selection:bg-accent selection:text-primary overflow-x-hidden">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-surface border-b-heavy border-black">
+<nav class="max-w-full mx-auto flex justify-between items-center h-20 px-6">
+<a class="text-2xl font-extrabold tracking-tighter uppercase" href="#">BHARGESH.LAB</a>
+<div class="hidden md:flex items-center space-x-1">
+<a class="px-4 py-2 hover:bg-accent border-l-4 border-black font-bold uppercase transition-colors" href="#about">ABOUT</a>
+<a class="px-4 py-2 hover:bg-accent border-l-4 border-black font-bold uppercase transition-colors" href="#projects">WORK</a>
+<a class="px-4 py-2 hover:bg-accent border-l-4 border-black font-bold uppercase transition-colors" href="#experience">LOGS</a>
+<a class="px-6 py-2 bg-accent border-l-4 border-black font-extrabold uppercase hover:translate-y-[-2px] transition-transform" href="#">RESUME.PDF</a>
+</div>
+<button class="md:hidden">
+<span class="material-symbols-outlined text-4xl">menu</span>
+</button>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="min-h-screen flex items-center relative overflow-hidden bg-white" id="hero">
+<div class="absolute inset-0 glitch-bg opacity-50 pointer-events-none"></div>
+<div class="container mx-auto px-6 grid md:grid-cols-12 gap-0 relative">
+<div class="md:col-span-8 z-10 py-20">
+<div class="bg-accent inline-block px-4 py-1 brutal-border mb-6 font-bold uppercase tracking-widest">
+                    SYSTEMS_ONLINE // V2.0
+                </div>
+<h1 class="text-6xl md:text-9xl font-black uppercase leading-none mb-8 break-words">
+                    SHIPPING CODE THAT <span class="bg-black text-white px-4">WORKS.</span>
+</h1>
+<p class="text-xl md:text-2xl font-bold max-w-2xl mb-12 border-l-brutal border-black pl-6">
+                    RAW ENGINEERING. NO FLUFF. JUST HIGH-PERFORMANCE, SCALABLE ARCHITECTURE THAT DOESN'T BREAK UNDER PRESSURE.
+                </p>
+<div class="flex flex-wrap gap-6">
+<a class="bg-black text-white px-10 py-5 text-xl font-black brutal-shadow-yellow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase" href="#projects">
+                        GET THE STACK
+                    </a>
+<a class="bg-white border-brutal border-black px-10 py-5 text-xl font-black brutal-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase" href="#contact">
+                        WAKE ME UP
+                    </a>
+</div>
+</div>
+<div class="md:col-span-4 relative hidden md:block">
+<div class="absolute top-0 right-0 w-full h-[120%] bg-accent brutal-border -rotate-3 z-0"></div>
+<div class="relative z-10 top-10 border-heavy border-black bg-white p-6 brutal-shadow rotate-3 overflow-hidden">
+<img alt="Glitch art technical diagram" class="w-full grayscale contrast-150 brightness-75 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbQqh5-McPPVrI6jGNCg83aqpqHhXmTEg0DCLn_5ndom9dUXrYWRPov74SIcH5UV5vUFadxWxqw_D17jHvkBeKuqvmy6mqN20iA2IWamJHLysxsuDNsYzJp6lscJTNWcLz9KXjKk0wB3z_KlrKTYHkXkakEnZnIfRTVrxdKsrDsaPpcAUpHd9_IpsUm9CwGggetimV5QmsRzi94I18EWWFgz8AQLRAnFq6Hmc9pMgslTEh4qazkq46l8BYS3vDlpTxZp4IfwrUOg"/>
+<div class="mt-4 font-mono text-sm leading-tight uppercase font-bold">
+                        UNIT_ID: BP-77<br/>
+                        STATUS: ACTIVE<br/>
+                        CORE: RUST_GO_AWS
+                    </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Marquee -->
+<div class="bg-black text-accent py-4 border-b-heavy border-black overflow-hidden select-none">
+<div class="marquee">
+<div class="marquee-content flex gap-20 items-center">
+<span class="text-2xl font-black uppercase">ZERO DOWNTIME</span>
+<span class="text-2xl font-black uppercase">SCALABLE ARCHITECTURE</span>
+<span class="text-2xl font-black uppercase">BRUTAL EFFICIENCY</span>
+<span class="text-2xl font-black uppercase">ZERO DOWNTIME</span>
+<span class="text-2xl font-black uppercase">SCALABLE ARCHITECTURE</span>
+<span class="text-2xl font-black uppercase">BRUTAL EFFICIENCY</span>
+</div>
+</div>
+</div>
+<!-- About Section -->
+<section class="py-24 bg-white relative" id="about">
+<div class="container mx-auto px-6">
+<div class="grid lg:grid-cols-12 gap-12 items-start">
+<div class="lg:col-span-5">
+<h2 class="text-5xl md:text-7xl font-black uppercase mb-12 leading-tight">
+                        THE <span class="bg-accent px-2">MANIFESTO</span>
+</h2>
+<div class="space-y-8 text-xl font-bold leading-relaxed">
+<p>I DON'T JUST WRITE CODE. I BUILD SYSTEMS THAT SURVIVE THE REAL WORLD.</p>
+<p class="border-l-brutal border-black pl-6">MY JOURNEY ISN'T ABOUT POLISHED SLIDES. IT'S ABOUT SOLVING COMPLEX PROBLEMS WITH ELEGANT, UNBREAKABLE LOGIC.</p>
+<p>IF IT DOESN'T SCALE, IT'S BROKEN. IF IT'S SLOW, IT'S TRASH. I LIVE FOR PERFORMANCE AND SYSTEM INTEGRITY.</p>
+</div>
+</div>
+<div class="lg:col-span-7 grid grid-cols-2 gap-6">
+<div class="p-8 border-brutal border-black bg-accent brutal-shadow-hover transition-all">
+<div class="text-7xl font-black mb-2">05+</div>
+<div class="text-xl font-black uppercase underline">YEARS_EXP</div>
+</div>
+<div class="p-8 border-brutal border-black bg-white brutal-shadow-hover transition-all">
+<div class="text-7xl font-black mb-2">50+</div>
+<div class="text-xl font-black uppercase underline">SHIPPED_PROJS</div>
+</div>
+<div class="p-8 border-brutal border-black bg-white brutal-shadow-hover transition-all">
+<div class="text-7xl font-black mb-2">10+</div>
+<div class="text-xl font-black uppercase underline">OSS_CONTRIBS</div>
+</div>
+<div class="p-8 border-brutal border-black bg-accent brutal-shadow-hover transition-all">
+<div class="text-7xl font-black mb-2">99%</div>
+<div class="text-xl font-black uppercase underline">UPTIME_KPI</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="py-24 bg-white" id="projects">
+<div class="container mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div>
+<h2 class="text-5xl md:text-8xl font-black uppercase leading-none">THE_VAULT</h2>
+<p class="text-xl font-bold mt-4 uppercase">SELECTED DEPLOYMENTS /// [2021-2024]</p>
+</div>
+<a class="group flex items-center gap-4 bg-accent border-brutal border-black px-8 py-4 font-black uppercase hover:bg-black hover:text-white transition-all" href="#">
+                    OPEN_REPOS.SH
+                    <span class="material-symbols-outlined group-hover:rotate-45 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-0 border-t-brutal border-l-brutal border-black">
+<!-- Project Card 1 -->
+<div class="group border-r-brutal border-b-brutal border-black p-0 relative overflow-hidden bg-white hover:bg-accent transition-colors">
+<div class="h-64 border-b-brutal border-black grayscale contrast-125 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc0eLKpRNowCY91_UrNbuh07W8Bxo4tbClx2ZvK-QEXnQIz3I515NByZhng-haqMeKrj2k5MiOUF0hY_-Cwf03dFaL6L5ecXAZJjCNkLzZAe22SqmIBC-5xLEsM6XV8gKDcOAwujbHZ0JKtIVHKjEq7GTs5ktIYEfscMZH39dEwT5U20VHZPv9-ne-hfuoJSZvwr6Q8cFpneYX0POL3JAiYIgVBxPTXaNQhJr0GMARNAY_WTbgnfv9j7zQhMtdA0IPhQdoFaFKNQ"/>
+</div>
+<div class="p-8">
+<div class="text-sm font-black uppercase mb-2">INFRASTRUCTURE // 01</div>
+<h3 class="text-3xl font-black uppercase mb-4">CLOUDSCALE_ENG</h3>
+<p class="text-lg font-bold mb-8">AUTONOMOUS K8S SCALING. -40% LATENCY REDUCTION ON CORE SERVICES.</p>
+<div class="flex items-center justify-between border-t-2 border-black pt-6">
+<span class="font-black uppercase">RUST / AWS</span>
+<span class="material-symbols-outlined text-4xl">arrow_outward</span>
+</div>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="group border-r-brutal border-b-brutal border-black p-0 relative overflow-hidden bg-white hover:bg-accent transition-colors">
+<div class="h-64 border-b-brutal border-black grayscale contrast-125 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWj_vsMMo_AKocGuw-Bx9RzFViyjlOXbTO-8FGNuo2Iswo5lfc_FjFaQfA1eWona-gj3llz83oIE4g-wugMobKyUum9OzbGs2fXptdm3IcM6fc1JCzwqtl9QMK3AfU7gvoxDE4etJtHQvvfrJUkjwH55aaqAEwndbDb2JxEx56CjekjkJ0YmlDhLjtNO6a0IZKxLMnQXvUtDouNJvJF4xGHYzgNUa-mXPtedaHyHlIwqu90RIpwOpaJtKwpZ05CPTk0AQATtFPAQ"/>
+</div>
+<div class="p-8">
+<div class="text-sm font-black uppercase mb-2">FINTECH // 02</div>
+<h3 class="text-3xl font-black uppercase mb-4">LUMINA_ANALYTICS</h3>
+<p class="text-lg font-bold mb-8">REAL-TIME DASHBOARDING. PREDICTIVE MODELS BUILT FOR HIGH-FREQUENCY DATA.</p>
+<div class="flex items-center justify-between border-t-2 border-black pt-6">
+<span class="font-black uppercase">REACT / D3</span>
+<span class="material-symbols-outlined text-4xl">arrow_outward</span>
+</div>
+</div>
+</div>
+<!-- Project Card 3 -->
+<div class="group border-r-brutal border-b-brutal border-black p-0 relative overflow-hidden bg-white hover:bg-accent transition-colors">
+<div class="h-64 border-b-brutal border-black grayscale contrast-125 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbQqh5-McPPVrI6jGNCg83aqpqHhXmTEg0DCLn_5ndom9dUXrYWRPov74SIcH5UV5vUFadxWxqw_D17jHvkBeKuqvmy6mqN20iA2IWamJHLysxsuDNsYzJp6lscJTNWcLz9KXjKk0wB3z_KlrKTYHkXkakEnZnIfRTVrxdKsrDsaPpcAUpHd9_IpsUm9CwGggetimV5QmsRzi94I18EWWFgz8AQLRAnFq6Hmc9pMgslTEh4qazkq46l8BYS3vDlpTxZp4IfwrUOg"/>
+</div>
+<div class="p-8">
+<div class="text-sm font-black uppercase mb-2">WEB 3.0 // 03</div>
+<h3 class="text-3xl font-black uppercase mb-4">NEXUS_PROTOCOL</h3>
+<p class="text-lg font-bold mb-8">DECENTRALIZED IDENTITY. HIGH-THROUGHPUT FOR ENTERPRISE INTEGRATION.</p>
+<div class="flex items-center justify-between border-t-2 border-black pt-6">
+<span class="font-black uppercase">NEXT.JS / SOLIDITY</span>
+<span class="material-symbols-outlined text-4xl">arrow_outward</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Experience Section -->
+<section class="py-24 bg-white" id="experience">
+<div class="container mx-auto px-6">
+<h2 class="text-5xl md:text-8xl font-black uppercase mb-20 border-b-heavy border-black pb-8">CAREER_LOGS</h2>
+<div class="space-y-0">
+<!-- Log 1 -->
+<div class="group grid md:grid-cols-12 gap-0 border-b-brutal border-black hover:bg-black hover:text-white transition-colors py-12 px-4 items-center">
+<div class="md:col-span-3 text-2xl font-black">2021 — NOW</div>
+<div class="md:col-span-6">
+<h3 class="text-4xl font-black uppercase mb-2">SNR_SW_ENGINEER</h3>
+<div class="text-xl font-bold uppercase text-accent group-hover:text-accent">TECHCORP_SOLUTIONS</div>
+</div>
+<div class="md:col-span-3 text-right">
+<span class="text-lg font-bold opacity-70">CORE_ARCHITECTURE</span>
+</div>
+</div>
+<!-- Log 2 -->
+<div class="group grid md:grid-cols-12 gap-0 border-b-brutal border-black hover:bg-black hover:text-white transition-colors py-12 px-4 items-center">
+<div class="md:col-span-3 text-2xl font-black">2019 — 2021</div>
+<div class="md:col-span-6">
+<h3 class="text-4xl font-black uppercase mb-2">FULL_STACK_DEV</h3>
+<div class="text-xl font-bold uppercase text-accent group-hover:text-accent">INNOVATE_LABS</div>
+</div>
+<div class="md:col-span-3 text-right">
+<span class="text-lg font-bold opacity-70">APP_DEVELOPMENT</span>
+</div>
+</div>
+<!-- Log 3 -->
+<div class="group grid md:grid-cols-12 gap-0 border-b-brutal border-black hover:bg-black hover:text-white transition-colors py-12 px-4 items-center">
+<div class="md:col-span-3 text-2xl font-black">2018 — 2019</div>
+<div class="md:col-span-6">
+<h3 class="text-4xl font-black uppercase mb-2">JR_ENGINEER</h3>
+<div class="text-xl font-bold uppercase text-accent group-hover:text-accent">STARTUP_INC</div>
+</div>
+<div class="md:col-span-3 text-right">
+<span class="text-lg font-bold opacity-70">UI_ARCHITECTURE</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-24 bg-accent" id="contact">
+<div class="container mx-auto px-6">
+<div class="grid lg:grid-cols-2 gap-16 items-start">
+<div class="lg:sticky lg:top-32">
+<h2 class="text-6xl md:text-9xl font-black uppercase leading-none mb-12">SEND_IT.</h2>
+<p class="text-2xl font-black mb-12">HAVE A PROBLEM? NEED A SYSTEM THAT ACTUALLY SCALES? DON'T WAIT.</p>
+<div class="space-y-8">
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 border-brutal border-black flex items-center justify-center bg-white">
+<span class="material-symbols-outlined text-4xl">mail</span>
+</div>
+<div>
+<div class="text-sm font-black uppercase opacity-60">COMMS_LINK</div>
+<a class="text-2xl font-black underline hover:bg-black hover:text-white" href="mailto:hello@bhargesh.dev">HELLO@BHARGESH.DEV</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 border-brutal border-black flex items-center justify-center bg-white">
+<span class="material-symbols-outlined text-4xl">location_on</span>
+</div>
+<div>
+<div class="text-sm font-black uppercase opacity-60">COORD_LOC</div>
+<span class="text-2xl font-black">REMOTE / GLOBAL_NODE</span>
+</div>
+</div>
+</div>
+</div>
+<form class="bg-white border-heavy border-black p-10 brutal-shadow space-y-8">
+<div class="space-y-4">
+<label class="block text-xl font-black uppercase">NAME_INPUT</label>
+<input class="w-full p-4 border-brutal border-black bg-white focus:bg-accent focus:outline-none text-xl font-bold uppercase placeholder:text-black/30" placeholder="IDENTIFY YOURSELF" type="text"/>
+</div>
+<div class="space-y-4">
+<label class="block text-xl font-black uppercase">EMAIL_INPUT</label>
+<input class="w-full p-4 border-brutal border-black bg-white focus:bg-accent focus:outline-none text-xl font-bold uppercase placeholder:text-black/30" placeholder="REPLY_TO@DOMAIN.COM" type="email"/>
+</div>
+<div class="space-y-4">
+<label class="block text-xl font-black uppercase">MESSAGE_PAYLOAD</label>
+<textarea class="w-full p-4 border-brutal border-black bg-white focus:bg-accent focus:outline-none text-xl font-bold uppercase placeholder:text-black/30" placeholder="DESCRIBE THE MISSION" rows="6"></textarea>
+</div>
+<button class="w-full bg-black text-white py-6 text-2xl font-black uppercase hover:bg-accent hover:text-black transition-colors brutal-shadow-yellow active:translate-x-1 active:translate-y-1 active:shadow-none" type="submit">
+                        EXECUTE_SEND
+                    </button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-black text-white py-12">
+<div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="text-xl font-black uppercase">
+            © 2024 BHARGESH.LAB // [BUILT_WITH_BRUTALITY]
+        </div>
+<div class="flex gap-12 text-lg font-black uppercase">
+<a class="hover:text-accent underline decoration-4 underline-offset-4" href="#">GITHUB</a>
+<a class="hover:text-accent underline decoration-4 underline-offset-4" href="#">LINKEDIN</a>
+<a class="hover:text-accent underline decoration-4 underline-offset-4" href="#">TWITTER</a>
+</div>
+</div>
+</footer>
+<script>
+    // Reveal animation - simpler for brutalist feel
+    const reveal = () => {
+        const items = document.querySelectorAll('section');
+        items.forEach(item => {
+            const rect = item.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }
+        });
+    }
+
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', () => {
+        document.querySelectorAll('section').forEach(s => {
+            s.style.transition = 'all 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67)';
+        });
+        reveal();
+    });
+</script>
+</body></html>
+
+<!-- Brutalist Lab | Mobile -->
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BRUTALIST LAB | PORTFOLIO</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Geist+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#1b1c1c",
+                    "tertiary-container": "#ca4e00",
+                    "on-surface": "#1b1c1c",
+                    "surface-container-low": "#f5f3f3",
+                    "inverse-on-surface": "#f2f0f0",
+                    "primary-fixed": "#d8e2ff",
+                    "on-secondary-fixed": "#1c1b1b",
+                    "outline": "#727786",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "secondary-container": "#e5e2e1",
+                    "inverse-primary": "#aec6ff",
+                    "surface-container-high": "#e9e8e8",
+                    "surface": "#faf9f9",
+                    "error": "#ba1a1a",
+                    "primary": "#0058c3",
+                    "surface-tint": "#0059c5",
+                    "surface-variant": "#e3e2e2",
+                    "on-secondary-container": "#656464",
+                    "secondary-fixed": "#e5e2e1",
+                    "on-primary-fixed": "#001a43",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "primary-container": "#0070f3",
+                    "tertiary": "#a23d00",
+                    "primary-fixed-dim": "#aec6ff",
+                    "surface-container": "#efeded",
+                    "secondary": "#5f5e5e",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "outline-variant": "#c1c6d7",
+                    "surface-bright": "#faf9f9",
+                    "on-primary-fixed-variant": "#004397",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#360f00",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#303031",
+                    "background": "#faf9f9",
+                    "tertiary-fixed": "#ffdbcd",
+                    "surface-dim": "#dbdad9",
+                    "on-tertiary-container": "#fffeff",
+                    "on-primary-container": "#ffffff",
+                    "surface-container-highest": "#e3e2e2",
+                    "on-surface-variant": "#414754",
+                    "on-secondary-fixed-variant": "#474646",
+                    "electric-yellow": "#FFFF00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "base": "8px",
+                    "content-gap": "24px",
+                    "section-gap": "64px",
+                    "margin-mobile": "16px",
+                    "container-max": "1100px"
+            },
+            "fontFamily": {
+                    "mono-sm": ["Geist Mono", "monospace"],
+                    "body-md": ["Inter", "sans-serif"],
+                    "label-md": ["Inter", "sans-serif"],
+                    "headline-lg-mobile": ["Inter", "sans-serif"],
+                    "body-lg": ["Inter", "sans-serif"],
+                    "headline-md": ["Inter", "sans-serif"],
+                    "headline-lg": ["Inter", "sans-serif"],
+                    "display": ["Inter", "sans-serif"]
+            },
+            "fontSize": {
+                    "mono-sm": ["13px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.1", "letterSpacing": "-0.05em", "fontWeight": "900"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                    "display": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #faf9f9; color: #1b1c1c; }
+        .brutalist-border { border: 4px solid #1b1c1c; }
+        .brutalist-shadow { box-shadow: 6px 6px 0px #1b1c1c; }
+        .brutalist-shadow-sm { box-shadow: 4px 4px 0px #1b1c1c; }
+        .active-tab { background-color: #FFFF00 !important; color: #1b1c1c !important; font-weight: 900; }
+        .asymmetric-offset { transform: translate(-8px, 8px); }
+        .negative-offset { transform: translate(8px, -8px); }
+        .vertical-text { writing-mode: vertical-rl; text-orientation: mixed; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-background dark:bg-on-background border-b-4 border-on-background">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary font-bold">menu</span>
+<span class="font-mono-sm text-mono-sm font-bold uppercase tracking-tighter text-on-background dark:text-background">DEV/PORTFOLIO</span>
+</div>
+<button class="font-mono-sm text-mono-sm font-bold uppercase px-4 py-1 bg-electric-yellow border-2 border-on-background brutalist-shadow-sm active:translate-x-1 active:translate-y-1 active:shadow-none transition-all">
+            RESUME
+        </button>
+</header>
+<!-- Navigation Drawer (Hidden by default, used for logic reference) -->
+<nav class="fixed inset-y-0 left-0 z-[60] flex flex-col p-gutter bg-background dark:bg-on-background border-r-4 border-on-background h-full w-3/4 max-w-sm -translate-x-full transition-transform duration-300 ease-in-out" id="nav-drawer">
+<div class="flex justify-between items-center mb-8">
+<span class="font-headline-md text-headline-md text-on-background font-black italic">NAVIGATION</span>
+<button class="material-symbols-outlined" onclick="toggleNav()">close</button>
+</div>
+<div class="flex flex-col gap-4">
+<a class="flex items-center gap-4 p-4 brutalist-border font-mono-sm text-mono-sm uppercase hover:bg-electric-yellow transition-all" href="#manifesto">
+<span class="material-symbols-outlined">person</span> ABOUT
+            </a>
+<a class="flex items-center gap-4 p-4 brutalist-border font-mono-sm text-mono-sm uppercase active-tab transition-all" href="#work">
+<span class="material-symbols-outlined">code</span> WORK
+            </a>
+<a class="flex items-center gap-4 p-4 brutalist-border font-mono-sm text-mono-sm uppercase hover:bg-electric-yellow transition-all" href="#logs">
+<span class="material-symbols-outlined">terminal</span> LOGS
+            </a>
+</div>
+</nav>
+<main class="mt-16 pb-section-gap">
+<!-- Hero Section -->
+<section class="relative px-gutter pt-12 pb-16 overflow-hidden border-b-4 border-on-background">
+<div class="absolute top-0 right-0 opacity-10 pointer-events-none w-full h-full">
+
+</div>
+<div class="relative z-10 flex flex-col gap-6">
+<div class="bg-electric-yellow p-4 brutalist-border brutalist-shadow inline-block self-start -rotate-2">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile uppercase leading-tight">
+                        SHIPPING<br/>CODE THAT<br/>WORKS
+                    </h1>
+</div>
+<div class="flex gap-4 items-end mt-4">
+<div class="w-1/2 brutalist-border bg-white p-1 brutalist-shadow rotate-3 overflow-hidden">
+<img alt="Hardware" class="w-full grayscale contrast-125" data-alt="A high-contrast macro photograph of a mechanical keyboard and a dark computer screen displaying lines of glowing green code. The lighting is dramatic and moody, emphasizing a professional engineering aesthetic with deep shadows and sharp highlights. The overall composition is aggressive and industrial, fitting a brutalist design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfdsyPBlFR3ZGYVx5Hr0Y58KYJaWjeCIHyGDWPb4yX28pBs9zJc8aAdFK3_PtQnmYDA2uwF6-BPwyoDqveCoRCbCM0E-dZQC1bAKYsE3mJtB2HX7vHVX1Q_VIa-PFSLEsbfK5DtkfABlIZ6q0WaSz8io0Y_Yco1vVVaZd8gvSB82sRxaeiI_nMqw3g_k7Ok_O52I_OkEkhckN_vmt4aza4oZrn86Af0rcFA9qsywK-QUp-IViDkI3_yvqtCBJe6iNVAbCtW4S7RQ"/>
+</div>
+<div class="w-1/2 brutalist-border bg-on-background p-1 brutalist-shadow -rotate-3 overflow-hidden">
+<img alt="Interface" class="w-full grayscale brightness-110" data-alt="An extreme close-up of a digital screen showing a complex software architectural diagram with white lines on a stark black background. The image is rendered in a high-contrast minimalist style, echoing the precision and authority of top-tier software engineering portfolios. The lighting is cold and clinical, creating a sense of technical excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2zgrDk_5kyE0_0CLKGmWN9O8YFvfNDCZHjmjiqz7m5X9UAQl1tGmlzjhi7QveSMzge-zVlKtxaB4aE8EASp1g_mTTLxLvXbJfG0VFhtC6hCwuT8pu5cZQdTgrR41-EZBbYzNIOUclS1Vm0zTdx4ANO-9DmgQ_V4MBsqaz4riCjFEnpx-GiDBpHlTQEKBbaKe4XPWNsedYo9N4Mn8nC-h3oKBlBC9z-WuVJRMOuMcguPPoDk5TNrxxiy7Uy-Ht__xoz2AaXKAQ0w"/>
+</div>
+</div>
+<div class="flex flex-col gap-4 mt-8">
+<button class="w-full bg-on-background text-background font-headline-md text-headline-md p-6 brutalist-shadow-sm hover:translate-x-1 hover:translate-y-1 transition-all">
+                        VIEW_THE_VAULT
+                    </button>
+<div class="grid grid-cols-2 gap-4">
+<div class="brutalist-border p-4 bg-white">
+<span class="font-mono-sm text-mono-sm text-secondary uppercase block mb-1">Success</span>
+<span class="font-display text-4xl font-black">99%</span>
+</div>
+<div class="brutalist-border p-4 bg-electric-yellow">
+<span class="font-mono-sm text-mono-sm text-on-background uppercase block mb-1">Exp</span>
+<span class="font-display text-4xl font-black">05+</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Grid / The Manifesto -->
+<section class="px-gutter pt-16" id="manifesto">
+<div class="flex items-center gap-4 mb-8">
+<div class="h-1 flex-grow bg-on-background"></div>
+<h2 class="font-headline-md text-headline-md uppercase italic shrink-0">THE MANIFESTO</h2>
+</div>
+<div class="flex flex-col gap-8">
+<p class="font-body-lg text-body-lg brutalist-border p-6 bg-white brutalist-shadow leading-relaxed">
+                    Software isn't just about syntax. It's about <span class="bg-electric-yellow font-bold px-1">relentless efficiency</span> and raw stability. I build systems that don't just solve problems—they dominate them.
+                </p>
+<div class="grid grid-cols-2 gap-0 brutalist-border">
+<div class="border-r-4 border-b-4 border-on-background p-6 flex flex-col justify-center items-center">
+<span class="font-display text-4xl font-black italic">50+</span>
+<span class="font-mono-sm text-mono-sm uppercase mt-2">DEPLOYED</span>
+</div>
+<div class="border-b-4 border-on-background p-6 flex flex-col justify-center items-center bg-electric-yellow">
+<span class="font-display text-4xl font-black italic">10+</span>
+<span class="font-mono-sm text-mono-sm uppercase mt-2">LANGUAGES</span>
+</div>
+<div class="border-r-4 border-on-background p-6 flex flex-col justify-center items-center bg-on-background text-background">
+<span class="font-display text-4xl font-black italic">24/7</span>
+<span class="font-mono-sm text-mono-sm uppercase mt-2">UPTIME</span>
+</div>
+<div class="p-6 flex flex-col justify-center items-center">
+<span class="font-display text-4xl font-black italic">0.2s</span>
+<span class="font-mono-sm text-mono-sm uppercase mt-2">LATENCY</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Portfolio (The Vault) -->
+<section class="mt-section-gap px-gutter" id="work">
+<div class="relative mb-12">
+<h2 class="font-display text-6xl opacity-10 absolute -top-12 left-0 z-0">WORKS</h2>
+<div class="relative z-10 flex flex-col">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile uppercase font-black bg-on-background text-background p-4 inline-block brutalist-shadow -rotate-1 self-start">THE VAULT</h2>
+<p class="font-mono-sm text-mono-sm mt-4 text-secondary uppercase tracking-widest">[REDACTED ASSETS &amp; LIVE PRODUCTION]</p>
+</div>
+</div>
+<div class="flex flex-col gap-12">
+<!-- Project 1 -->
+<div class="group relative">
+<div class="brutalist-border overflow-hidden relative">
+<img alt="Fintech Project" class="w-full grayscale hover:grayscale-0 transition-all duration-500" data-alt="A clean, futuristic web interface for a financial analytics tool, featuring sharp lines, high-contrast black and white data visualizations, and minimal yellow accents. The layout is displayed on a high-resolution tablet screen, emphasizing technical clarity and engineering-focused design. The lighting is bright and industrial." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnxXM83kPQHIMR3rYbt8tFI5x0ZTmmuJmAfdqpYIjRz4IfA6x4iMtC989O5AutKJiM7WWLGoQeBH-gzvBrZUF7iFuI_84oXErR4NeyJC8c-gFDT1kCDhdYl0gJZ4FxOe1wBe815VRLpaPGbtQAMRYUzBXc8CnwR83BsDHo9lmtaDyLMEB905agB84rSCEmRkN-5QSn2AOIvWNlr25YCYQWOTnErccLZQPNnhW_gezlNPFDdHQq_4m9IWZmfZrPzwA0hMMspDcZJg"/>
+<div class="absolute bottom-4 left-4 bg-electric-yellow px-4 py-2 brutalist-border font-mono-sm font-black uppercase brutalist-shadow-sm">
+                            CASE_001
+                        </div>
+</div>
+<div class="mt-6 bg-white brutalist-border p-6 asymmetric-offset">
+<h3 class="font-headline-md text-headline-md uppercase mb-2">NEURAL_NET_V2</h3>
+<p class="font-mono-sm text-mono-sm mb-4">Scalable architecture for deep learning visualization and real-time inference monitoring.</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container-highest font-mono-sm text-xs border border-on-background uppercase">TypeScript</span>
+<span class="px-2 py-1 bg-surface-container-highest font-mono-sm text-xs border border-on-background uppercase">Rust</span>
+<span class="px-2 py-1 bg-surface-container-highest font-mono-sm text-xs border border-on-background uppercase">NextJS</span>
+</div>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="group relative mt-8">
+<div class="brutalist-border overflow-hidden relative">
+<img alt="Network Project" class="w-full grayscale contrast-150" data-alt="A complex software interface showing a network graph of interconnected nodes in a dark mode setting. The aesthetic is raw and technical, with bright white lines and sharp yellow highlights on a black background. The composition is asymmetrical and dense, reflecting high-performance engineering systems." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL-8isgkMSgIPTJJTaX1_mzxcI4Iy8GiEUOuaU5b8Z5-NtlHSQYRSogC0aGnGxlRkVxCXugLmlt3-8INpKO6eKewT4Aiy1ll4XhDcs4LG98PNjkYGLt66rVKIxTdcwvr_iEcDpSVFtehiXPmaceVKiW6nbCYlVe7aDSbjrB6SlO428cCszr0ZsKNqHDT4R3OTF8vkdPV5qtU__qmzbBtEy0WV3oqBn9AS9CXENuuHK66tjje2gii9z2QAp_hoaN--Q7Mq_nkt9Sw"/>
+<div class="absolute bottom-4 right-4 bg-on-background text-background px-4 py-2 brutalist-border border-background font-mono-sm font-black uppercase brutalist-shadow-sm">
+                            CASE_002
+                        </div>
+</div>
+<div class="mt-6 bg-electric-yellow brutalist-border p-6 negative-offset">
+<h3 class="font-headline-md text-headline-md uppercase mb-2">QUANT_ANALYTICS</h3>
+<p class="font-mono-sm text-mono-sm mb-4">High-frequency trading interface with sub-millisecond updates and heavy-duty data streaming.</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-white font-mono-sm text-xs border border-on-background uppercase">Python</span>
+<span class="px-2 py-1 bg-white font-mono-sm text-xs border border-on-background uppercase">C++</span>
+<span class="px-2 py-1 bg-white font-mono-sm text-xs border border-on-background uppercase">WebGPU</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Career Logs (Timeline) -->
+<section class="mt-section-gap px-gutter bg-on-background text-background py-16" id="logs">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile uppercase mb-12 italic border-l-8 border-electric-yellow pl-4">CAREER LOGS</h2>
+<div class="relative border-l-4 border-electric-yellow ml-4 pl-8 flex flex-col gap-12">
+<!-- Entry 1 -->
+<div class="relative">
+<div class="absolute -left-12 top-0 w-8 h-8 bg-electric-yellow brutalist-border border-background rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-background text-sm font-bold">bolt</span>
+</div>
+<span class="font-mono-sm text-mono-sm text-electric-yellow uppercase tracking-widest block mb-2">2022 — PRESENT</span>
+<h3 class="font-headline-md text-headline-md uppercase">LEAD ENGINEER @ NEXUS_LABS</h3>
+<p class="font-body-md text-surface-variant mt-2">Architecting core distributed systems and managing a team of 12 full-stack engineers across 3 timezones.</p>
+</div>
+<!-- Entry 2 -->
+<div class="relative">
+<div class="absolute -left-12 top-0 w-8 h-8 bg-background brutalist-border border-background rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-background text-sm">settings</span>
+</div>
+<span class="font-mono-sm text-mono-sm text-electric-yellow uppercase tracking-widest block mb-2">2020 — 2022</span>
+<h3 class="font-headline-md text-headline-md uppercase">SR DEVELOPER @ CORE_OS</h3>
+<p class="font-body-md text-surface-variant mt-2">Low-level optimization for mission-critical cloud infrastructure and kernel-level performance tuning.</p>
+</div>
+<!-- Entry 3 -->
+<div class="relative">
+<div class="absolute -left-12 top-0 w-8 h-8 bg-background brutalist-border border-background rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-background text-sm">terminal</span>
+</div>
+<span class="font-mono-sm text-mono-sm text-electric-yellow uppercase tracking-widest block mb-2">2018 — 2020</span>
+<h3 class="font-headline-md text-headline-md uppercase">JUNIOR DEV @ RAW_CODE</h3>
+<p class="font-body-md text-surface-variant mt-2">Forging the foundations of modern web apps using experimental frameworks and aggressive deployment cycles.</p>
+</div>
+</div>
+</section>
+<!-- Send It (Contact) -->
+<section class="mt-section-gap px-gutter" id="contact">
+<div class="brutalist-border p-8 bg-white brutalist-shadow flex flex-col gap-8">
+<h2 class="font-display text-4xl uppercase font-black leading-none underline decoration-electric-yellow decoration-8">SEND_IT</h2>
+<p class="font-mono-sm text-mono-sm uppercase text-secondary">Available for high-stakes projects and technical consultancy. Response time &lt; 4 hours.</p>
+<form class="flex flex-col gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md uppercase font-bold">SOURCE_ID</label>
+<input class="brutalist-border p-4 bg-surface focus:ring-0 focus:border-electric-yellow font-mono-sm" placeholder="YOUR NAME / COMPANY" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md uppercase font-bold">TRANSMISSION</label>
+<textarea class="brutalist-border p-4 bg-surface focus:ring-0 focus:border-electric-yellow font-mono-sm" placeholder="BRIEFING DETAILS..." rows="4"></textarea>
+</div>
+<button class="bg-on-background text-background font-headline-md text-headline-md p-6 brutalist-shadow-sm hover:bg-electric-yellow hover:text-on-background transition-all uppercase" type="submit">
+                        EXECUTE_SEND
+                    </button>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full flex flex-col items-start gap-4 p-gutter bg-background dark:bg-on-background border-t-4 border-on-background dark:border-outline">
+<div class="w-full flex justify-between items-center">
+<span class="font-mono-sm text-mono-sm font-bold">DEV_LOG_2024</span>
+<div class="flex gap-4">
+<a class="material-symbols-outlined hover:text-primary transition-all" href="#">terminal</a>
+<a class="material-symbols-outlined hover:text-primary transition-all" href="#">hub</a>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 mt-4">
+<a class="font-mono-sm text-mono-sm underline decoration-primary font-bold" href="#">GITHUB</a>
+<a class="font-mono-sm text-mono-sm text-on-background dark:text-background hover:bg-on-background hover:text-background p-1 transition-all" href="#">LINKEDIN</a>
+<a class="font-mono-sm text-mono-sm text-on-background dark:text-background hover:bg-on-background hover:text-background p-1 transition-all" href="#">SOURCE</a>
+</div>
+<p class="font-mono-sm text-[10px] text-secondary mt-8 uppercase tracking-widest opacity-50">
+            ©2024 DEV_LOG ALL RIGHTS RESERVED // BUILT TO LAST // NO FLUFF
+        </p>
+</footer>
+<script>
+        function toggleNav() {
+            const drawer = document.getElementById('nav-drawer');
+            drawer.classList.toggle('-translate-x-full');
+        }
+
+        // Floating Action Button logic for Mobile - Suppressed on details as per mandate but home needs it
+        const currentPath = window.location.pathname;
+        // In this single page app context, we show it
+        const fab = document.createElement('button');
+        fab.innerHTML = '<span class="material-symbols-outlined text-4xl">add</span>';
+        fab.className = 'fixed bottom-8 right-8 w-16 h-16 bg-electric-yellow brutalist-border brutalist-shadow rounded-full flex items-center justify-center z-40 active:translate-x-1 active:translate-y-1 active:shadow-none transition-all';
+        document.body.appendChild(fab);
+
+        // Simple scroll reveal interaction
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.transition = 'opacity 0.6s ease-out';
+            observer.observe(section);
+        });
+    </script>
+</body></html>

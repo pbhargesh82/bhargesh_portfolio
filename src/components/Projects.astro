@@ -1,30 +1,54 @@
 ---
 import ProjectCard from './ProjectCard.astro';
 import projects from '../content/projects.json';
+import MaterialIcon from './MaterialIcon.astro';
+
+const focusRing =
+  'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink';
 ---
 
-<section id="projects" class="border-t border-border">
-  <div class="mx-auto w-full max-w-6xl px-6 py-20 md:py-28">
-    <header class="mb-14 max-w-xl">
-      <h2 class="font-display text-3xl font-semibold tracking-[-0.01em] text-ink md:text-4xl">
-        Selected work
-      </h2>
-      <p class="mt-4 text-lg leading-relaxed text-ink-muted">
-        Two apps where I explored product ideas outside client work: one full-stack, one
-        interaction-heavy frontend.
-      </p>
+<section id="projects" class="section-rule bg-paper py-20 md:py-24">
+  <div class="mx-auto w-full max-w-7xl px-6">
+    <header class="mb-12 flex flex-col gap-8 md:mb-16 md:flex-row md:items-end md:justify-between">
+      <div>
+        <h2 class="text-[clamp(2rem,6vw,4rem)] font-extrabold uppercase leading-none tracking-[-0.03em]">
+          The vault
+        </h2>
+        <p class="mt-4 text-base font-bold uppercase tracking-wide text-ink-subtle">
+          Selected deployments · personal builds
+        </p>
+      </div>
+      <a
+        href="https://github.com/pbhargesh82"
+        target="_blank"
+        rel="noopener noreferrer"
+        class:list={[
+          'group inline-flex items-center gap-3 self-start bg-accent px-6 py-3 text-sm font-extrabold uppercase brutal-border transition-colors hover:bg-ink hover:text-paper',
+          focusRing,
+        ]}
+      >
+        Open repos
+        <MaterialIcon
+          name="arrow_forward"
+          size={22}
+          class="transition-transform group-hover:rotate-45 motion-reduce:transform-none"
+        />
+      </a>
     </header>
 
-    <div class="grid gap-6 sm:grid-cols-2">
+    <div class="grid border-t-4 border-l-4 border-ink md:grid-cols-2">
       {
-        projects.map((project) => (
+        projects.map((project, index) => (
           <ProjectCard
+            index={index + 1}
             name={project.name}
             description={project.description}
             url={project.url}
             uiRepoUrl={project.uiRepoUrl}
             apiRepoUrl={project.apiRepoUrl}
             stack={project.stack}
+            thumbnail={project.thumbnail}
+            thumbnailAlt={project.thumbnailAlt}
           />
         ))
       }

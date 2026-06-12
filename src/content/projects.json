@@ -5,7 +5,9 @@
     "description": "Fantasy sports auction admin: teams, player pools, bidding flow, and dashboards. Angular with Supabase auth and PostgreSQL.",
     "url": "https://auction-io.netlify.app/",
     "uiRepoUrl": "https://github.com/pbhargesh82/auction.io",
-    "stack": ["Angular", "Supabase", "PostgreSQL", "TypeScript"]
+    "stack": ["Angular", "Supabase", "PostgreSQL", "TypeScript"],
+    "thumbnail": "/images/projects/auction-io.png",
+    "thumbnailAlt": "Auction.io admin dashboard showing team and player management"
   },
   {
     "id": 2,
@@ -13,6 +15,8 @@
     "description": "Interactive periodic table with 3D element models and detailed properties. An Angular app focused on exploration and reference.",
     "url": "https://prdc-table.netlify.app/",
     "uiRepoUrl": "https://github.com/pbhargesh82/periodic-table",
-    "stack": ["Angular", "TypeScript", "Three.js"]
+    "stack": ["Angular", "TypeScript", "Three.js"],
+    "thumbnail": "/images/projects/periodic-table.png",
+    "thumbnailAlt": "Periodic Table app showing the interactive element grid"
   }
 ]

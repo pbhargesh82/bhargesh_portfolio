@@ -1,71 +1,118 @@
 ---
 import stack from '../content/stack.json';
+import projects from '../content/projects.json';
 import socials from '../content/socials.json';
 import BrandIcon from './BrandIcon.astro';
 import SocialIcon from './SocialIcon.astro';
+import MaterialIcon from './MaterialIcon.astro';
 
 const email = 'pbhargesh82@gmail.com';
+const featured = projects[0];
 
 const focusRing =
-  'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent';
-const btnTransition = 'transition-[color,background-color,border-color,transform] duration-200 ease-out';
+  'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink';
+
+const btnBase =
+  'inline-flex min-h-12 items-center justify-center px-8 py-4 text-base font-extrabold uppercase transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.25,1,0.5,1)] active:translate-x-1 active:translate-y-1 active:shadow-none';
 ---
 
 <section
   id="top"
-  class="mx-auto w-full max-w-6xl px-6 pb-[clamp(4rem,10vw,5.5rem)] pt-[clamp(3rem,8vw,4.5rem)]"
+  class="section-rule relative flex min-h-[min(100dvh,56rem)] items-center overflow-hidden"
 >
-  <div class="grid items-start gap-6 md:grid-cols-[minmax(0,1fr)_auto] md:gap-14">
-    <div class="max-w-2xl">
-      <h1
-        class="font-display text-5xl font-semibold leading-[1.02] tracking-[-0.03em] text-balance text-ink sm:text-6xl"
+  <div class="glitch-bg pointer-events-none absolute inset-0 opacity-50" aria-hidden="true"></div>
+
+  <div class="relative mx-auto grid w-full max-w-7xl gap-0 px-6 py-16 md:grid-cols-12 md:py-20">
+    <div class="z-10 md:col-span-7 lg:col-span-8">
+      <p
+        class="hero-enter hero-enter-1 mb-6 inline-block bg-accent px-4 py-1.5 text-xs font-bold uppercase tracking-widest brutal-border"
       >
-        Bhargesh Patel
-      </h1>
-      <span
-        class="mt-4 block h-1 w-[3.2rem] rounded-full bg-accent opacity-[0.48]"
-        aria-hidden="true"
-      ></span>
-      <p class="mt-5 text-sm font-medium text-ink-muted">Software engineer · Bridginex · Surat</p>
-      <p class="mt-5 max-w-prose text-pretty text-lg leading-relaxed text-ink-muted">
-        Five years in web development, now shipping full features for client products. React
-        and Angular on the front, Node and Supabase on the back. I like owning a feature from
-        UI through to the database.
+        Software engineer · Bridginex · Surat
       </p>
-      <div class="mt-8 flex flex-wrap items-center gap-3">
+
+      <h1
+        class="hero-enter hero-enter-2 mb-8 text-[clamp(2.25rem,7vw,4.75rem)] font-extrabold uppercase leading-[0.95] tracking-[-0.03em]"
+      >
+        Shipping code that <span class="bg-ink px-3 py-1 text-paper">works.</span>
+      </h1>
+
+      <p
+        class="hero-enter hero-enter-3 mb-10 max-w-2xl border-4 border-ink bg-paper p-5 text-lg font-semibold leading-relaxed text-ink-muted md:text-xl"
+      >
+        Five years in web development, now shipping full features for client products — React
+        and Angular on the front, Node and Supabase on the back. I like owning a feature from UI
+        through to the database.
+      </p>
+
+      <div class="hero-enter hero-enter-4 flex flex-wrap gap-4">
+        <a
+          href="#projects"
+          class:list={[
+            btnBase,
+            'bg-ink text-paper brutal-shadow-accent hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none',
+            focusRing,
+          ]}
+        >
+          View work
+        </a>
         <a
           href={`mailto:${email}`}
           class:list={[
-            'inline-flex min-h-11 items-center justify-center rounded-sm bg-accent px-6 py-2.5 text-sm font-medium text-surface',
-            btnTransition,
-            'hover:bg-accent-hover active:scale-[0.98]',
+            btnBase,
+            'bg-paper text-ink brutal-border brutal-shadow hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none',
             focusRing,
           ]}
         >
           Get in touch
         </a>
-        <a
-          href="/cv.pdf"
-          download="Bhargesh Patel Resume.pdf"
-          class:list={[
-            'inline-flex min-h-11 items-center justify-center rounded-sm border border-border bg-surface px-6 py-2.5 text-sm font-medium text-ink-muted',
-            btnTransition,
-            'hover:border-ink-subtle hover:text-ink active:scale-[0.98]',
-            focusRing,
-          ]}
-        >
-          Download resume
-        </a>
       </div>
-      <div class="mt-8 space-y-4">
+    </div>
+
+    <div class="relative mt-12 hidden md:col-span-5 md:mt-0 md:block lg:col-span-4">
+      <div
+        class="absolute -right-4 top-0 h-[115%] w-full -rotate-3 bg-accent brutal-border"
+        aria-hidden="true"
+      ></div>
+      <div class="relative top-8 rotate-2 overflow-hidden bg-paper p-5 brutal-border-heavy brutal-shadow">
+        <img
+          src={featured.thumbnail}
+          alt={featured.thumbnailAlt}
+          width={480}
+          height={360}
+          class="w-full contrast-125 grayscale mix-blend-multiply"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <dl class="mt-4 space-y-1 text-xs font-bold uppercase leading-tight">
+          <div class="flex justify-between gap-4">
+            <dt class="text-ink-subtle">Unit</dt>
+            <dd>{featured.name}</dd>
+          </div>
+          <div class="flex justify-between gap-4">
+            <dt class="text-ink-subtle">Status</dt>
+            <dd>Live</dd>
+          </div>
+          <div class="flex justify-between gap-4">
+            <dt class="text-ink-subtle">Stack</dt>
+            <dd class="text-right">{featured.stack.slice(0, 3).join(' / ')}</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-rule mx-auto w-full max-w-7xl px-6 pb-16 pt-4 md:pb-20">
+    <div class="hero-enter hero-enter-4 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+      <div class="grid gap-8 sm:grid-cols-2">
         <div>
-          <p class="mb-2 text-sm font-medium text-ink-muted">Frontend</p>
+          <p class="mb-3 text-xs font-bold uppercase tracking-widest text-ink-subtle">Frontend</p>
           <ul class="flex flex-wrap gap-2" aria-label="Frontend skills">
             {
               stack.frontend.map((item) => (
                 <li>
-                  <span class="inline-flex items-center gap-2 rounded-sm border border-border bg-surface px-3 py-2 text-xs font-medium text-ink-muted">
-                    <BrandIcon slug={item.icon} size={14} class="opacity-75" />
+                  <span class="inline-flex items-center gap-2 border-2 border-ink bg-paper px-3 py-1.5 text-xs font-bold uppercase">
+                    <BrandIcon slug={item.icon} size={14} />
                     {item.name}
                   </span>
                 </li>
@@ -74,13 +121,15 @@ const btnTransition = 'transition-[color,background-color,border-color,transform
           </ul>
         </div>
         <div>
-          <p class="mb-2 text-sm font-medium text-ink-muted">Backend &amp; data</p>
+          <p class="mb-3 text-xs font-bold uppercase tracking-widest text-ink-subtle">
+            Backend &amp; data
+          </p>
           <ul class="flex flex-wrap gap-2" aria-label="Backend and data skills">
             {
               stack.backend.map((item) => (
                 <li>
-                  <span class="inline-flex items-center gap-2 rounded-sm border border-border bg-surface px-3 py-2 text-xs font-medium text-ink-muted">
-                    <BrandIcon slug={item.icon} size={14} class="opacity-75" />
+                  <span class="inline-flex items-center gap-2 border-2 border-ink bg-accent px-3 py-1.5 text-xs font-bold uppercase">
+                    <BrandIcon slug={item.icon} size={14} />
                     {item.name}
                   </span>
                 </li>
@@ -89,20 +138,8 @@ const btnTransition = 'transition-[color,background-color,border-color,transform
           </ul>
         </div>
       </div>
-    </div>
 
-    <div class="flex flex-col items-center gap-4 md:items-end">
-      <img
-        src="/images/avatar.webp"
-        alt="Bhargesh Patel"
-        width="200"
-        height="200"
-        class="size-40 rounded-md object-cover sm:size-44"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-      />
-      <ul class="flex items-center gap-0.5" aria-label="Social links">
+      <ul class="flex flex-wrap items-center gap-2" aria-label="Social links">
         {
           socials
             .filter((s) => s.name !== 'Resume')
@@ -113,24 +150,40 @@ const btnTransition = 'transition-[color,background-color,border-color,transform
                   target="_blank"
                   rel="noopener noreferrer"
                   class:list={[
-                    'flex size-11 items-center justify-center rounded-sm text-ink-muted',
-                    btnTransition,
-                    'hover:bg-surface hover:text-accent active:scale-95',
+                    'flex size-12 items-center justify-center border-2 border-ink bg-paper transition-colors hover:bg-accent',
                     focusRing,
                   ]}
                   aria-label={social.alt}
                 >
-                  <SocialIcon
-                    icon={social.icon}
-                    iconSet={social.iconSet}
-                    size={20}
-                    class="opacity-80"
-                  />
+                  <SocialIcon icon={social.icon} iconSet={social.iconSet} size={20} />
                 </a>
               </li>
             ))
         }
       </ul>
+    </div>
+
+    <div class="mt-10 grid grid-cols-2 gap-4 md:hidden">
+      {
+        projects.map((project) => (
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class:list={['block overflow-hidden brutal-border', focusRing]}
+          >
+            <img
+              src={project.thumbnail}
+              alt={project.thumbnailAlt}
+              width={320}
+              height={240}
+              class="aspect-4/3 w-full object-cover object-top grayscale contrast-125"
+              loading="eager"
+              decoding="async"
+            />
+          </a>
+        ))
+      }
     </div>
   </div>
 </section>

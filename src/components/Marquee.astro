@@ -1,0 +1,22 @@
+---
+const items = [
+  'Angular · React · Node',
+  'Supabase · PostgreSQL',
+  'End-to-end features',
+  'Surat · Remote',
+];
+const track = [...items, ...items];
+---
+
+<div
+  class="overflow-hidden border-b-8 border-ink bg-ink py-4 text-accent select-none"
+  aria-hidden="true"
+>
+  <div class="marquee-track items-center gap-16 whitespace-nowrap px-4">
+    {
+      track.map((item) => (
+        <span class="text-lg font-extrabold uppercase tracking-tight sm:text-2xl">{item}</span>
+      ))
+    }
+  </div>
+</div>
