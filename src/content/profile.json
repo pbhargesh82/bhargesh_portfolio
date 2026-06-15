@@ -1,0 +1,29 @@
+{
+  "pageTitle": "Bhargesh Patel — Software Engineer",
+  "pageDescription": "Bhargesh Patel — software engineer at Bridginex, Surat. End-to-end web apps in Angular, React, Node, and Supabase. Open to contract work.",
+  "email": "pbhargesh82@gmail.com",
+  "heroEyebrow": "Software engineer",
+  "heroBio": "Five years shipping web products for clients. I own features from the interface through to the data — not just the UI handoff.",
+  "location": "Surat · Remote",
+  "contactBody": "Open to contract and freelance projects. Based in Surat, happy to work remote. Email is the fastest way to reach me.",
+  "projectsIntro": "Selected deployments /// [2021-2024]",
+  "yearsExperience": "05+",
+  "marquee": [
+    "Ship end-to-end",
+    "Own the feature",
+    "Build what lasts",
+    "Reliable delivery",
+    "Product not patches"
+  ],
+  "heroCard": {
+    "site": "Portfolio",
+    "status": "Available",
+    "focus": "Full-stack product",
+    "availability": "Contract & freelance"
+  },
+  "manifesto": [
+    "I build end-to-end web products — interfaces, APIs, and data layers. Not slides. Not handoffs. The full path from UI to database.",
+    "Five years from on-site frontend work to full product builds at Bridginex — client delivery, remote, owning the whole feature.",
+    "Direct about what was built. No buzzwords. Based in Surat, open to contract and remote work."
+  ]
+}

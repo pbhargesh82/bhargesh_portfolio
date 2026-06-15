@@ -8,7 +8,7 @@ Approved from discovery chat (June 2026). Update this file before changing site 
 
 **Eyebrow:** Software engineer · Bridginex · Surat
 
-**Hero bio:** Five years in web development, now shipping full features for client products — React and Angular on the front, Node and Supabase on the back. I like owning a feature from UI through to the database.
+**Hero bio:** Five years shipping web products for clients. I own features from the interface through to the data — not just the UI handoff.
 
 **Tone:** Warm and approachable. Direct about what was built, not buzzwords.
 
@@ -79,3 +79,20 @@ Clash Spy, portfolio self-reference, Angular CRUD, Natours, and other tutorial-e
 **Experience:** Five years from on-site frontend work to end-to-end product builds — now shipping full features, not just UI.
 
 **Projects:** Two apps where I explored product ideas outside client work — one full-stack, one interaction-heavy frontend.
+
+## Marquee
+
+Ship end-to-end · Own the feature · Build what lasts · Reliable delivery · Product not patches
+
+## Hero card (generic — not a project thumbnail)
+
+- **Site:** Portfolio
+- **Status:** Available
+- **Focus:** Full-stack product
+- **Open:** Contract & freelance
+
+## Manifesto (about section — brutalist voice)
+
+1. I build end-to-end web products — interfaces, APIs, and data layers. Not slides. Not handoffs. The full path from UI to database.
+2. Five years from on-site frontend work to full product builds at Bridginex — client delivery, remote, owning the whole feature.
+3. Direct about what was built. No buzzwords. Based in Surat, open to contract and remote work.

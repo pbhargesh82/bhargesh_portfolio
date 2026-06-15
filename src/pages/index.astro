@@ -1,8 +1,40 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import projectPlaceholders from '../content/project-placeholders.json';
+import projects from '../content/projects.json';
+import experience from '../content/experience.json';
+import socials from '../content/socials.json';
+import stack from '../content/stack.json';
+import profile from '../content/profile.json';
+
+const github = socials.find((s) => s.name === 'GitHub');
+const linkedin = socials.find((s) => s.name === 'LinkedIn');
+const dailyDev = socials.find((s) => s.name === 'Daily Dev');
+const whatsapp = socials.find((s) => s.name === 'WhatsApp');
+const resume = socials.find((s) => s.name === 'Resume');
+const year = new Date().getFullYear();
+
+/** Honest counts from profile data — not vanity KPIs */
+const stats = [
+  { value: profile.yearsExperience, label: 'YEARS_EXP', accent: true },
+  { value: String(experience.length).padStart(2, '0'), label: 'ROLES_LOGGED', accent: false },
+  { value: String(projects.length).padStart(2, '0'), label: 'PERSONAL_BUILDS', accent: false },
+  {
+    value: String(stack.frontend.length + stack.backend.length).padStart(2, '0'),
+    label: 'STACK_TOOLS',
+    accent: true,
+  },
+];
+
+const shout = (text: string) => text.toUpperCase();
+const slug = (text: string) =>
+  text
+    .replace(/[^a-zA-Z0-9]+/g, '_')
+    .replace(/^_|_$/g, '')
+    .toUpperCase();
 ---
 
-<BaseLayout>
+<BaseLayout title={profile.pageTitle} description={profile.pageDescription}>
   <!-- Header -->
   <header class="sticky top-0 z-50 bg-surface border-b-heavy border-black">
     <nav class="max-w-full mx-auto flex justify-between items-center h-20 px-6">
@@ -22,7 +54,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         >
         <a
           class="px-6 py-2 bg-accent border-l-4 border-black font-extrabold uppercase hover:translate-y-[-2px] transition-transform"
-          href="#">RESUME.PDF</a
+          href={resume?.url ?? '#'}
+          download={resume?.download}>RESUME.PDF</a
         >
       </div>
       <button class="md:hidden" type="button" aria-label="Menu">
@@ -45,7 +78,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div
             class="bg-accent inline-block px-4 py-1 brutal-border mb-6 font-bold uppercase tracking-widest"
           >
-            SYSTEMS_ONLINE // V2.0
+            {shout(profile.heroEyebrow)}
           </div>
           <h1 class="text-6xl md:text-9xl font-black uppercase leading-none mb-8 break-words">
             SHIPPING CODE THAT <span class="bg-black text-white px-4">WORKS.</span>
@@ -53,8 +86,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <p
             class="text-xl md:text-2xl font-bold max-w-2xl mb-12 border-l-brutal border-black pl-6"
           >
-            RAW ENGINEERING. NO FLUFF. JUST HIGH-PERFORMANCE, SCALABLE ARCHITECTURE THAT DOESN'T
-            BREAK UNDER PRESSURE.
+            {shout(profile.heroBio)}
           </p>
           <div class="flex flex-wrap gap-6">
             <a
@@ -70,36 +102,61 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="relative hidden overflow-visible md:col-span-4 md:block md:min-h-[32rem] md:pt-12">
           <div
             class="absolute top-12 right-0 z-0 h-full w-[95%] -rotate-3 bg-accent brutal-border"
+            aria-hidden="true"
           >
           </div>
-          <div
+          <figure
             class="relative top-24 z-10 rotate-3 overflow-hidden border-heavy border-black bg-white p-6 brutal-shadow"
+            aria-label={`Portfolio status: ${profile.heroCard.status}, ${profile.heroCard.focus}, ${profile.heroCard.availability}`}
           >
-            <img
-              alt="Glitch art technical diagram"
-              class="w-full grayscale contrast-150 brightness-75 mix-blend-multiply"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbQqh5-McPPVrI6jGNCg83aqpqHhXmTEg0DCLn_5ndom9dUXrYWRPov74SIcH5UV5vUFadxWxqw_D17jHvkBeKuqvmy6mqN20iA2IWamJHLysxsuDNsYzJp6lscJTNWcLz9KXjKk0wB3z_KlrKTYHkXkakEnZnIfRTVrxdKsrDsaPpcAUpHd9_IpsUm9CwGggetimV5QmsRzi94I18EWWFgz8AQLRAnFq6Hmc9pMgslTEh4qazkq46l8BYS3vDlpTxZp4IfwrUOg"
-            />
-            <div class="mt-4 font-mono text-sm leading-tight uppercase font-bold">
-              UNIT_ID: BP-77<br />
-              STATUS: ACTIVE<br />
-              CORE: RUST_GO_AWS
+            <div
+              class="flex aspect-4/3 w-full flex-col justify-between bg-black p-4 font-mono text-xs font-bold leading-relaxed"
+              aria-hidden="true"
+            >
+              <div class="space-y-2 border border-accent p-3 text-accent">
+                <p>&gt; INIT PORTFOLIO.V2</p>
+                <p>&gt; SCOPE: END_TO_END</p>
+                <p>&gt; DELIVERY: CLIENT_FEATURES</p>
+                <p class="text-white">&gt; ACCEPTING_WORK_</p>
+              </div>
+              <div class="grid grid-cols-4 gap-1 pt-3">
+                {
+                  Array.from({ length: 8 }).map(() => (
+                    <div class="h-3 bg-accent" />
+                  ))
+                }
+              </div>
             </div>
-          </div>
+            <figcaption class="mt-4 font-mono text-sm leading-tight uppercase font-bold">
+              SITE: {slug(profile.heroCard.site)}<br />
+              STATUS: {slug(profile.heroCard.status)}<br />
+              FOCUS: {slug(profile.heroCard.focus)}<br />
+              OPEN: {slug(profile.heroCard.availability)}
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
     <!-- Marquee -->
-    <div class="bg-black text-accent py-4 border-b-heavy border-black overflow-hidden select-none">
+    <div
+      class="bg-black text-accent py-4 border-b-heavy border-black overflow-hidden select-none"
+      aria-label="Highlights"
+    >
       <div class="marquee">
-        <div class="marquee-content flex gap-20 items-center">
-          <span class="text-2xl font-black uppercase">ZERO DOWNTIME</span>
-          <span class="text-2xl font-black uppercase">SCALABLE ARCHITECTURE</span>
-          <span class="text-2xl font-black uppercase">BRUTAL EFFICIENCY</span>
-          <span class="text-2xl font-black uppercase">ZERO DOWNTIME</span>
-          <span class="text-2xl font-black uppercase">SCALABLE ARCHITECTURE</span>
-          <span class="text-2xl font-black uppercase">BRUTAL EFFICIENCY</span>
+        <div class="marquee-track">
+          {
+            [false, true].map((hidden) => (
+              <div class="marquee-group" aria-hidden={hidden}>
+                {profile.marquee.map((phrase, index) => (
+                  <>
+                    {index > 0 && <span class="marquee-sep" aria-hidden="true">//</span>}
+                    <span class="marquee-item">{shout(phrase)}</span>
+                  </>
+                ))}
+              </div>
+            ))
+          }
         </div>
       </div>
     </div>
@@ -113,34 +170,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               THE <span class="bg-accent px-2">MANIFESTO</span>
             </h2>
             <div class="space-y-8 text-xl font-bold leading-relaxed">
-              <p>I DON'T JUST WRITE CODE. I BUILD SYSTEMS THAT SURVIVE THE REAL WORLD.</p>
-              <p class="border-l-brutal border-black pl-6">
-                MY JOURNEY ISN'T ABOUT POLISHED SLIDES. IT'S ABOUT SOLVING COMPLEX PROBLEMS WITH
-                ELEGANT, UNBREAKABLE LOGIC.
-              </p>
-              <p>
-                IF IT DOESN'T SCALE, IT'S BROKEN. IF IT'S SLOW, IT'S TRASH. I LIVE FOR PERFORMANCE
-                AND SYSTEM INTEGRITY.
-              </p>
+              <p>{shout(profile.manifesto[0])}</p>
+              <p class="border-l-brutal border-black pl-6">{shout(profile.manifesto[1])}</p>
+              <p>{shout(profile.manifesto[2])}</p>
             </div>
           </div>
           <div class="lg:col-span-7 grid grid-cols-2 gap-6">
-            <div class="p-8 border-brutal border-black bg-accent brutal-shadow-hover transition-all">
-              <div class="text-7xl font-black mb-2">05+</div>
-              <div class="text-xl font-black uppercase underline">YEARS_EXP</div>
-            </div>
-            <div class="p-8 border-brutal border-black bg-white brutal-shadow-hover transition-all">
-              <div class="text-7xl font-black mb-2">50+</div>
-              <div class="text-xl font-black uppercase underline">SHIPPED_PROJS</div>
-            </div>
-            <div class="p-8 border-brutal border-black bg-white brutal-shadow-hover transition-all">
-              <div class="text-7xl font-black mb-2">10+</div>
-              <div class="text-xl font-black uppercase underline">OSS_CONTRIBS</div>
-            </div>
-            <div class="p-8 border-brutal border-black bg-accent brutal-shadow-hover transition-all">
-              <div class="text-7xl font-black mb-2">99%</div>
-              <div class="text-xl font-black uppercase underline">UPTIME_KPI</div>
-            </div>
+            {
+              stats.map((stat) => (
+                <div
+                  class:list={[
+                    'p-8 border-brutal border-black brutal-shadow-hover transition-all',
+                    stat.accent ? 'bg-accent' : 'bg-white',
+                  ]}
+                >
+                  <div class="text-7xl font-black mb-2">{stat.value}</div>
+                  <div class="text-xl font-black uppercase underline">{stat.label}</div>
+                </div>
+              ))
+            }
           </div>
         </div>
       </div>
@@ -152,11 +200,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div>
             <h2 class="text-5xl md:text-8xl font-black uppercase leading-none">THE_VAULT</h2>
-            <p class="text-xl font-bold mt-4 uppercase">SELECTED DEPLOYMENTS /// [2021-2024]</p>
+            <p class="text-xl font-bold mt-4 uppercase">{shout(profile.projectsIntro)}</p>
           </div>
           <a
             class="group flex items-center gap-4 bg-accent border-brutal border-black px-8 py-4 font-black uppercase hover:bg-black hover:text-white transition-all"
-            href="#">
+            href={github?.url ?? '#'}
+            target="_blank"
+            rel="noopener noreferrer">
             OPEN_REPOS.SH
             <span class="material-symbols-outlined group-hover:rotate-45 transition-transform"
               >arrow_forward</span
@@ -164,75 +214,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </a>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-0 border-t-brutal border-l-brutal border-black">
-          <!-- Project Card 1 -->
-          <div
-            class="group border-r-brutal border-b-brutal border-black p-0 relative overflow-hidden bg-white hover:bg-accent transition-colors"
-          >
-            <div class="h-64 border-b-brutal border-black grayscale contrast-125 overflow-hidden">
-              <img
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc0eLKpRNowCY91_UrNbuh07W8Bxo4tbClx2ZvK-QEXnQIz3I515NByZhng-haqMeKrj2k5MiOUF0hY_-Cwf03dFaL6L5ecXAZJjCNkLzZAe22SqmIBC-5xLEsM6XV8gKDcOAwujbHZ0JKtIVHKjEq7GTs5ktIYEfscMZH39dEwT5U20VHZPv9-ne-hfuoJSZvwr6Q8cFpneYX0POL3JAiYIgVBxPTXaNQhJr0GMARNAY_WTbgnfv9j7zQhMtdA0IPhQdoFaFKNQ"
-                alt=""
-              />
-            </div>
-            <div class="p-8">
-              <div class="text-sm font-black uppercase mb-2">INFRASTRUCTURE // 01</div>
-              <h3 class="text-3xl font-black uppercase mb-4">CLOUDSCALE_ENG</h3>
-              <p class="text-lg font-bold mb-8">
-                AUTONOMOUS K8S SCALING. -40% LATENCY REDUCTION ON CORE SERVICES.
-              </p>
-              <div class="flex items-center justify-between border-t-2 border-black pt-6">
-                <span class="font-black uppercase">RUST / AWS</span>
-                <span class="material-symbols-outlined text-4xl">arrow_outward</span>
+          {
+            projectPlaceholders.map((project, index) => (
+              <div class="group border-r-brutal border-b-brutal border-black p-0 relative overflow-hidden bg-white hover:bg-accent transition-colors">
+                <div class="h-64 border-b-brutal border-black grayscale contrast-125 overflow-hidden">
+                  <img
+                    class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    src={project.thumbnail}
+                    alt={project.thumbnailAlt}
+                    width={640}
+                    height={480}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    decoding="async"
+                  />
+                </div>
+                <div class="p-8">
+                  <div class="text-sm font-black uppercase mb-2">{shout(project.tag)}</div>
+                  <h3 class="text-3xl font-black uppercase mb-4">{slug(project.name)}</h3>
+                  <p class="text-lg font-bold mb-8">{shout(project.description)}</p>
+                  <div class="flex items-center justify-between border-t-2 border-black pt-6">
+                    <span class="font-black uppercase">{project.stack}</span>
+                    <span class="material-symbols-outlined text-4xl">arrow_outward</span>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <!-- Project Card 2 -->
-          <div
-            class="group border-r-brutal border-b-brutal border-black p-0 relative overflow-hidden bg-white hover:bg-accent transition-colors"
-          >
-            <div class="h-64 border-b-brutal border-black grayscale contrast-125 overflow-hidden">
-              <img
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWj_vsMMo_AKocGuw-Bx9RzFViyjlOXbTO-8FGNuo2Iswo5lfc_FjFaQfA1eWona-gj3llz83oIE4g-wugMobKyUum9OzbGs2fXptdm3IcM6fc1JCzwqtl9QMK3AfU7gvoxDE4etJtHQvvfrJUkjwH55aaqAEwndbDb2JxEx56CjekjkJ0YmlDhLjtNO6a0IZKxLMnQXvUtDouNJvJF4xGHYzgNUa-mXPtedaHyHlIwqu90RIpwOpaJtKwpZ05CPTk0AQATtFPAQ"
-                alt=""
-              />
-            </div>
-            <div class="p-8">
-              <div class="text-sm font-black uppercase mb-2">FINTECH // 02</div>
-              <h3 class="text-3xl font-black uppercase mb-4">LUMINA_ANALYTICS</h3>
-              <p class="text-lg font-bold mb-8">
-                REAL-TIME DASHBOARDING. PREDICTIVE MODELS BUILT FOR HIGH-FREQUENCY DATA.
-              </p>
-              <div class="flex items-center justify-between border-t-2 border-black pt-6">
-                <span class="font-black uppercase">REACT / D3</span>
-                <span class="material-symbols-outlined text-4xl">arrow_outward</span>
-              </div>
-            </div>
-          </div>
-          <!-- Project Card 3 -->
-          <div
-            class="group border-r-brutal border-b-brutal border-black p-0 relative overflow-hidden bg-white hover:bg-accent transition-colors"
-          >
-            <div class="h-64 border-b-brutal border-black grayscale contrast-125 overflow-hidden">
-              <img
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbQqh5-McPPVrI6jGNCg83aqpqHhXmTEg0DCLn_5ndom9dUXrYWRPov74SIcH5UV5vUFadxWxqw_D17jHvkBeKuqvmy6mqN20iA2IWamJHLysxsuDNsYzJp6lscJTNWcLz9KXjKk0wB3z_KlrKTYHkXkakEnZnIfRTVrxdKsrDsaPpcAUpHd9_IpsUm9CwGggetimV5QmsRzi94I18EWWFgz8AQLRAnFq6Hmc9pMgslTEh4qazkq46l8BYS3vDlpTxZp4IfwrUOg"
-                alt=""
-              />
-            </div>
-            <div class="p-8">
-              <div class="text-sm font-black uppercase mb-2">WEB 3.0 // 03</div>
-              <h3 class="text-3xl font-black uppercase mb-4">NEXUS_PROTOCOL</h3>
-              <p class="text-lg font-bold mb-8">
-                DECENTRALIZED IDENTITY. HIGH-THROUGHPUT FOR ENTERPRISE INTEGRATION.
-              </p>
-              <div class="flex items-center justify-between border-t-2 border-black pt-6">
-                <span class="font-black uppercase">NEXT.JS / SOLIDITY</span>
-                <span class="material-symbols-outlined text-4xl">arrow_outward</span>
-              </div>
-            </div>
-          </div>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -246,51 +253,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           CAREER_LOGS
         </h2>
         <div class="space-y-0">
-          <!-- Log 1 -->
-          <div
-            class="group grid md:grid-cols-12 gap-0 border-b-brutal border-black hover:bg-black hover:text-white transition-colors py-12 px-4 items-center"
-          >
-            <div class="md:col-span-3 text-2xl font-black">2021 — NOW</div>
-            <div class="md:col-span-6">
-              <h3 class="text-4xl font-black uppercase mb-2">SNR_SW_ENGINEER</h3>
-              <div class="text-xl font-bold uppercase text-accent group-hover:text-accent">
-                TECHCORP_SOLUTIONS
+          {
+            experience.map((job) => (
+              <div class="group grid md:grid-cols-12 gap-0 border-b-brutal border-black hover:bg-black hover:text-white transition-colors py-12 px-4 items-center">
+                <div class="md:col-span-3 text-2xl font-black">{shout(job.period)}</div>
+                <div class="md:col-span-6">
+                  <h3 class="text-4xl font-black uppercase mb-2">{slug(job.title)}</h3>
+                  <div class="text-xl font-bold uppercase text-accent group-hover:text-accent">
+                    {slug(job.company)}
+                  </div>
+                </div>
+                <div class="md:col-span-3 text-right">
+                  <span class="text-lg font-bold opacity-70">{shout(job.type)}</span>
+                </div>
               </div>
-            </div>
-            <div class="md:col-span-3 text-right">
-              <span class="text-lg font-bold opacity-70">CORE_ARCHITECTURE</span>
-            </div>
-          </div>
-          <!-- Log 2 -->
-          <div
-            class="group grid md:grid-cols-12 gap-0 border-b-brutal border-black hover:bg-black hover:text-white transition-colors py-12 px-4 items-center"
-          >
-            <div class="md:col-span-3 text-2xl font-black">2019 — 2021</div>
-            <div class="md:col-span-6">
-              <h3 class="text-4xl font-black uppercase mb-2">FULL_STACK_DEV</h3>
-              <div class="text-xl font-bold uppercase text-accent group-hover:text-accent">
-                INNOVATE_LABS
-              </div>
-            </div>
-            <div class="md:col-span-3 text-right">
-              <span class="text-lg font-bold opacity-70">APP_DEVELOPMENT</span>
-            </div>
-          </div>
-          <!-- Log 3 -->
-          <div
-            class="group grid md:grid-cols-12 gap-0 border-b-brutal border-black hover:bg-black hover:text-white transition-colors py-12 px-4 items-center"
-          >
-            <div class="md:col-span-3 text-2xl font-black">2018 — 2019</div>
-            <div class="md:col-span-6">
-              <h3 class="text-4xl font-black uppercase mb-2">JR_ENGINEER</h3>
-              <div class="text-xl font-bold uppercase text-accent group-hover:text-accent">
-                STARTUP_INC
-              </div>
-            </div>
-            <div class="md:col-span-3 text-right">
-              <span class="text-lg font-bold opacity-70">UI_ARCHITECTURE</span>
-            </div>
-          </div>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -302,7 +280,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="lg:sticky lg:top-32">
             <h2 class="text-6xl md:text-9xl font-black uppercase leading-none mb-12">SEND_IT.</h2>
             <p class="text-2xl font-black mb-12">
-              HAVE A PROBLEM? NEED A SYSTEM THAT ACTUALLY SCALES? DON'T WAIT.
+              {shout(profile.contactBody)}
             </p>
             <div class="space-y-8">
               <div class="flex items-center gap-6">
@@ -315,7 +293,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                   <div class="text-sm font-black uppercase opacity-60">COMMS_LINK</div>
                   <a
                     class="text-2xl font-black underline hover:bg-black hover:text-white"
-                    href="mailto:hello@bhargesh.dev">HELLO@BHARGESH.DEV</a
+                    href={`mailto:${profile.email}`}>{shout(profile.email)}</a
                   >
                 </div>
               </div>
@@ -327,7 +305,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </div>
                 <div>
                   <div class="text-sm font-black uppercase opacity-60">COORD_LOC</div>
-                  <span class="text-2xl font-black">REMOTE / GLOBAL_NODE</span>
+                  <span class="text-2xl font-black">{shout(profile.location)}</span>
                 </div>
               </div>
             </div>
@@ -370,12 +348,33 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <footer class="bg-black text-white py-12">
     <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
       <div class="text-xl font-black uppercase">
-        © 2024 BHARGESH.LAB // [BUILT_WITH_BRUTALITY]
+        © {year} BHARGESH.LAB // [BUILT_WITH_BRUTALITY]
       </div>
       <div class="flex gap-12 text-lg font-black uppercase">
-        <a class="hover:text-accent underline decoration-4 underline-offset-4" href="#">GITHUB</a>
-        <a class="hover:text-accent underline decoration-4 underline-offset-4" href="#">LINKEDIN</a>
-        <a class="hover:text-accent underline decoration-4 underline-offset-4" href="#">TWITTER</a>
+        <a
+          class="hover:text-accent underline decoration-4 underline-offset-4"
+          href={github?.url ?? '#'}
+          target="_blank"
+          rel="noopener noreferrer">GITHUB</a
+        >
+        <a
+          class="hover:text-accent underline decoration-4 underline-offset-4"
+          href={linkedin?.url ?? '#'}
+          target="_blank"
+          rel="noopener noreferrer">LINKEDIN</a
+        >
+        <a
+          class="hover:text-accent underline decoration-4 underline-offset-4"
+          href={dailyDev?.url ?? '#'}
+          target="_blank"
+          rel="noopener noreferrer">DAILY DEV</a
+        >
+        <a
+          class="hover:text-accent underline decoration-4 underline-offset-4"
+          href={whatsapp?.url ?? '#'}
+          target="_blank"
+          rel="noopener noreferrer">WHATSAPP</a
+        >
       </div>
     </div>
   </footer>
