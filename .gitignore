@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# impeccable / agent tooling (not part of the site)
+.impeccable/
+.gemini/
+
+# cursor workspace-only skills (keep repo portfolio-only)
+.cursor/skills/

@@ -27,6 +27,12 @@ Approved from discovery chat (June 2026). Update this file before changing site 
 - Supabase
 - PostgreSQL
 
+### AI & tooling
+- OpenAI API
+- Cursor
+- ChatGPT
+- Antigravity
+
 Styling tools (Tailwind, CSS) are used but not highlighted in the hero per preference.
 
 ## Experience
@@ -46,7 +52,7 @@ Styling tools (Tailwind, CSS) are used but not highlighted in the hero per prefe
 - **Type:** Full time · On site
 - **Summary:** Two years on enterprise Angular apps — dashboards, internal tools, and long-lived codebases with a small on-site team.
 
-## Projects (show 2)
+## Projects
 
 ### Auction.io
 - **URL:** https://auction-io.netlify.app/
@@ -54,15 +60,9 @@ Styling tools (Tailwind, CSS) are used but not highlighted in the hero per prefe
 - **Summary:** Fantasy sports auction admin — teams, player pools, bidding flow, and dashboards. Angular with Supabase auth and PostgreSQL.
 - **Stack:** Angular, Supabase, PostgreSQL, TypeScript
 
-### Periodic Table
-- **URL:** https://prdc-table.netlify.app/
-- **Repo:** https://github.com/pbhargesh82/periodic-table
-- **Summary:** Interactive periodic table with 3D element models and detailed properties — an Angular app focused on exploration and reference.
-- **Stack:** Angular, TypeScript, Three.js
-
 ## Not shown
 
-Clash Spy, portfolio self-reference, Angular CRUD, Natours, and other tutorial-era projects.
+Periodic Table (hidden until v2 is ready), Clash Spy, Angular CRUD, Natours, and other tutorial-era projects.
 
 ## Meta & contact
 
@@ -78,7 +78,7 @@ Clash Spy, portfolio self-reference, Angular CRUD, Natours, and other tutorial-e
 
 **Experience:** Five years from on-site frontend work to end-to-end product builds — now shipping full features, not just UI.
 
-**Projects:** Two apps where I explored product ideas outside client work — one full-stack, one interaction-heavy frontend.
+**Projects:** Apps I’ve shipped outside client work — live demos with real code behind them.
 
 ## Marquee
 

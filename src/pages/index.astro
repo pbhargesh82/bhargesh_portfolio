@@ -275,6 +275,23 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
             </div>
           </div>
         </div>
+        <div class="reveal mt-10">
+          <h3 class="mb-5 font-mono text-sm font-bold uppercase tracking-wide text-muted">
+            AI &amp; Tooling
+          </h3>
+          <div class="flex flex-wrap gap-3">
+            {
+              stack.ai.map((tool) => (
+                <span class="border-2 border-ink bg-paper px-4 py-2 text-base font-bold">
+                  {tool.name}
+                </span>
+              ))
+            }
+          </div>
+          <p class="mt-4 text-sm text-muted">
+            I build with AI in the loop — from code generation to production features.
+          </p>
+        </div>
       </div>
     </section>
 

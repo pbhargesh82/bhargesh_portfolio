@@ -9,5 +9,11 @@
     { "name": "Node.js", "icon": "nodedotjs" },
     { "name": "Supabase", "icon": "supabase" },
     { "name": "PostgreSQL", "icon": "postgresql" }
+  ],
+  "ai": [
+    { "name": "OpenAI API", "icon": "openai" },
+    { "name": "Cursor", "icon": "cursor" },
+    { "name": "ChatGPT", "icon": "chatgpt" },
+    { "name": "Antigravity", "icon": "antigravity" }
   ]
 }
