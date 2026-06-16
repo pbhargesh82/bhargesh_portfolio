@@ -1,62 +1,81 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #000000;
-  --color-accent: #ffff00;
-  --color-surface: #ffffff;
-  --color-warning: #ffff00;
+  /* Refined engineering palette: near-black ink, clean paper, safety-yellow signature */
+  --color-ink: #0a0a0a;
+  --color-paper: #ffffff;
+  --color-surface: #f5f5f4;
+  --color-muted: #525257;
+  --color-line: #e4e4e4;
+  --color-accent: #ffe600;
+  --color-accent-ink: #0a0a0a;
 
-  --border-width-brutal: 4px;
-  --border-width-heavy: 8px;
+  /* Backward-compatible aliases */
+  --color-primary: #0a0a0a;
+  --color-warning: #ffe600;
 
-  --font-mono: "JetBrains Mono", monospace;
-  --font-headline: "JetBrains Mono", monospace;
-  --font-display: "JetBrains Mono", monospace;
-  --font-body: "JetBrains Mono", monospace;
+  --border-width-brutal: 3px;
+  --border-width-heavy: 6px;
+
+  --font-sans: "Archivo", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-headline: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Archivo", ui-sans-serif, system-ui, sans-serif;
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: "JetBrains Mono", monospace;
-  background-color: #ffffff;
-  color: #000000;
+  font-family: var(--font-sans);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
+/* ---- One brutalist signature: the offset hard shadow ---- */
 .brutal-border {
-  border: 4px solid #000000;
+  border: 3px solid var(--color-ink);
 }
 
 .brutal-shadow {
-  box-shadow: 8px 8px 0px 0px #000000;
+  box-shadow: 6px 6px 0 0 var(--color-ink);
 }
 
-.brutal-shadow-yellow {
-  box-shadow: 8px 8px 0px 0px #ffff00;
+.brutal-shadow-accent {
+  box-shadow: 6px 6px 0 0 var(--color-accent);
 }
 
-.brutal-shadow-hover:hover {
-  box-shadow: 12px 12px 0px 0px #000000;
-  transform: translate(-4px, -4px);
+.shadow-press {
+  transition:
+    transform 0.18s var(--ease-out-quint),
+    box-shadow 0.18s var(--ease-out-quint);
 }
 
-.glitch-bg {
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.03) 0px,
-    rgba(0, 0, 0, 0.03) 1px,
-    transparent 1px,
-    transparent 2px
-  );
+.shadow-press:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 3px 3px 0 0 var(--color-ink);
 }
 
-.text-outline {
-  -webkit-text-stroke: 1px black;
-  color: transparent;
+.shadow-press-accent:hover {
+  box-shadow: 3px 3px 0 0 var(--color-accent);
 }
 
-section {
-  border-bottom: 4px solid black;
+/* Highlight mark: yellow fill behind black text (passes contrast) */
+.mark {
+  background-color: var(--color-accent);
+  color: var(--color-ink);
+  padding: 0 0.18em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
+/* ---- Marquee band ---- */
 .marquee {
   overflow: hidden;
 }
@@ -64,7 +83,7 @@ section {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 42s linear infinite;
+  animation: marquee 60s linear infinite;
   will-change: transform;
 }
 
@@ -72,60 +91,95 @@ section {
   display: flex;
   flex-shrink: 0;
   align-items: center;
-  gap: 1.5rem;
-  padding-right: 1.5rem;
 }
 
+/* Uniform spacing via item margins (no gap/padding) so the loop seam
+   matches the internal rhythm exactly — seamless, continuous scroll. */
 .marquee-item {
-  font-size: 1.5rem;
-  font-weight: 900;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   line-height: 1;
   text-transform: uppercase;
   white-space: nowrap;
   flex-shrink: 0;
-  color: #ffff00;
+  margin: 0 1.25rem;
 }
 
 .marquee-sep {
-  font-size: 1.25rem;
-  font-weight: 900;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
   line-height: 1;
   white-space: nowrap;
   flex-shrink: 0;
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--color-accent);
 }
 
 @keyframes marquee {
   0% {
     transform: translateX(0);
   }
-
   100% {
     transform: translateX(-50%);
   }
 }
 
+/* ---- Scroll reveal: enhances an already-visible default ----
+   Content is visible by default. The hidden start state only applies
+   when JS is active (html.js), so no-JS and headless renders never ship blank. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s var(--ease-out-quint),
+    transform 0.6s var(--ease-out-quint);
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+:where(a, button, input, textarea):focus-visible {
+  outline: 3px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .marquee-track {
     animation: none;
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
-    gap: 0.75rem 1.5rem;
     padding: 0.25rem 1rem;
   }
 
   .marquee-group {
     display: contents;
-    padding-right: 0;
   }
 
-  .marquee-sep {
-    color: rgba(255, 255, 255, 0.35);
+  /* Show one static copy of the band when motion is reduced */
+  .marquee-group[aria-hidden='true'] {
+    display: none;
   }
 
-  html {
-    scroll-behavior: auto;
+  .marquee-item {
+    margin: 0.25rem 0.75rem;
+  }
+
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .shadow-press:hover {
+    transform: none;
   }
 }
 

@@ -12,13 +12,15 @@ Recruiters, hiring managers, and fellow developers scanning quickly between tabs
 
 A personal portfolio that communicates engineering craft through the site itself. Success means a visitor leaves knowing Bhargesh is a software engineer who ships full web features — UI, APIs, and data — can point to real projects, and is easy to contact for contract work.
 
-Profile copy and facts live in [`PROFILE.md`](PROFILE.md); update that file before changing site content. The brutalist UI voice (uppercase labels, terminal metaphors) is presentation — employers, projects, dates, and contact details must stay factual.
+Profile copy and facts live in [`PROFILE.md`](PROFILE.md); update that file before changing site content. The retained terminal-card metaphor is presentation — employers, projects, dates, and contact details must stay factual.
 
 ## Brand Personality
 
-Confident, loud, unapologetic. Three words: **raw**, **direct**, **committed**. The site should feel like a systems readout or field manual — high contrast, no decoration for decoration's sake, every element stamped and bordered. Not a dashboard, not a playground, not a quiet editorial intro.
+Confident, precise, low-ego. Three words: **clear**, **direct**, **engineered**. The site should read like someone who ships reliable product: clean typography, generous whitespace, and a single concentrated engineering signature (the hero terminal card + offset hard-shadow), not decoration on every element. Readable first, memorable second. Not a costume, not a playground, not a quiet editorial intro.
 
-**Scene:** A hiring manager opens the link on a bright monitor between meetings. The page hits immediately — black rules, safety yellow, monospace type — and reads like someone who builds things that stay up. The voice is terminal-native; the facts underneath are real.
+> Note: this is a deliberate revision. The portfolio previously used a full neo-brutalist voice (all-caps mono body, borders on every element, yellow drench). That worked against the goal of winning recruiter/client trust, so the direction is now **refined modern with one brutalist signature**. Safety-yellow is preserved as a ~10% accent for identity continuity.
+
+**Scene:** A hiring manager or prospective client opens the link between meetings. The page reads instantly — a clean sans headline, a readable pitch, real projects with live links, and an easy way to make contact. A single terminal card and yellow accent signal "engineer" without shouting. The facts underneath are real.
 
 ## Anti-references
 
@@ -27,17 +29,18 @@ Confident, loud, unapologetic. Three words: **raw**, **direct**, **committed**. 
 - Quiet editorial portfolios (serif display + muted restraint)
 - Generic AI landing tropes: "Boost your productivity", floating bento cards, identical icon grids
 - Playful easter eggs, joke widgets, wobble animations
-- The previous portfolio's skull backgrounds and topography textures
+- Full neo-brutalist costume: all-caps mono body, borders on every element, grayscale imagery, yellow-drenched sections
 - Placeholder copy — fake employers, projects, or contact paths on a live site
 
 ## Design Principles
 
-1. **Show craft through commitment** — thick borders, offset shadows, and uppercase hierarchy are the design system; timid spacing or rounded softness undermines the voice.
-2. **One clear path** — hero introduces, about/manifesto sets stance, projects prove output, experience proves tenure, contact converts.
-3. **Practice what you preach** — fast load, readable contrast on black/white/yellow, mobile nav that works, reduced-motion respect on marquee and reveals.
-4. **Earn every pixel** — marquee, metric blocks, and terminal labels must carry information or attitude tied to real work; cut filler.
-5. **Accessible by default** — WCAG AA contrast (especially yellow-on-white and white-on-yellow), focus states, semantic structure, meaningful alt text, keyboard-navigable links.
+1. **Readable first** — clean sans body in sentence case, generous whitespace, hairline structure. Mono and the terminal card are accents, not the whole voice.
+2. **One concentrated signature** — the hero terminal card + offset hard-shadow carry the engineering identity; resist re-bordering and re-capslocking every element.
+3. **One clear path** — hero introduces, about sets stance, stack + projects prove output, experience proves tenure, contact converts.
+4. **Proof over attitude** — lead with real projects (live links, real screenshots), real employers, and concrete summaries.
+5. **Practice what you preach** — fast load, AA contrast, working mobile nav, reduced-motion respect, reveal as progressive enhancement (never gate content on JS).
+6. **Accessible by default** — WCAG AA contrast, focus-visible states, semantic structure, meaningful alt text, keyboard-navigable links.
 
 ## Accessibility & Inclusion
 
-WCAG 2.1 AA contrast for text and interactive elements. Respect `prefers-reduced-motion` (marquee and scroll reveals). Keyboard-navigable links and focus-visible outlines on all interactive elements. Alt text on images and icons. Uppercase is a visual voice — do not sacrifice legibility; use weight and size for hierarchy.
+WCAG 2.1 AA contrast for text and interactive elements. Respect `prefers-reduced-motion` (marquee and scroll reveals). Keyboard-navigable links and focus-visible outlines on all interactive elements. Alt text on images and icons. Yellow is a fill/shadow accent, never low-contrast text on white. Body copy stays sentence case for legibility; reserve uppercase for short mono labels.

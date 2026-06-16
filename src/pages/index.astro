@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import projectPlaceholders from '../content/project-placeholders.json';
 import projects from '../content/projects.json';
 import experience from '../content/experience.json';
 import socials from '../content/socials.json';
@@ -14,146 +13,186 @@ const whatsapp = socials.find((s) => s.name === 'WhatsApp');
 const resume = socials.find((s) => s.name === 'Resume');
 const year = new Date().getFullYear();
 
-/** Honest counts from profile data — not vanity KPIs */
-const stats = [
-  { value: profile.yearsExperience, label: 'YEARS_EXP', accent: true },
-  { value: String(experience.length).padStart(2, '0'), label: 'ROLES_LOGGED', accent: false },
-  { value: String(projects.length).padStart(2, '0'), label: 'PERSONAL_BUILDS', accent: false },
-  {
-    value: String(stack.frontend.length + stack.backend.length).padStart(2, '0'),
-    label: 'STACK_TOOLS',
-    accent: true,
-  },
+const current = experience.find((j) => j.current) ?? experience[0];
+const facts = [
+  { label: 'Experience', value: `${parseInt(profile.yearsExperience, 10)}+ years` },
+  { label: 'Now', value: `${current.title} · ${current.company}` },
+  { label: 'Based in', value: profile.location },
+  { label: 'Availability', value: profile.heroCard.availability },
 ];
 
-const shout = (text: string) => text.toUpperCase();
-const slug = (text: string) =>
-  text
-    .replace(/[^a-zA-Z0-9]+/g, '_')
-    .replace(/^_|_$/g, '')
-    .toUpperCase();
+const navLinks = [
+  { href: '#about', label: 'About' },
+  { href: '#stack', label: 'Stack' },
+  { href: '#work', label: 'Work' },
+  { href: '#experience', label: 'Experience' },
+];
+
+const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
 ---
 
 <BaseLayout title={profile.pageTitle} description={profile.pageDescription}>
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-surface border-b-heavy border-black">
-    <nav class="max-w-full mx-auto flex justify-between items-center h-20 px-6">
-      <a class="text-2xl font-extrabold tracking-tighter uppercase" href="#">BHARGESH.LAB</a>
-      <div class="hidden md:flex items-center space-x-1">
+  <header class="sticky top-0 z-40 border-b border-line bg-paper/90 backdrop-blur-md">
+    <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:px-8">
+      <a class="font-mono text-base font-bold tracking-tight" href="#top">
+        bhargesh<span class="text-ink/40">.lab</span>
+      </a>
+
+      <div class="hidden items-center gap-1 md:flex">
+        {
+          navLinks.map((link) => (
+            <a
+              class="rounded-md px-3 py-2 text-sm font-semibold text-muted transition-colors hover:text-ink"
+              href={link.href}
+            >
+              {link.label}
+            </a>
+          ))
+        }
         <a
-          class="px-4 py-2 hover:bg-accent border-l-4 border-black font-bold uppercase transition-colors"
-          href="#about">ABOUT</a
-        >
-        <a
-          class="px-4 py-2 hover:bg-accent border-l-4 border-black font-bold uppercase transition-colors"
-          href="#projects">WORK</a
-        >
-        <a
-          class="px-4 py-2 hover:bg-accent border-l-4 border-black font-bold uppercase transition-colors"
-          href="#experience">LOGS</a
-        >
-        <a
-          class="px-6 py-2 bg-accent border-l-4 border-black font-extrabold uppercase hover:translate-y-[-2px] transition-transform"
+          class="shadow-press shadow-press-accent ml-2 inline-flex items-center gap-2 border-2 border-ink bg-ink px-4 py-2 text-sm font-bold text-white brutal-shadow-accent"
           href={resume?.url ?? '#'}
-          download={resume?.download}>RESUME.PDF</a
+          download={resume?.download}
         >
+          Résumé
+          <span class="material-symbols-outlined text-[18px]">download</span>
+        </a>
       </div>
-      <button class="md:hidden" type="button" aria-label="Menu">
-        <span class="material-symbols-outlined text-4xl">menu</span>
+
+      <button
+        class="flex h-10 w-10 items-center justify-center md:hidden"
+        type="button"
+        id="menu-toggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="material-symbols-outlined text-3xl">menu</span>
       </button>
     </nav>
+
+    <!-- Mobile menu -->
+    <div class="hidden border-t border-line bg-paper md:hidden" id="mobile-menu">
+      <div class="flex flex-col px-5 py-3">
+        {
+          navLinks.map((link) => (
+            <a class="border-b border-line py-3 text-base font-semibold" href={link.href}>
+              {link.label}
+            </a>
+          ))
+        }
+        <a
+          class="mt-3 inline-flex items-center justify-center gap-2 border-2 border-ink bg-ink px-4 py-3 text-base font-bold text-white"
+          href={resume?.url ?? '#'}
+          download={resume?.download}
+        >
+          Download résumé
+          <span class="material-symbols-outlined text-[18px]">download</span>
+        </a>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <!-- Hero Section -->
-    <section
-      class="relative min-h-screen overflow-x-hidden overflow-y-visible bg-white pt-16 md:pt-20"
-      id="hero"
-    >
-      <div class="absolute inset-0 glitch-bg opacity-50 pointer-events-none"></div>
+  <main id="top">
+    <!-- Hero -->
+    <section class="relative overflow-hidden" id="hero">
       <div
-        class="container relative mx-auto grid gap-0 overflow-visible px-6 py-8 md:grid-cols-12 md:py-12 lg:py-16"
+        class="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-12 md:px-8 md:py-24 lg:py-28"
       >
-        <div class="z-10 md:col-span-8">
-          <div
-            class="bg-accent inline-block px-4 py-1 brutal-border mb-6 font-bold uppercase tracking-widest"
-          >
-            {shout(profile.heroEyebrow)}
-          </div>
-          <h1 class="text-6xl md:text-9xl font-black uppercase leading-none mb-8 break-words">
-            SHIPPING CODE THAT <span class="bg-black text-white px-4">WORKS.</span>
-          </h1>
-          <p
-            class="text-xl md:text-2xl font-bold max-w-2xl mb-12 border-l-brutal border-black pl-6"
-          >
-            {shout(profile.heroBio)}
+        <div class="md:col-span-7 lg:col-span-7">
+          <p class="mb-6 font-mono text-xs font-medium uppercase tracking-[0.18em] text-muted">
+            Software engineer · {profile.location}
           </p>
-          <div class="flex flex-wrap gap-6">
+          <h1
+            class="text-balance text-5xl font-black leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl"
+          >
+            Shipping code that <span class="mark">works.</span>
+          </h1>
+          <p class="mt-7 max-w-xl text-lg leading-relaxed text-muted">
+            {profile.heroBio}
+          </p>
+
+          <div class="mt-9 flex flex-wrap items-center gap-4">
             <a
-              class="bg-black text-white px-10 py-5 text-xl font-black brutal-shadow-yellow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase"
-              href="#projects">GET THE STACK</a
+              class="shadow-press shadow-press-accent inline-flex items-center gap-2 border-2 border-ink bg-ink px-7 py-3.5 text-base font-bold text-white brutal-shadow-accent"
+              href="#work"
             >
+              View work
+              <span class="material-symbols-outlined text-[20px]">arrow_downward</span>
+            </a>
             <a
-              class="bg-white border-brutal border-black px-10 py-5 text-xl font-black brutal-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase"
-              href="#contact">WAKE ME UP</a
+              class="shadow-press inline-flex items-center gap-2 border-2 border-ink bg-paper px-7 py-3.5 text-base font-bold text-ink brutal-shadow"
+              href="#contact"
             >
+              Get in touch
+            </a>
+          </div>
+
+          <div class="mt-9 flex items-center gap-2.5 text-sm font-semibold text-muted">
+            <span class="relative flex h-2.5 w-2.5">
+              <span
+                class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75"
+              ></span>
+              <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-600"></span>
+            </span>
+            Available for contract &amp; freelance work
           </div>
         </div>
-        <div class="relative hidden overflow-visible md:col-span-4 md:block md:min-h-[32rem] md:pt-12">
-          <div
-            class="absolute top-12 right-0 z-0 h-full w-[95%] -rotate-3 bg-accent brutal-border"
-            aria-hidden="true"
-          >
-          </div>
+
+        <!-- Brutalist signature: terminal card -->
+        <div class="md:col-span-5 lg:col-span-5">
           <figure
-            class="relative top-24 z-10 rotate-3 overflow-hidden border-heavy border-black bg-white p-6 brutal-shadow"
-            aria-label={`Portfolio status: ${profile.heroCard.status}, ${profile.heroCard.focus}, ${profile.heroCard.availability}`}
+            class="brutal-border brutal-shadow bg-ink p-3 font-mono"
+            aria-label={`Status: ${profile.heroCard.status}. Focus: ${profile.heroCard.focus}. Open to ${profile.heroCard.availability}.`}
           >
-            <div
-              class="flex aspect-4/3 w-full flex-col justify-between bg-black p-4 font-mono text-xs font-bold leading-relaxed"
-              aria-hidden="true"
-            >
-              <div class="space-y-2 border border-accent p-3 text-accent">
-                <p>&gt; INIT PORTFOLIO.V2</p>
-                <p>&gt; SCOPE: END_TO_END</p>
-                <p>&gt; DELIVERY: CLIENT_FEATURES</p>
-                <p class="text-white">&gt; ACCEPTING_WORK_</p>
-              </div>
-              <div class="grid grid-cols-4 gap-1 pt-3">
-                {
-                  Array.from({ length: 8 }).map(() => (
-                    <div class="h-3 bg-accent" />
-                  ))
-                }
-              </div>
+            <div class="flex items-center gap-2 px-2 py-2" aria-hidden="true">
+              <span class="h-3 w-3 rounded-full bg-[#ff5f56]"></span>
+              <span class="h-3 w-3 rounded-full bg-[#ffbd2e]"></span>
+              <span class="h-3 w-3 rounded-full bg-[#27c93f]"></span>
+              <span class="ml-2 text-xs text-white/40">~/portfolio</span>
             </div>
-            <figcaption class="mt-4 font-mono text-sm leading-tight uppercase font-bold">
-              SITE: {slug(profile.heroCard.site)}<br />
-              STATUS: {slug(profile.heroCard.status)}<br />
-              FOCUS: {slug(profile.heroCard.focus)}<br />
-              OPEN: {slug(profile.heroCard.availability)}
-            </figcaption>
+            <div class="space-y-2 p-3 text-[13px] leading-relaxed" aria-hidden="true">
+              <p class="text-white/40">$ whoami</p>
+              <p class="text-accent">bhargesh — full-stack engineer</p>
+              <p class="text-white/40">$ cat status.json</p>
+              <p class="text-white">
+                {'{'}<br />
+                <span class="pl-4 text-white/70">"status":</span> <span class="text-accent"
+                  >"{profile.heroCard.status.toLowerCase()}"</span
+                >,<br />
+                <span class="pl-4 text-white/70">"focus":</span> <span class="text-white"
+                  >"{profile.heroCard.focus.toLowerCase()}"</span
+                >,<br />
+                <span class="pl-4 text-white/70">"open_to":</span> <span class="text-white"
+                  >"{profile.heroCard.availability.toLowerCase()}"</span
+                ><br />
+                {'}'}
+              </p>
+              <p class="text-white/40">$ <span class="animate-pulse">▋</span></p>
+            </div>
           </figure>
         </div>
       </div>
     </section>
 
     <!-- Marquee -->
-    <div
-      class="bg-black text-accent py-4 border-b-heavy border-black overflow-hidden select-none"
-      aria-label="Highlights"
-    >
+    <div class="border-y border-ink bg-ink py-3 text-white" aria-label="Highlights">
       <div class="marquee">
         <div class="marquee-track">
           {
             [false, true].map((hidden) => (
               <div class="marquee-group" aria-hidden={hidden}>
-                {profile.marquee.map((phrase, index) => (
-                  <>
-                    {index > 0 && <span class="marquee-sep" aria-hidden="true">//</span>}
-                    <span class="marquee-item">{shout(phrase)}</span>
-                  </>
-                ))}
+                {Array.from({ length: 3 })
+                  .flatMap(() => profile.marquee)
+                  .map((phrase) => (
+                    <>
+                      <span class="marquee-item">{phrase}</span>
+                      <span class="marquee-sep" aria-hidden="true">
+                        /
+                      </span>
+                    </>
+                  ))}
               </div>
             ))
           }
@@ -161,110 +200,198 @@ const slug = (text: string) =>
       </div>
     </div>
 
-    <!-- About Section -->
-    <section class="py-24 bg-white relative" id="about">
-      <div class="container mx-auto px-6">
-        <div class="grid lg:grid-cols-12 gap-12 items-start">
-          <div class="lg:col-span-5">
-            <h2 class="text-5xl md:text-7xl font-black uppercase mb-12 leading-tight">
-              THE <span class="bg-accent px-2">MANIFESTO</span>
+    <!-- About -->
+    <section class="border-b border-line py-20 md:py-28" id="about">
+      <div class="mx-auto max-w-6xl px-5 md:px-8">
+        <div class="grid gap-14 lg:grid-cols-12">
+          <div class="reveal lg:col-span-5">
+            <p class="mb-4 font-mono text-xs font-medium uppercase tracking-[0.18em] text-muted">
+              About
+            </p>
+            <h2 class="text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
+              I own features end to end — UI, API, and data.
             </h2>
-            <div class="space-y-8 text-xl font-bold leading-relaxed">
-              <p>{shout(profile.manifesto[0])}</p>
-              <p class="border-l-brutal border-black pl-6">{shout(profile.manifesto[1])}</p>
-              <p>{shout(profile.manifesto[2])}</p>
+          </div>
+          <div class="reveal space-y-6 text-lg leading-relaxed text-muted lg:col-span-7">
+            {profile.manifesto.map((para) => <p>{para}</p>)}
+          </div>
+        </div>
+
+        <dl class="reveal mt-16 grid grid-cols-2 gap-px overflow-hidden border border-line bg-line lg:grid-cols-4">
+          {
+            facts.map((fact) => (
+              <div class="bg-paper p-5 md:p-6">
+                <dt class="font-mono text-xs uppercase tracking-[0.14em] text-muted">
+                  {fact.label}
+                </dt>
+                <dd class="mt-2 text-base font-bold leading-snug tracking-tight md:text-lg">
+                  {fact.value}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </section>
+
+    <!-- Stack -->
+    <section class="border-b border-line bg-surface py-20 md:py-28" id="stack">
+      <div class="mx-auto max-w-6xl px-5 md:px-8">
+        <div class="reveal mb-12">
+          <p class="mb-4 font-mono text-xs font-medium uppercase tracking-[0.18em] text-muted">
+            Stack
+          </p>
+          <h2 class="text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
+            Tools I build with.
+          </h2>
+        </div>
+        <div class="grid gap-10 md:grid-cols-2">
+          <div class="reveal">
+            <h3 class="mb-5 font-mono text-sm font-bold uppercase tracking-wide text-muted">
+              Frontend
+            </h3>
+            <div class="flex flex-wrap gap-3">
+              {
+                stack.frontend.map((tool) => (
+                  <span class="border-2 border-ink bg-paper px-4 py-2 text-base font-bold">
+                    {tool.name}
+                  </span>
+                ))
+              }
             </div>
           </div>
-          <div class="lg:col-span-7 grid grid-cols-2 gap-6">
-            {
-              stats.map((stat) => (
-                <div
-                  class:list={[
-                    'p-8 border-brutal border-black brutal-shadow-hover transition-all',
-                    stat.accent ? 'bg-accent' : 'bg-white',
-                  ]}
-                >
-                  <div class="text-7xl font-black mb-2">{stat.value}</div>
-                  <div class="text-xl font-black uppercase underline">{stat.label}</div>
-                </div>
-              ))
-            }
+          <div class="reveal">
+            <h3 class="mb-5 font-mono text-sm font-bold uppercase tracking-wide text-muted">
+              Backend &amp; Data
+            </h3>
+            <div class="flex flex-wrap gap-3">
+              {
+                stack.backend.map((tool) => (
+                  <span class="border-2 border-ink bg-paper px-4 py-2 text-base font-bold">
+                    {tool.name}
+                  </span>
+                ))
+              }
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="py-24 bg-white" id="projects">
-      <div class="container mx-auto px-6">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+    <!-- Work -->
+    <section class="border-b border-line py-20 md:py-28" id="work">
+      <div class="mx-auto max-w-6xl px-5 md:px-8">
+        <div class="reveal mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <h2 class="text-5xl md:text-8xl font-black uppercase leading-none">THE_VAULT</h2>
-            <p class="text-xl font-bold mt-4 uppercase">{shout(profile.projectsIntro)}</p>
+            <p class="mb-4 font-mono text-xs font-medium uppercase tracking-[0.18em] text-muted">
+              Selected work
+            </p>
+            <h2 class="text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
+              Things I’ve shipped.
+            </h2>
           </div>
           <a
-            class="group flex items-center gap-4 bg-accent border-brutal border-black px-8 py-4 font-black uppercase hover:bg-black hover:text-white transition-all"
+            class="inline-flex items-center gap-2 text-base font-bold text-ink underline decoration-2 underline-offset-4 transition-colors hover:text-muted"
             href={github?.url ?? '#'}
             target="_blank"
-            rel="noopener noreferrer">
-            OPEN_REPOS.SH
-            <span class="material-symbols-outlined group-hover:rotate-45 transition-transform"
-              >arrow_forward</span
-            >
+            rel="noopener noreferrer"
+          >
+            More on GitHub
+            <span class="material-symbols-outlined text-[20px]">north_east</span>
           </a>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-0 border-t-brutal border-l-brutal border-black">
+
+        <div class="grid gap-8 md:grid-cols-2">
           {
-            projectPlaceholders.map((project, index) => (
-              <div class="group border-r-brutal border-b-brutal border-black p-0 relative overflow-hidden bg-white hover:bg-accent transition-colors">
-                <div class="h-64 border-b-brutal border-black grayscale contrast-125 overflow-hidden">
+            projects.map((project, index) => (
+              <article class="reveal group flex flex-col overflow-hidden border-2 border-ink bg-paper brutal-shadow shadow-press">
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block aspect-[16/10] overflow-hidden border-b-2 border-ink bg-surface"
+                >
                   <img
-                    class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    class="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                     src={project.thumbnail}
                     alt={project.thumbnailAlt}
                     width={640}
-                    height={480}
+                    height={400}
                     loading={index === 0 ? 'eager' : 'lazy'}
                     decoding="async"
                   />
-                </div>
-                <div class="p-8">
-                  <div class="text-sm font-black uppercase mb-2">{shout(project.tag)}</div>
-                  <h3 class="text-3xl font-black uppercase mb-4">{slug(project.name)}</h3>
-                  <p class="text-lg font-bold mb-8">{shout(project.description)}</p>
-                  <div class="flex items-center justify-between border-t-2 border-black pt-6">
-                    <span class="font-black uppercase">{project.stack}</span>
-                    <span class="material-symbols-outlined text-4xl">arrow_outward</span>
+                </a>
+                <div class="flex flex-1 flex-col p-6">
+                  <h3 class="text-2xl font-extrabold tracking-tight">{project.name}</h3>
+                  <p class="mt-3 flex-1 text-base leading-relaxed text-muted">
+                    {project.description}
+                  </p>
+                  <div class="mt-5 flex flex-wrap gap-2">
+                    {project.stack.map((tech) => (
+                      <span class="font-mono text-xs font-medium text-muted">#{tech}</span>
+                    ))}
+                  </div>
+                  <div class="mt-6 flex items-center gap-5 border-t border-line pt-5">
+                    <a
+                      class="inline-flex items-center gap-1.5 text-sm font-bold hover:underline"
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Live demo
+                      <span class="material-symbols-outlined text-[18px]">north_east</span>
+                    </a>
+                    <a
+                      class="inline-flex items-center gap-1.5 text-sm font-bold text-muted hover:text-ink"
+                      href={project.uiRepoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Code
+                      <span class="material-symbols-outlined text-[18px]">code</span>
+                    </a>
                   </div>
                 </div>
-              </div>
+              </article>
             ))
           }
         </div>
       </div>
     </section>
 
-    <!-- Experience Section -->
-    <section class="py-24 bg-white" id="experience">
-      <div class="container mx-auto px-6">
-        <h2
-          class="text-5xl md:text-8xl font-black uppercase mb-20 border-b-heavy border-black pb-8"
-        >
-          CAREER_LOGS
-        </h2>
-        <div class="space-y-0">
+    <!-- Experience -->
+    <section class="border-b border-line bg-surface py-20 md:py-28" id="experience">
+      <div class="mx-auto max-w-6xl px-5 md:px-8">
+        <div class="reveal mb-12">
+          <p class="mb-4 font-mono text-xs font-medium uppercase tracking-[0.18em] text-muted">
+            Experience
+          </p>
+          <h2 class="text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
+            Five years, three teams.
+          </h2>
+        </div>
+
+        <div class="border-t border-line">
           {
             experience.map((job) => (
-              <div class="group grid md:grid-cols-12 gap-0 border-b-brutal border-black hover:bg-black hover:text-white transition-colors py-12 px-4 items-center">
-                <div class="md:col-span-3 text-2xl font-black">{shout(job.period)}</div>
-                <div class="md:col-span-6">
-                  <h3 class="text-4xl font-black uppercase mb-2">{slug(job.title)}</h3>
-                  <div class="text-xl font-bold uppercase text-accent group-hover:text-accent">
-                    {slug(job.company)}
-                  </div>
+              <div class="reveal grid gap-2 border-b border-line py-8 md:grid-cols-12 md:gap-6">
+                <div class="md:col-span-3">
+                  <div class="font-mono text-sm font-medium text-muted">{job.period}</div>
+                  {job.current && (
+                    <span class="mt-2 inline-block bg-accent px-2 py-0.5 font-mono text-[11px] font-bold uppercase tracking-wide text-ink">
+                      Current
+                    </span>
+                  )}
                 </div>
-                <div class="md:col-span-3 text-right">
-                  <span class="text-lg font-bold opacity-70">{shout(job.type)}</span>
+                <div class="md:col-span-9">
+                  <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <h3 class="text-xl font-extrabold tracking-tight">{job.title}</h3>
+                    <span class="text-lg font-bold text-muted">· {job.company}</span>
+                  </div>
+                  <div class="mt-1 font-mono text-xs font-medium uppercase tracking-wide text-muted">
+                    {job.type} · {job.duration}
+                  </div>
+                  <p class="mt-3 max-w-2xl text-base leading-relaxed text-muted">{job.summary}</p>
                 </div>
               </div>
             ))
@@ -273,130 +400,256 @@ const slug = (text: string) =>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="py-24 bg-accent" id="contact">
-      <div class="container mx-auto px-6">
-        <div class="grid lg:grid-cols-2 gap-16 items-start">
-          <div class="lg:sticky lg:top-32">
-            <h2 class="text-6xl md:text-9xl font-black uppercase leading-none mb-12">SEND_IT.</h2>
-            <p class="text-2xl font-black mb-12">
-              {shout(profile.contactBody)}
+    <!-- Contact -->
+    <section class="py-20 md:py-28" id="contact">
+      <div class="mx-auto max-w-6xl px-5 md:px-8">
+        <div class="grid gap-14 lg:grid-cols-12">
+          <div class="reveal lg:col-span-5">
+            <p class="mb-4 font-mono text-xs font-medium uppercase tracking-[0.18em] text-muted">
+              Contact
             </p>
-            <div class="space-y-8">
-              <div class="flex items-center gap-6">
-                <div
-                  class="w-16 h-16 border-brutal border-black flex items-center justify-center bg-white"
+            <h2 class="text-balance text-4xl font-black tracking-tight sm:text-5xl">
+              Let’s build something.
+            </h2>
+            <p class="mt-6 max-w-md text-lg leading-relaxed text-muted">
+              {profile.contactBody}
+            </p>
+
+            <div class="mt-10 space-y-5">
+              <a
+                class="group flex items-center gap-4"
+                href={`mailto:${profile.email}`}
+              >
+                <span
+                  class="flex h-12 w-12 shrink-0 items-center justify-center border-2 border-ink bg-paper"
                 >
-                  <span class="material-symbols-outlined text-4xl">mail</span>
-                </div>
-                <div>
-                  <div class="text-sm font-black uppercase opacity-60">COMMS_LINK</div>
-                  <a
-                    class="text-2xl font-black underline hover:bg-black hover:text-white"
-                    href={`mailto:${profile.email}`}>{shout(profile.email)}</a
+                  <span class="material-symbols-outlined">mail</span>
+                </span>
+                <span>
+                  <span class="block font-mono text-xs uppercase tracking-wide text-muted">Email</span>
+                  <span class="text-lg font-bold group-hover:underline">{profile.email}</span>
+                </span>
+              </a>
+              <div class="flex items-center gap-4">
+                <span
+                  class="flex h-12 w-12 shrink-0 items-center justify-center border-2 border-ink bg-paper"
+                >
+                  <span class="material-symbols-outlined">location_on</span>
+                </span>
+                <span>
+                  <span class="block font-mono text-xs uppercase tracking-wide text-muted"
+                    >Location</span
                   >
-                </div>
+                  <span class="text-lg font-bold">{profile.location}</span>
+                </span>
               </div>
-              <div class="flex items-center gap-6">
-                <div
-                  class="w-16 h-16 border-brutal border-black flex items-center justify-center bg-white"
-                >
-                  <span class="material-symbols-outlined text-4xl">location_on</span>
-                </div>
-                <div>
-                  <div class="text-sm font-black uppercase opacity-60">COORD_LOC</div>
-                  <span class="text-2xl font-black">{shout(profile.location)}</span>
-                </div>
-              </div>
+            </div>
+
+            <div class="mt-10 flex flex-wrap gap-5">
+              {
+                footerSocials.map((social) => (
+                  <a
+                    class="text-sm font-bold text-muted underline decoration-2 underline-offset-4 hover:text-ink"
+                    href={social?.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {social?.name}
+                  </a>
+                ))
+              }
             </div>
           </div>
-          <form class="bg-white border-heavy border-black p-10 brutal-shadow space-y-8">
-            <div class="space-y-4">
-              <label class="block text-xl font-black uppercase">NAME_INPUT</label>
-              <input
-                class="w-full p-4 border-brutal border-black bg-white focus:bg-accent focus:outline-none text-xl font-bold uppercase placeholder:text-black/30"
-                placeholder="IDENTIFY YOURSELF"
-                type="text"
-              />
-            </div>
-            <div class="space-y-4">
-              <label class="block text-xl font-black uppercase">EMAIL_INPUT</label>
-              <input
-                class="w-full p-4 border-brutal border-black bg-white focus:bg-accent focus:outline-none text-xl font-bold uppercase placeholder:text-black/30"
-                placeholder="REPLY_TO@DOMAIN.COM"
-                type="email"
-              />
-            </div>
-            <div class="space-y-4">
-              <label class="block text-xl font-black uppercase">MESSAGE_PAYLOAD</label>
-              <textarea
-                class="w-full p-4 border-brutal border-black bg-white focus:bg-accent focus:outline-none text-xl font-bold uppercase placeholder:text-black/30"
-                placeholder="DESCRIBE THE MISSION"
-                rows="6"></textarea>
-            </div>
-            <button
-              class="w-full bg-black text-white py-6 text-2xl font-black uppercase hover:bg-accent hover:text-black transition-colors brutal-shadow-yellow active:translate-x-1 active:translate-y-1 active:shadow-none"
-              type="submit">EXECUTE_SEND</button
+
+          <div class="reveal lg:col-span-7">
+            <form
+              class="border-2 border-ink bg-paper p-6 brutal-shadow md:p-8"
+              id="contact-form"
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
             >
-          </form>
+              <input type="hidden" name="form-name" value="contact" />
+              <p class="hidden">
+                <label>Don’t fill this out: <input name="bot-field" /></label>
+              </p>
+              <div class="grid gap-6 sm:grid-cols-2">
+                <div>
+                  <label class="mb-2 block text-sm font-bold" for="name">Name</label>
+                  <input
+                    class="w-full border-2 border-ink bg-paper px-4 py-3 text-base font-medium placeholder:text-ink/35 focus:bg-accent/20 focus:outline-none"
+                    id="name"
+                    name="name"
+                    placeholder="Your name"
+                    type="text"
+                    required
+                  />
+                </div>
+                <div>
+                  <label class="mb-2 block text-sm font-bold" for="email">Email</label>
+                  <input
+                    class="w-full border-2 border-ink bg-paper px-4 py-3 text-base font-medium placeholder:text-ink/35 focus:bg-accent/20 focus:outline-none"
+                    id="email"
+                    name="email"
+                    placeholder="you@company.com"
+                    type="email"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="mt-6">
+                <label class="mb-2 block text-sm font-bold" for="message">Message</label>
+                <textarea
+                  class="w-full border-2 border-ink bg-paper px-4 py-3 text-base font-medium placeholder:text-ink/35 focus:bg-accent/20 focus:outline-none"
+                  id="message"
+                  name="message"
+                  placeholder="Tell me about the project, timeline, and scope."
+                  rows="6"
+                  required></textarea>
+              </div>
+              <button
+                class="shadow-press shadow-press-accent mt-6 inline-flex w-full items-center justify-center gap-2 border-2 border-ink bg-ink px-7 py-4 text-base font-bold text-white brutal-shadow-accent sm:w-auto"
+                type="submit"
+              >
+                Send message
+                <span class="material-symbols-outlined text-[20px]">send</span>
+              </button>
+              <p class="mt-4 text-sm text-muted" id="form-error" hidden role="alert">
+                Something went wrong. Email me directly at
+                <a class="font-bold text-ink underline" href={`mailto:${profile.email}`}
+                  >{profile.email}</a
+                >.
+              </p>
+            </form>
+
+            <div
+              class="flex flex-col items-start justify-center border-2 border-ink bg-paper p-8 brutal-shadow md:p-10"
+              id="form-success"
+              hidden
+            >
+              <span
+                class="flex h-14 w-14 items-center justify-center border-2 border-ink bg-accent"
+              >
+                <span class="material-symbols-outlined text-3xl">check</span>
+              </span>
+              <h3 class="mt-6 text-2xl font-extrabold tracking-tight">Message sent.</h3>
+              <p class="mt-3 max-w-sm text-base leading-relaxed text-muted">
+                Thanks for reaching out — I’ll get back to you by email soon. For anything urgent,
+                <a class="font-bold text-ink underline" href={`mailto:${profile.email}`}
+                  >email me directly</a
+                >.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-black text-white py-12">
-    <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-      <div class="text-xl font-black uppercase">
-        © {year} BHARGESH.LAB // [BUILT_WITH_BRUTALITY]
+  <footer class="border-t border-ink bg-ink py-10 text-white">
+    <div
+      class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-5 md:flex-row md:px-8"
+    >
+      <div class="font-mono text-sm text-white/60">
+        © {year} Bhargesh Patel · Built with Astro
       </div>
-      <div class="flex gap-12 text-lg font-black uppercase">
-        <a
-          class="hover:text-accent underline decoration-4 underline-offset-4"
-          href={github?.url ?? '#'}
-          target="_blank"
-          rel="noopener noreferrer">GITHUB</a
-        >
-        <a
-          class="hover:text-accent underline decoration-4 underline-offset-4"
-          href={linkedin?.url ?? '#'}
-          target="_blank"
-          rel="noopener noreferrer">LINKEDIN</a
-        >
-        <a
-          class="hover:text-accent underline decoration-4 underline-offset-4"
-          href={dailyDev?.url ?? '#'}
-          target="_blank"
-          rel="noopener noreferrer">DAILY DEV</a
-        >
-        <a
-          class="hover:text-accent underline decoration-4 underline-offset-4"
-          href={whatsapp?.url ?? '#'}
-          target="_blank"
-          rel="noopener noreferrer">WHATSAPP</a
-        >
+      <div class="flex flex-wrap justify-center gap-6 text-sm font-bold">
+        {
+          footerSocials.map((social) => (
+            <a
+              class="text-white/70 transition-colors hover:text-accent"
+              href={social?.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {social?.name}
+            </a>
+          ))
+        }
       </div>
     </div>
   </footer>
 
   <script is:inline>
-    const reveal = () => {
-      const items = document.querySelectorAll('section');
-      items.forEach((item) => {
-        const rect = item.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          item.style.opacity = '1';
-          item.style.transform = 'translateY(0)';
+    // Enable JS-only reveal states (content stays visible without JS)
+    document.documentElement.classList.add('js');
+
+    // Mobile menu
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const open = menu.classList.toggle('hidden') === false;
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.querySelector('.material-symbols-outlined').textContent = open ? 'close' : 'menu';
+      });
+      menu.querySelectorAll('a').forEach((link) =>
+        link.addEventListener('click', () => {
+          menu.classList.add('hidden');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.querySelector('.material-symbols-outlined').textContent = 'menu';
+        }),
+      );
+    }
+
+    // Contact form: submit to Netlify via fetch, show inline success state
+    const form = document.getElementById('contact-form');
+    if (form) {
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const button = form.querySelector('button[type="submit"]');
+        const errorEl = document.getElementById('form-error');
+        const successEl = document.getElementById('form-success');
+        if (errorEl) errorEl.hidden = true;
+        const buttonHtml = button ? button.innerHTML : '';
+        if (button) {
+          button.disabled = true;
+          button.textContent = 'Sending…';
+        }
+        try {
+          const body = new URLSearchParams(new FormData(form)).toString();
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body,
+          });
+          if (!res.ok) throw new Error('Request failed: ' + res.status);
+          form.hidden = true;
+          if (successEl) {
+            successEl.hidden = false;
+            successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        } catch (err) {
+          if (button) {
+            button.disabled = false;
+            button.innerHTML = buttonHtml;
+          }
+          if (errorEl) errorEl.hidden = false;
         }
       });
-    };
+    }
 
-    window.addEventListener('scroll', reveal);
-    window.addEventListener('load', () => {
-      document.querySelectorAll('section').forEach((s) => {
-        s.style.transition = 'all 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67)';
-      });
-      reveal();
-    });
+    // Scroll reveal (enhances already-visible content)
+    const reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && reveals.length) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { rootMargin: '0px 0px -10% 0px', threshold: 0.1 },
+      );
+      reveals.forEach((el) => io.observe(el));
+      // Safety net: reveal everything after a beat in case the observer never fires
+      window.setTimeout(() => reveals.forEach((el) => el.classList.add('is-visible')), 1500);
+    } else {
+      reveals.forEach((el) => el.classList.add('is-visible'));
+    }
   </script>
 </BaseLayout>

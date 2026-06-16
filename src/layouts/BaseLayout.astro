@@ -7,9 +7,9 @@ interface Props {
 }
 
 const {
-  title = 'BHARGESH.LAB | RAW ENGINEERING',
+  title = 'Bhargesh Patel — Software Engineer',
   description =
-    'Bhargesh Patel — software engineer. Raw engineering, high-performance scalable architecture.',
+    'Bhargesh Patel — software engineer shipping end-to-end web products. Angular, React, Node, Supabase. Open to contract work.',
 } = Astro.props;
 
 const siteUrl = 'https://pbhargesh82.netlify.app';
@@ -40,13 +40,16 @@ const ogImage = `${siteUrl}/images/projects/auction-io.png`;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
       rel="stylesheet"
     />
 
     <title>{title}</title>
   </head>
-  <body class="bg-surface text-primary selection:bg-accent selection:text-primary overflow-x-hidden">
+  <body class="bg-paper text-ink selection:bg-accent selection:text-ink overflow-x-hidden antialiased">
     <slot />
-  </body>
+  <!-- impeccable-live-start -->
+<script is:inline src="http://localhost:8400/live.js"></script>
+<!-- impeccable-live-end -->
+</body>
 </html>
