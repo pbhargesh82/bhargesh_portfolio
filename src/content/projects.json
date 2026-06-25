@@ -1,6 +1,16 @@
 [
   {
     "id": 1,
+    "name": "ClientSpace",
+    "description": "Dual-role client portal: admins manage clients, projects, tasks, and file sharing; clients get a focused view of their work. React, Node.js, and Supabase with row-level security.",
+    "url": "https://clientspace-app.netlify.app/login?email=admin@example.com&password=123",
+    "uiRepoUrl": "https://github.com/pbhargesh82/client.io",
+    "stack": ["React", "Node.js", "Supabase", "PostgreSQL", "TypeScript"],
+    "thumbnail": "/images/projects/clientspace.png",
+    "thumbnailAlt": "ClientSpace login screen for the admin and client portal"
+  },
+  {
+    "id": 2,
     "name": "Auction.io",
     "description": "Fantasy sports auction admin: teams, player pools, bidding flow, and dashboards. Angular with Supabase auth and PostgreSQL.",
     "url": "https://auction-io.netlify.app/",

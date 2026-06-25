@@ -54,6 +54,12 @@ Styling tools (Tailwind, CSS) are used but not highlighted in the hero per prefe
 
 ## Projects
 
+### ClientSpace
+- **URL:** https://clientspace-app.netlify.app/login?email=admin@example.com&password=123
+- **Repo:** https://github.com/pbhargesh82/client.io
+- **Summary:** Dual-role client portal — admins manage clients, projects, tasks, and file sharing; clients get a focused view of their work. React, Node.js, and Supabase with row-level security.
+- **Stack:** React, Node.js, Supabase, PostgreSQL, TypeScript
+
 ### Auction.io
 - **URL:** https://auction-io.netlify.app/
 - **Repo:** https://github.com/pbhargesh82/auction.io
