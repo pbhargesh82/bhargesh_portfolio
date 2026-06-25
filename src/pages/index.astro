@@ -627,7 +627,7 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
         }
         try {
           const body = new URLSearchParams(new FormData(form)).toString();
-          const res = await fetch('/', {
+          const res = await fetch('/forms.html', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body,
