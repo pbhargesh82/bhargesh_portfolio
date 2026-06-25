@@ -231,6 +231,21 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
             ))
           }
         </dl>
+
+        <dl class="reveal mt-px grid grid-cols-2 gap-px overflow-hidden border border-t-0 border-line bg-ink lg:grid-cols-4">
+          {
+            profile.stats.map((stat) => (
+              <div class="bg-ink p-5 text-white md:p-6">
+                <dd class="text-3xl font-black tracking-tight text-accent md:text-4xl">
+                  {stat.value}
+                </dd>
+                <dt class="mt-1 font-mono text-xs uppercase tracking-[0.14em] text-white/55">
+                  {stat.label}
+                </dt>
+              </div>
+            ))
+          }
+        </dl>
       </div>
     </section>
 
@@ -322,22 +337,33 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
           {
             projects.map((project, index) => (
               <article class="reveal group flex flex-col overflow-hidden border-2 border-ink bg-paper brutal-shadow shadow-press">
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="block aspect-[16/10] overflow-hidden border-b-2 border-ink bg-surface"
-                >
-                  <img
-                    class="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-                    src={project.thumbnail}
-                    alt={project.thumbnailAlt}
-                    width={640}
-                    height={400}
-                    loading={index === 0 ? 'eager' : 'lazy'}
-                    decoding="async"
-                  />
-                </a>
+                {project.caseStudy ? (
+                  <div class="flex items-center justify-between gap-3 border-b-2 border-ink bg-ink px-6 py-3">
+                    <span class="font-mono text-xs font-bold uppercase tracking-[0.14em] text-accent">
+                      Case study
+                    </span>
+                    <span class="font-mono text-[11px] font-medium uppercase tracking-wide text-white/55">
+                      {project.context}
+                    </span>
+                  </div>
+                ) : (
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="block aspect-[16/10] overflow-hidden border-b-2 border-ink bg-surface"
+                  >
+                    <img
+                      class="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                      src={project.thumbnail}
+                      alt={project.thumbnailAlt}
+                      width={640}
+                      height={400}
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                      decoding="async"
+                    />
+                  </a>
+                )}
                 <div class="flex flex-1 flex-col p-6">
                   <h3 class="text-2xl font-extrabold tracking-tight">{project.name}</h3>
                   <p class="mt-3 flex-1 text-base leading-relaxed text-muted">
@@ -348,26 +374,35 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
                       <span class="font-mono text-xs font-medium text-muted">#{tech}</span>
                     ))}
                   </div>
-                  <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-line pt-5">
-                    <a
-                      class="inline-flex items-center gap-1.5 text-sm font-bold hover:underline"
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Live demo
-                      <span class="material-symbols-outlined text-[18px]">north_east</span>
-                    </a>
-                    <a
-                      class="inline-flex items-center gap-1.5 text-sm font-bold text-muted hover:text-ink"
-                      href={project.uiRepoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Code
-                      <span class="material-symbols-outlined text-[18px]">code</span>
-                    </a>
-                  </div>
+                  {project.caseStudy ? (
+                    <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-line pt-5">
+                      <span class="inline-flex items-center gap-1.5 text-sm font-bold text-muted">
+                        Professional work · private
+                        <span class="material-symbols-outlined text-[18px]">lock</span>
+                      </span>
+                    </div>
+                  ) : (
+                    <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-line pt-5">
+                      <a
+                        class="inline-flex items-center gap-1.5 text-sm font-bold hover:underline"
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Live demo
+                        <span class="material-symbols-outlined text-[18px]">north_east</span>
+                      </a>
+                      <a
+                        class="inline-flex items-center gap-1.5 text-sm font-bold text-muted hover:text-ink"
+                        href={project.uiRepoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Code
+                        <span class="material-symbols-outlined text-[18px]">code</span>
+                      </a>
+                    </div>
+                  )}
                 </div>
               </article>
             ))

@@ -1,29 +1,36 @@
 {
   "pageTitle": "Bhargesh Patel — Software Engineer",
-  "pageDescription": "Bhargesh Patel — software engineer at Bridginex, Surat. End-to-end web apps in Angular, React, Node, and Supabase. Open to contract work.",
+  "pageDescription": "Bhargesh Patel — software engineer building full-stack and AI-powered web products with Angular, React, Next.js, Node, and OpenAI. Open to contract work.",
   "email": "pbhargesh82@gmail.com",
   "heroEyebrow": "Software engineer",
-  "heroBio": "Five years shipping web products for clients. I own features from the interface through to the data — not just the UI handoff.",
+  "heroBio": "Five years shipping full-stack web products — and building AI-powered features on top of them. I own work from the interface through the API to the data, with AI in the loop to ship faster.",
   "location": "Surat · Remote",
   "contactBody": "Open to contract and freelance projects. Based in Surat, happy to work remote. Email is the fastest way to reach me.",
   "projectsIntro": "Selected deployments /// [2024-2026]",
   "yearsExperience": "05+",
   "marquee": [
-    "Ship end-to-end",
-    "Own the feature",
-    "Build what lasts",
-    "Reliable delivery",
-    "Product not patches"
+    "16+ production projects",
+    "100+ REST APIs shipped",
+    "AI-powered products",
+    "5+ years shipping",
+    "Full-stack delivery",
+    "1,000+ concurrent users"
+  ],
+  "stats": [
+    { "value": "16+", "label": "Production projects" },
+    { "value": "100+", "label": "REST APIs shipped" },
+    { "value": "400+", "label": "Issues resolved" },
+    { "value": "1,000+", "label": "Concurrent users" }
   ],
   "heroCard": {
     "site": "Portfolio",
     "status": "Available",
-    "focus": "Full-stack product",
+    "focus": "AI-powered product",
     "availability": "Contract & freelance"
   },
   "manifesto": [
-    "I'm a software engineer who builds complete web products — the interface, the API, and the data model underneath. You get one person who can take a feature from a rough idea to something running in production.",
-    "Over five years I've moved from frontend work on enterprise Angular apps to full-stack delivery at Bridginex, shipping client web apps and SaaS features with Angular, React, Node, Supabase, and PostgreSQL.",
-    "I keep it direct: clear communication, honest scope, and no dropped handoffs. Based in Surat and available for contract and freelance work, anywhere remote."
+    "I'm a software engineer who builds complete web products — the interface, the API, and the data model underneath — and increasingly the AI features that make them smarter. You get one person who can take a feature from a rough idea to something running in production.",
+    "Over five years I've moved from frontend work on enterprise Angular apps to full-stack and AI-powered delivery at Bridginex: 16+ production projects, 100+ REST APIs, and AI-driven recruitment, matching, and automation tools built with Angular, React, Next.js, Node, and the OpenAI API.",
+    "I build with AI in the loop — using Cursor, ChatGPT, and Claude to move from requirements to shipped features faster, without dropping quality. Clear communication, honest scope, no dropped handoffs. Based in Surat and available for contract and freelance work, anywhere remote."
   ]
 }

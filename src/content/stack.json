@@ -3,17 +3,27 @@
     { "name": "TypeScript", "icon": "typescript" },
     { "name": "JavaScript", "icon": "javascript" },
     { "name": "Angular", "icon": "angular" },
-    { "name": "React", "icon": "react" }
+    { "name": "React", "icon": "react" },
+    { "name": "Next.js", "icon": "nextdotjs" },
+    { "name": "RxJS", "icon": "reactivex" },
+    { "name": "NgRx", "icon": "ngrx" },
+    { "name": "Tailwind CSS", "icon": "tailwindcss" }
   ],
   "backend": [
     { "name": "Node.js", "icon": "nodedotjs" },
+    { "name": "Express", "icon": "express" },
     { "name": "Supabase", "icon": "supabase" },
-    { "name": "PostgreSQL", "icon": "postgresql" }
+    { "name": "PostgreSQL", "icon": "postgresql" },
+    { "name": "MySQL", "icon": "mysql" },
+    { "name": "Prisma", "icon": "prisma" },
+    { "name": "Docker", "icon": "docker" }
   ],
   "ai": [
     { "name": "OpenAI API", "icon": "openai" },
+    { "name": "Claude", "icon": "anthropic" },
     { "name": "Cursor", "icon": "cursor" },
     { "name": "ChatGPT", "icon": "chatgpt" },
-    { "name": "Antigravity", "icon": "antigravity" }
+    { "name": "Antigravity", "icon": "antigravity" },
+    { "name": "Playwright", "icon": "playwright" }
   ]
 }

@@ -6,24 +6,24 @@
     "duration": "2yr 8mo",
     "type": "Full Time · Remote",
     "current": true,
-    "summary": "End-to-end client web apps and SaaS features: UI in Angular or React, APIs and data with Node, Supabase, and PostgreSQL."
+    "summary": "Delivered 16+ production projects across enterprise CRM, AI platforms, automotive, and event ecosystems. Architected The Bridge CRM from scratch, designed 100+ REST APIs with Node and Express, and built AI-powered recruitment, matching, and automation with the OpenAI API — across Angular and Next.js SSR. Mentored juniors and reviewed PRs."
   },
   {
-    "company": "Quatntsapp Pvt. Ltd.",
-    "title": "Frontend Developer",
+    "company": "Quantsapp",
+    "title": "Software Engineer",
     "period": "Jun 2023 – Sep 2023",
     "duration": "4mo",
     "type": "Full Time · On Site",
     "current": false,
-    "summary": "Four-month contract building product UI in Angular: forms, routing, and feature delivery with the team on site."
+    "summary": "Built features for a real-time options trading platform with Angular and Node. Implemented WebSocket-based live market data updates and optimized event-driven, high-frequency UI rendering."
   },
   {
     "company": "Adis Technology",
-    "title": "Frontend Developer",
+    "title": "Software Developer",
     "period": "May 2021 – May 2023",
     "duration": "2yr 1mo",
     "type": "Full Time · On Site",
     "current": false,
-    "summary": "Two years on enterprise Angular apps: dashboards, internal tools, and long-lived codebases with a small on-site team."
+    "summary": "Built CRM and ERP systems for the diamond manufacturing industry with Angular and Node. Developed workflows tracking diamonds from rough stones through cutting, polishing, inventory, and production. Mentored interns across frontend and backend."
   }
 ]
