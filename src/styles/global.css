@@ -141,6 +141,48 @@ body {
   transform: translateY(0);
 }
 
+/* ---- Case study dialog ---- */
+dialog#case-study-modal {
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+dialog#case-study-modal::backdrop {
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+dialog#case-study-modal[open] {
+  animation: modal-in 0.25s var(--ease-out-quint);
+}
+
+/* ---- Terminal typewriter cursor ---- */
+.term-cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  background: currentColor;
+  vertical-align: text-bottom;
+  margin-left: 1px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 :where(a, button, input, textarea):focus-visible {
   outline: 3px solid var(--color-ink);
   outline-offset: 2px;
@@ -180,6 +222,10 @@ body {
 
   .shadow-press:hover {
     transform: none;
+  }
+
+  dialog#case-study-modal[open] {
+    animation: none;
   }
 }
 

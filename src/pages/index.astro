@@ -152,14 +152,14 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
               <span class="h-3 w-3 rounded-full bg-[#27c93f]"></span>
               <span class="ml-2 text-xs text-white/40">~/portfolio</span>
             </div>
-            <div class="space-y-2 p-3 text-[13px] leading-relaxed" aria-hidden="true">
-              <p class="text-white/40">$ whoami</p>
-              <p class="text-accent">bhargesh — full-stack engineer</p>
-              <p class="text-white/40">$ cat status.json</p>
-              <p class="text-white">
+            <div class="space-y-2 p-3 text-[13px] leading-relaxed" aria-hidden="true" id="terminal-lines">
+              <p class="text-white/40" data-line="cmd">$ whoami</p>
+              <p class="text-accent" data-line="out"><a href={resume?.url ?? '#'} download={resume?.download} class="no-underline transition-colors hover:text-white">bhargesh — full-stack engineer</a></p>
+              <p class="text-white/40" data-line="cmd">$ cat status.json</p>
+              <p class="text-white" data-line="out">
                 {'{'}<br />
-                <span class="pl-4 text-white/70">"status":</span> <span class="text-accent"
-                  >"{profile.heroCard.status.toLowerCase()}"</span
+                <span class="pl-4 text-white/70">"status":</span> <a href="#contact" class="text-accent no-underline transition-colors hover:text-white"
+                  >"{profile.heroCard.status.toLowerCase()}"</a
                 >,<br />
                 <span class="pl-4 text-white/70">"focus":</span> <span class="text-white"
                   >"{profile.heroCard.focus.toLowerCase()}"</span
@@ -169,7 +169,7 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
                 ><br />
                 {'}'}
               </p>
-              <p class="text-white/40">$ <span class="animate-pulse">▋</span></p>
+              <p class="text-white/40" data-line="out">$ <span class="animate-pulse">▋</span></p>
             </div>
           </figure>
         </div>
@@ -220,7 +220,7 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
         <dl class="reveal mt-16 grid grid-cols-2 gap-px overflow-hidden border border-line bg-line lg:grid-cols-4">
           {
             facts.map((fact) => (
-              <div class="bg-paper p-5 md:p-6">
+              <div class="bg-paper p-5 transition-colors duration-150 hover:bg-accent md:p-6">
                 <dt class="font-mono text-xs uppercase tracking-[0.14em] text-muted">
                   {fact.label}
                 </dt>
@@ -235,7 +235,7 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
         <dl class="reveal mt-px grid grid-cols-2 gap-px overflow-hidden border border-t-0 border-line bg-ink lg:grid-cols-4">
           {
             profile.stats.map((stat) => (
-              <div class="bg-ink p-5 text-white md:p-6">
+              <div class="bg-ink p-5 text-white transition-colors duration-150 hover:bg-ink/80 md:p-6">
                 <dd class="text-3xl font-black tracking-tight text-accent md:text-4xl">
                   {stat.value}
                 </dd>
@@ -268,7 +268,7 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
             <div class="flex flex-wrap gap-3">
               {
                 stack.frontend.map((tool) => (
-                  <span class="border-2 border-ink bg-paper px-4 py-2 text-base font-bold">
+                  <span class="border-2 border-ink bg-paper px-4 py-2 text-base font-bold cursor-default transition-all duration-150 hover:bg-ink hover:text-accent hover:-translate-y-0.5">
                     {tool.name}
                   </span>
                 ))
@@ -282,7 +282,7 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
             <div class="flex flex-wrap gap-3">
               {
                 stack.backend.map((tool) => (
-                  <span class="border-2 border-ink bg-paper px-4 py-2 text-base font-bold">
+                  <span class="border-2 border-ink bg-paper px-4 py-2 text-base font-bold cursor-default transition-all duration-150 hover:bg-ink hover:text-accent hover:-translate-y-0.5">
                     {tool.name}
                   </span>
                 ))
@@ -297,7 +297,7 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
           <div class="flex flex-wrap gap-3">
             {
               stack.ai.map((tool) => (
-                <span class="border-2 border-ink bg-paper px-4 py-2 text-base font-bold">
+                <span class="border-2 border-ink bg-paper px-4 py-2 text-base font-bold cursor-default transition-all duration-150 hover:bg-ink hover:text-accent hover:-translate-y-0.5">
                   {tool.name}
                 </span>
               ))
@@ -336,7 +336,12 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
         <div class="grid gap-8 md:grid-cols-2">
           {
             projects.map((project, index) => (
-              <article class="reveal group flex flex-col overflow-hidden border-2 border-ink bg-paper brutal-shadow shadow-press">
+              <article
+                class={`reveal group flex flex-col overflow-hidden border-2 border-ink bg-paper brutal-shadow shadow-press${project.caseStudy ? ' cursor-pointer' : ''}`}
+                data-project-id={project.caseStudy ? project.id : undefined}
+                role={project.caseStudy ? 'button' : undefined}
+                tabindex={project.caseStudy ? 0 : undefined}
+              >
                 {project.caseStudy ? (
                   <div class="flex items-center justify-between gap-3 border-b-2 border-ink bg-ink px-6 py-3">
                     <span class="font-mono text-xs font-bold uppercase tracking-[0.14em] text-accent">
@@ -376,9 +381,9 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
                   </div>
                   {project.caseStudy ? (
                     <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-line pt-5">
-                      <span class="inline-flex items-center gap-1.5 text-sm font-bold text-muted">
-                        Professional work · private
-                        <span class="material-symbols-outlined text-[18px]">lock</span>
+                      <span class="inline-flex items-center gap-1.5 text-sm font-bold text-ink group-hover:underline">
+                        Read case study
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
                       </span>
                     </div>
                   ) : (
@@ -597,6 +602,43 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
         </div>
       </div>
     </section>
+
+    <!-- Case study modal -->
+    <dialog
+      id="case-study-modal"
+      class="m-0 h-full w-full max-w-none border-0 bg-transparent p-0 md:m-auto md:h-auto md:max-h-[85vh] md:w-full md:max-w-2xl md:p-4"
+      aria-label="Case study details"
+      data-projects={JSON.stringify(projects.filter(p => p.caseStudy))}
+    >
+      <div class="flex h-full flex-col bg-paper md:h-auto md:border-2 md:border-ink md:brutal-shadow">
+        <div class="flex items-center justify-between gap-3 border-b-2 border-ink bg-ink px-6 py-4">
+          <div>
+            <h3 id="modal-title" class="text-lg font-extrabold tracking-tight text-white"></h3>
+            <span id="modal-context" class="font-mono text-[11px] font-medium uppercase tracking-wide text-white/55"></span>
+          </div>
+          <button
+            id="modal-close"
+            class="flex h-10 w-10 shrink-0 items-center justify-center text-white/70 transition-colors hover:text-accent"
+            type="button"
+            aria-label="Close case study"
+          >
+            <span class="material-symbols-outlined text-2xl">close</span>
+          </button>
+        </div>
+        <div class="flex-1 overflow-y-auto p-6 md:p-8">
+          <p id="modal-problem" class="text-base leading-relaxed text-muted"></p>
+
+          <h4 class="mt-6 font-mono text-xs font-bold uppercase tracking-[0.14em] text-muted">My role</h4>
+          <p id="modal-role" class="mt-2 text-base leading-relaxed"></p>
+
+          <h4 class="mt-6 font-mono text-xs font-bold uppercase tracking-[0.14em] text-muted">Highlights</h4>
+          <ul id="modal-highlights" class="mt-2 space-y-2 text-base leading-relaxed text-muted"></ul>
+
+          <div id="modal-stack" class="mt-6 flex flex-wrap gap-2 border-t border-line pt-5"></div>
+        </div>
+      </div>
+    </dialog>
+
   </main>
 
   <!-- Footer -->
@@ -605,7 +647,7 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
       class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-5 md:flex-row md:px-8"
     >
       <div class="font-mono text-sm text-white/60">
-        © {year} Bhargesh Patel · Built with Astro
+        © {year} Bhargesh Patel
       </div>
       <div class="flex flex-wrap justify-center gap-6 text-sm font-bold">
         {
@@ -683,6 +725,45 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
       });
     }
 
+    // Case study modal
+    const modal = document.getElementById('case-study-modal');
+    if (modal) {
+      const caseStudies = JSON.parse(modal.getAttribute('data-projects') || '[]');
+      const titleEl = document.getElementById('modal-title');
+      const contextEl = document.getElementById('modal-context');
+      const problemEl = document.getElementById('modal-problem');
+      const roleEl = document.getElementById('modal-role');
+      const highlightsEl = document.getElementById('modal-highlights');
+      const stackEl = document.getElementById('modal-stack');
+      const closeBtn = document.getElementById('modal-close');
+
+      document.querySelectorAll('[data-project-id]').forEach((card) => {
+        const open = () => {
+          const id = Number(card.getAttribute('data-project-id'));
+          const project = caseStudies.find((p) => p.id === id);
+          if (!project || !project.details) return;
+          titleEl.textContent = project.name;
+          contextEl.textContent = project.context;
+          problemEl.textContent = project.details.problem;
+          roleEl.textContent = project.details.role;
+          highlightsEl.innerHTML = project.details.highlights
+            .map((h) => '<li class="flex gap-2"><span class="mt-1 text-accent font-bold">—</span><span>' + h + '</span></li>')
+            .join('');
+          stackEl.innerHTML = project.stack
+            .map((t) => '<span class="font-mono text-xs font-medium text-muted">#' + t + '</span>')
+            .join('');
+          document.body.style.overflow = 'hidden';
+          modal.showModal();
+        };
+        card.addEventListener('click', open);
+        card.addEventListener('keydown', (e) => { if (e.key === 'Enter') open(); });
+      });
+
+      closeBtn.addEventListener('click', () => modal.close());
+      modal.addEventListener('click', (e) => { if (e.target === modal) modal.close(); });
+      modal.addEventListener('close', () => { document.body.style.overflow = ''; });
+    }
+
     // Scroll reveal (enhances already-visible content)
     const reveals = document.querySelectorAll('.reveal');
     if ('IntersectionObserver' in window && reveals.length) {
@@ -702,6 +783,72 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
       window.setTimeout(() => reveals.forEach((el) => el.classList.add('is-visible')), 1500);
     } else {
       reveals.forEach((el) => el.classList.add('is-visible'));
+    }
+
+    // Terminal typewriter
+    var termBox = document.getElementById('terminal-lines');
+    if (termBox && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var lines = termBox.querySelectorAll('[data-line]');
+      var cursorSpan = document.createElement('span');
+      cursorSpan.className = 'term-cursor';
+      cursorSpan.textContent = '\u200B';
+
+      function getTextNodes(node) {
+        var nodes = [];
+        var walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, null);
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        return nodes;
+      }
+
+      termBox.style.minHeight = termBox.offsetHeight + 'px';
+      lines.forEach(function(l) { l.style.visibility = 'hidden'; });
+
+      var lineIdx = 0;
+      function typeLine() {
+        if (lineIdx >= lines.length) {
+          termBox.style.minHeight = '';
+          return;
+        }
+        var el = lines[lineIdx];
+        el.style.visibility = 'visible';
+
+        var textNodes = getTextNodes(el);
+        var origTexts = textNodes.map(function(n) { return n.textContent; });
+        var totalLen = origTexts.reduce(function(s, t) { return s + t.length; }, 0);
+        textNodes.forEach(function(n) { n.textContent = ''; });
+
+        var activeCursor = cursorSpan.cloneNode(true);
+        if (textNodes.length > 0) textNodes[0].parentNode.insertBefore(activeCursor, textNodes[0].nextSibling);
+        else el.appendChild(activeCursor);
+
+        var charIdx = 0;
+        var speed = el.dataset.line === 'cmd' ? 45 : 30;
+        var iv = setInterval(function() {
+          charIdx++;
+          var remaining = charIdx;
+          for (var i = 0; i < textNodes.length; i++) {
+            var len = origTexts[i].length;
+            if (remaining <= len) {
+              textNodes[i].textContent = origTexts[i].substring(0, remaining);
+              var parent = textNodes[i].parentNode;
+              if (activeCursor.parentNode) activeCursor.parentNode.removeChild(activeCursor);
+              parent.insertBefore(activeCursor, textNodes[i].nextSibling);
+              break;
+            }
+            textNodes[i].textContent = origTexts[i];
+            remaining -= len;
+          }
+          if (charIdx >= totalLen) {
+            clearInterval(iv);
+            if (activeCursor.parentNode) activeCursor.parentNode.removeChild(activeCursor);
+            lineIdx++;
+            setTimeout(typeLine, el.dataset.line === 'cmd' ? 350 : 180);
+          }
+        }, speed);
+      }
+      setTimeout(typeLine, 600);
+    } else if (termBox) {
+      termBox.querySelectorAll('[data-line]').forEach(function(l) { l.style.visibility = 'visible'; });
     }
   </script>
 </BaseLayout>

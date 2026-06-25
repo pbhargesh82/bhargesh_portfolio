@@ -25,7 +25,17 @@
     "description": "Enterprise CRM built from scratch into the operational platform for The Bridge community — managing operations, events, registrations, and administration. Angular SSR frontend with a Node and Express API layer.",
     "caseStudy": true,
     "context": "Bridginex · Client work",
-    "stack": ["Angular SSR", "Node.js", "Express", "PostgreSQL", "TypeScript"]
+    "stack": ["Angular SSR", "Node.js", "Express", "PostgreSQL", "TypeScript"],
+    "details": {
+      "problem": "The Bridge community needed a centralized platform to manage operations, events, member registrations, and administration — replacing fragmented spreadsheets and manual workflows.",
+      "role": "Sole architect. Designed the data model and API layer from scratch, built the Angular SSR frontend, and delivered the platform end-to-end from first commit to production.",
+      "highlights": [
+        "Architected and shipped the entire CRM from zero",
+        "Designed and implemented 40+ REST APIs with Node and Express",
+        "Now the operational backbone for The Bridge community",
+        "Supports event management, registrations, and member administration"
+      ]
+    }
   },
   {
     "id": 4,
@@ -33,7 +43,17 @@
     "description": "AI-powered recruitment automation: candidate ranking, matching, and sourcing workflows built with the OpenAI API, browser automation, scraping, and backend APIs.",
     "caseStudy": true,
     "context": "Bridginex · Client work",
-    "stack": ["OpenAI API", "Node.js", "Playwright", "TypeScript"]
+    "stack": ["OpenAI API", "Node.js", "Playwright", "TypeScript"],
+    "details": {
+      "problem": "Manual recruitment was slow and inconsistent — recruiters spent hours screening resumes, sourcing candidates, and ranking applicants without standardized criteria.",
+      "role": "Built the AI pipeline end-to-end: OpenAI-powered candidate ranking and matching, Playwright-based browser automation for sourcing, and the backend APIs tying it all together.",
+      "highlights": [
+        "Automated candidate ranking and matching using OpenAI APIs",
+        "Built browser automation for scraping and sourcing with Playwright",
+        "Reduced manual screening time significantly for recruiters",
+        "Designed backend APIs powering the full recruitment workflow"
+      ]
+    }
   },
   {
     "id": 5,
@@ -41,7 +61,17 @@
     "description": "Automotive product spanning web, backend, and mobile. Modernized the stack across React Native, Angular, Express, and Prisma.",
     "caseStudy": true,
     "context": "Bridginex · Client work",
-    "stack": ["React Native", "Angular", "Express", "Prisma"]
+    "stack": ["React Native", "Angular", "Express", "Prisma"],
+    "details": {
+      "problem": "An established automotive platform needed modernization across web, mobile, and backend to improve performance, maintainability, and user experience.",
+      "role": "Worked across all three surfaces — contributing to the React Native mobile app, Angular web frontend, and Express/Prisma backend to modernize the stack incrementally.",
+      "highlights": [
+        "Contributed across web, mobile, and backend codebases",
+        "Modernized legacy code to React Native, Angular, Express, and Prisma",
+        "Improved API performance with Prisma ORM and structured queries",
+        "Shipped features across platforms in coordinated releases"
+      ]
+    }
   },
   {
     "id": 6,
@@ -49,6 +79,16 @@
     "description": "AI-driven profile matching platform with authentication, backend APIs, and intelligent recommendations powered by the OpenAI API.",
     "caseStudy": true,
     "context": "Bridginex · Client work",
-    "stack": ["OpenAI API", "Node.js", "PostgreSQL", "TypeScript"]
+    "stack": ["OpenAI API", "Node.js", "PostgreSQL", "TypeScript"],
+    "details": {
+      "problem": "Connecting the right professionals required more than keyword search — the platform needed intelligent, context-aware profile matching and recommendations.",
+      "role": "Built the authentication system, backend APIs, and OpenAI-powered recommendation engine that drives intelligent profile matching.",
+      "highlights": [
+        "Designed AI-driven matching using OpenAI for intelligent recommendations",
+        "Built authentication and authorization from scratch",
+        "Developed backend APIs with Node.js and PostgreSQL",
+        "Delivered context-aware profile suggestions beyond simple keyword search"
+      ]
+    }
   }
 ]
