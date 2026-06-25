@@ -112,7 +112,7 @@ This is a deliberate move away from the previous full neo-brutalist treatment (a
 
 | Section | ID | Notes |
 |---------|-----|-------|
-| Header | — | Sticky, hairline border, blurred paper bg, mono wordmark `bhargesh.lab`, working mobile menu |
+| Header | — | Sticky, hairline border, blurred paper bg, mono wordmark `bhargesh.dev`, working mobile menu |
 | Hero | `#hero` | Sentence-case headline with yellow `.mark`, readable bio, dual CTAs, availability pulse, terminal-card signature |
 | Marquee | — | Black band, mono uppercase scroll, yellow separators; reduced-motion safe |
 | About | `#about` | Two-column intro + manifesto prose, hairline quick-facts strip (experience / now / focus / location / availability) |
