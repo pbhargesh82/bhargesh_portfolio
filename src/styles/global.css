@@ -82,15 +82,26 @@ body {
 
 .marquee-track {
   display: flex;
-  width: max-content;
-  animation: marquee 60s linear infinite;
-  will-change: transform;
 }
 
 .marquee-group {
   display: flex;
   flex-shrink: 0;
   align-items: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-track {
+    flex-wrap: nowrap;
+    width: max-content;
+    animation: marquee 60s linear infinite;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .marquee-track.marquee--js {
+    animation: none;
+  }
 }
 
 /* Uniform spacing via item margins (no gap/padding) so the loop seam
@@ -117,11 +128,11 @@ body {
 }
 
 @keyframes marquee {
-  0% {
-    transform: translateX(0);
+  from {
+    transform: translate3d(0, 0, 0);
   }
-  100% {
-    transform: translateX(-50%);
+  to {
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -168,6 +179,10 @@ dialog#case-study-modal[open] {
   animation: blink 1s step-end infinite;
 }
 
+.term-prompt-cursor {
+  animation: blink 1s step-end infinite;
+}
+
 @keyframes blink {
   50% { opacity: 0; }
 }
@@ -198,11 +213,16 @@ dialog#case-study-modal[open] {
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
+    gap: 0.5rem 1rem;
     padding: 0.25rem 1rem;
   }
 
   .marquee-group {
-    display: contents;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1rem;
+    flex-shrink: 1;
   }
 
   /* Show one static copy of the band when motion is reduced */
@@ -211,7 +231,19 @@ dialog#case-study-modal[open] {
   }
 
   .marquee-item {
-    margin: 0.25rem 0.75rem;
+    margin: 0;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+  }
+
+  .marquee-sep {
+    display: none;
+  }
+
+  .term-cursor,
+  .term-prompt-cursor {
+    animation: none;
   }
 
   .js .reveal {

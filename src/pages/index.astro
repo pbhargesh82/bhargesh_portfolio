@@ -169,7 +169,7 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
                 ><br />
                 {'}'}
               </p>
-              <p class="text-white/40" data-line="out">$ <span class="animate-pulse">▋</span></p>
+              <p class="text-white/40" data-line="out">$ <span class="term-prompt-cursor">▋</span></p>
             </div>
           </figure>
         </div>
@@ -677,13 +677,15 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
       toggle.addEventListener('click', () => {
         const open = menu.classList.toggle('hidden') === false;
         toggle.setAttribute('aria-expanded', String(open));
-        toggle.querySelector('.material-symbols-outlined').textContent = open ? 'close' : 'menu';
+        const icon = toggle.querySelector('.material-symbols-outlined');
+        if (icon) icon.textContent = open ? 'close' : 'menu';
       });
       menu.querySelectorAll('a').forEach((link) =>
         link.addEventListener('click', () => {
           menu.classList.add('hidden');
           toggle.setAttribute('aria-expanded', 'false');
-          toggle.querySelector('.material-symbols-outlined').textContent = 'menu';
+          const icon = toggle.querySelector('.material-symbols-outlined');
+          if (icon) icon.textContent = 'menu';
         }),
       );
     }
@@ -759,7 +761,7 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
         card.addEventListener('keydown', (e) => { if (e.key === 'Enter') open(); });
       });
 
-      closeBtn.addEventListener('click', () => modal.close());
+      closeBtn?.addEventListener('click', () => modal.close());
       modal.addEventListener('click', (e) => { if (e.target === modal) modal.close(); });
       modal.addEventListener('close', () => { document.body.style.overflow = ''; });
     }
@@ -784,71 +786,193 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
     } else {
       reveals.forEach((el) => el.classList.add('is-visible'));
     }
+  </script>
 
-    // Terminal typewriter
-    var termBox = document.getElementById('terminal-lines');
-    if (termBox && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      var lines = termBox.querySelectorAll('[data-line]');
-      var cursorSpan = document.createElement('span');
-      cursorSpan.className = 'term-cursor';
-      cursorSpan.textContent = '\u200B';
+  <script is:inline>
+    // Marquee: rAF fallback when CSS animation stalls (skipped under reduced motion)
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-      function getTextNodes(node) {
-        var nodes = [];
-        var walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, null);
-        while (walker.nextNode()) nodes.push(walker.currentNode);
-        return nodes;
-      }
+      var track = document.querySelector('.marquee-track');
+      if (!track) return;
 
-      termBox.style.minHeight = termBox.offsetHeight + 'px';
-      lines.forEach(function(l) { l.style.visibility = 'hidden'; });
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var jsActive = false;
+      var rafId = 0;
+      var offset = 0;
+      var halfWidth = 0;
+      var pixelsPerMs = 0;
+      var lastTs = 0;
 
-      var lineIdx = 0;
-      function typeLine() {
-        if (lineIdx >= lines.length) {
-          termBox.style.minHeight = '';
-          return;
+      function startJsMarquee() {
+        if (jsActive) return;
+        jsActive = true;
+        track.classList.add('marquee--js');
+        halfWidth = track.scrollWidth / 2;
+        if (halfWidth <= 0) return;
+        pixelsPerMs = halfWidth / 60000;
+        offset = 0;
+        lastTs = 0;
+
+        function tick(ts) {
+          if (!lastTs) lastTs = ts;
+          var delta = ts - lastTs;
+          lastTs = ts;
+          offset = (offset + delta * pixelsPerMs) % halfWidth;
+          track.style.transform = 'translate3d(' + -offset + 'px, 0, 0)';
+          rafId = requestAnimationFrame(tick);
         }
-        var el = lines[lineIdx];
-        el.style.visibility = 'visible';
-
-        var textNodes = getTextNodes(el);
-        var origTexts = textNodes.map(function(n) { return n.textContent; });
-        var totalLen = origTexts.reduce(function(s, t) { return s + t.length; }, 0);
-        textNodes.forEach(function(n) { n.textContent = ''; });
-
-        var activeCursor = cursorSpan.cloneNode(true);
-        if (textNodes.length > 0) textNodes[0].parentNode.insertBefore(activeCursor, textNodes[0].nextSibling);
-        else el.appendChild(activeCursor);
-
-        var charIdx = 0;
-        var speed = el.dataset.line === 'cmd' ? 45 : 30;
-        var iv = setInterval(function() {
-          charIdx++;
-          var remaining = charIdx;
-          for (var i = 0; i < textNodes.length; i++) {
-            var len = origTexts[i].length;
-            if (remaining <= len) {
-              textNodes[i].textContent = origTexts[i].substring(0, remaining);
-              var parent = textNodes[i].parentNode;
-              if (activeCursor.parentNode) activeCursor.parentNode.removeChild(activeCursor);
-              parent.insertBefore(activeCursor, textNodes[i].nextSibling);
-              break;
-            }
-            textNodes[i].textContent = origTexts[i];
-            remaining -= len;
-          }
-          if (charIdx >= totalLen) {
-            clearInterval(iv);
-            if (activeCursor.parentNode) activeCursor.parentNode.removeChild(activeCursor);
-            lineIdx++;
-            setTimeout(typeLine, el.dataset.line === 'cmd' ? 350 : 180);
-          }
-        }, speed);
+        rafId = requestAnimationFrame(tick);
       }
-      setTimeout(typeLine, 600);
-    } else if (termBox) {
-      termBox.querySelectorAll('[data-line]').forEach(function(l) { l.style.visibility = 'visible'; });
-    }
+
+      function checkAnimation() {
+        if (jsActive || reducedMotion.matches) return;
+        var pos1 = track.getBoundingClientRect().left;
+        window.setTimeout(function () {
+          if (jsActive || reducedMotion.matches) return;
+          var pos2 = track.getBoundingClientRect().left;
+          if (Math.abs(pos2 - pos1) < 0.5) startJsMarquee();
+        }, 1000);
+      }
+
+      reducedMotion.addEventListener('change', function (e) {
+        if (e.matches) {
+          if (rafId) cancelAnimationFrame(rafId);
+          jsActive = false;
+          track.classList.remove('marquee--js');
+          track.style.transform = '';
+        }
+      });
+
+      var ready = document.fonts && document.fonts.ready
+        ? document.fonts.ready
+        : Promise.resolve();
+      ready.then(function () {
+        requestAnimationFrame(function () {
+          requestAnimationFrame(checkAnimation);
+        });
+      });
+    })();
+  </script>
+
+  <script is:inline>
+    // Terminal typewriter (isolated — failures here don't block other page JS)
+    (function () {
+      var termBox = document.getElementById('terminal-lines');
+      if (!termBox) return;
+
+      var lines = termBox.querySelectorAll('[data-line]');
+
+      function showAllLines() {
+        lines.forEach(function (l) {
+          l.style.visibility = 'visible';
+        });
+        termBox.style.minHeight = '';
+      }
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        showAllLines();
+        return;
+      }
+
+      var safetyTimer = window.setTimeout(showAllLines, 4000);
+
+      function startTypewriter() {
+        try {
+          var cursorSpan = document.createElement('span');
+          cursorSpan.className = 'term-cursor';
+          cursorSpan.textContent = '\u200B';
+
+          function getTextNodes(node) {
+            var nodes = [];
+            var walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, null);
+            while (walker.nextNode()) nodes.push(walker.currentNode);
+            return nodes;
+          }
+
+          termBox.style.minHeight = termBox.offsetHeight + 'px';
+          lines.forEach(function (l) {
+            l.style.visibility = 'hidden';
+          });
+
+          var lineIdx = 0;
+
+          function typeLine() {
+            if (lineIdx >= lines.length) {
+              window.clearTimeout(safetyTimer);
+              termBox.style.minHeight = '';
+              return;
+            }
+            var el = lines[lineIdx];
+            el.style.visibility = 'visible';
+
+            var textNodes = getTextNodes(el);
+            var origTexts = textNodes.map(function (n) {
+              return n.textContent;
+            });
+            var totalLen = origTexts.reduce(function (s, t) {
+              return s + t.length;
+            }, 0);
+            textNodes.forEach(function (n) {
+              n.textContent = '';
+            });
+
+            var activeCursor = cursorSpan.cloneNode(true);
+            if (textNodes.length > 0) {
+              textNodes[0].parentNode.insertBefore(activeCursor, textNodes[0].nextSibling);
+            } else {
+              el.appendChild(activeCursor);
+            }
+
+            var charIdx = 0;
+            var msPerChar = el.dataset.line === 'cmd' ? 45 : 30;
+            var lastTs = 0;
+            var rafId = 0;
+
+            function tick(ts) {
+              if (!lastTs) lastTs = ts;
+              var elapsed = ts - lastTs;
+              if (elapsed >= msPerChar) {
+                var steps = Math.floor(elapsed / msPerChar);
+                charIdx = Math.min(charIdx + steps, totalLen);
+                lastTs = ts - (elapsed % msPerChar);
+
+                var remaining = charIdx;
+                for (var i = 0; i < textNodes.length; i++) {
+                  var len = origTexts[i].length;
+                  if (remaining <= len) {
+                    textNodes[i].textContent = origTexts[i].substring(0, remaining);
+                    var parent = textNodes[i].parentNode;
+                    if (activeCursor.parentNode) activeCursor.parentNode.removeChild(activeCursor);
+                    parent.insertBefore(activeCursor, textNodes[i].nextSibling);
+                    break;
+                  }
+                  textNodes[i].textContent = origTexts[i];
+                  remaining -= len;
+                }
+              }
+
+              if (charIdx >= totalLen) {
+                if (activeCursor.parentNode) activeCursor.parentNode.removeChild(activeCursor);
+                lineIdx++;
+                window.setTimeout(typeLine, el.dataset.line === 'cmd' ? 350 : 180);
+                return;
+              }
+              rafId = requestAnimationFrame(tick);
+            }
+            rafId = requestAnimationFrame(tick);
+          }
+
+          window.setTimeout(typeLine, 600);
+        } catch (err) {
+          showAllLines();
+        }
+      }
+
+      var ready = document.fonts && document.fonts.ready
+        ? document.fonts.ready
+        : Promise.resolve();
+      ready.then(startTypewriter).catch(showAllLines);
+    })();
   </script>
 </BaseLayout>
