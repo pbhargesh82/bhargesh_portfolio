@@ -6,7 +6,7 @@
     "url": "https://clientspace-app.netlify.app/login?email=admin@example.com&password=123",
     "uiRepoUrl": "https://github.com/pbhargesh82/client.io",
     "stack": ["React", "Node.js", "Supabase", "PostgreSQL", "TypeScript"],
-    "thumbnail": "/images/projects/clientspace.png",
+    "thumbnail": "/images/projects/clientspace.webp",
     "thumbnailAlt": "ClientSpace login screen for the admin and client portal"
   },
   {
@@ -16,7 +16,7 @@
     "url": "https://auction-io.netlify.app/",
     "uiRepoUrl": "https://github.com/pbhargesh82/auction.io",
     "stack": ["Angular", "Supabase", "PostgreSQL", "TypeScript"],
-    "thumbnail": "/images/projects/auction-io.png",
+    "thumbnail": "/images/projects/auction-io.webp",
     "thumbnailAlt": "Auction.io admin dashboard showing team and player management"
   },
   {
