@@ -501,21 +501,6 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
                 </span>
               </div>
             </div>
-
-            <div class="mt-10 flex flex-wrap gap-5">
-              {
-                footerSocials.map((social) => (
-                  <a
-                    class="text-sm font-bold text-muted underline decoration-2 underline-offset-4 hover:text-ink"
-                    href={social?.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {social?.name}
-                  </a>
-                ))
-              }
-            </div>
           </div>
 
           <div class="reveal lg:col-span-7">
