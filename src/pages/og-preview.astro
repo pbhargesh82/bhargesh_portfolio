@@ -1,0 +1,163 @@
+---
+import profile from '../content/profile.json';
+
+const { heroCard, socialPreview } = profile;
+const terminalPath = socialPreview?.terminalPath ?? '~/portfolio';
+const whoami = socialPreview?.whoami ?? 'bhargesh — full-stack engineer';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>OG Preview — Terminal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        background: #f0f0f0;
+        font-family: system-ui, sans-serif;
+        padding: 24px;
+      }
+      .note {
+        max-width: 1200px;
+        font-size: 14px;
+        color: #444;
+        text-align: center;
+        line-height: 1.5;
+      }
+      .note code {
+        background: #e8e8e8;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 13px;
+      }
+      .frame {
+        width: 1200px;
+        height: 630px;
+        background: #0a0a0a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 48px;
+        flex-shrink: 0;
+      }
+      .terminal {
+        width: 920px;
+        border: 3px solid #0a0a0a;
+        background: #0a0a0a;
+        box-shadow: 6px 6px 0 0 #ffe600;
+        padding: 12px;
+        font-family: 'JetBrains Mono', monospace;
+      }
+      .titlebar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 8px 4px;
+      }
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+      .dot-red {
+        background: #ff5f56;
+      }
+      .dot-yellow {
+        background: #ffbd2e;
+      }
+      .dot-green {
+        background: #27c93f;
+      }
+      .path {
+        margin-left: 8px;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .body {
+        padding: 12px 16px 20px;
+        font-size: 22px;
+        line-height: 1.5;
+      }
+      .body p {
+        margin-bottom: 10px;
+      }
+      .cmd {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .whoami {
+        color: #ffe600;
+      }
+      .json-block {
+        color: white;
+      }
+      .json-key {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .json-status {
+        color: #ffe600;
+      }
+      .indent {
+        padding-left: 28px;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="note">
+      Edit <code>src/content/profile.json</code> (<code>socialPreview</code> + <code>heroCard</code>)
+      → refresh this page → run <code>npm run generate:og</code> → deploy.
+      <br />
+      OG text: <strong>{profile.pageTitle}</strong> — {profile.pageDescription}
+    </p>
+    <div class="frame" id="og-canvas">
+      <figure class="terminal">
+        <div class="titlebar" aria-hidden="true">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+          <span class="path">{terminalPath}</span>
+        </div>
+        <div class="body">
+          <p class="cmd">$ whoami</p>
+          <p class="whoami">{whoami}</p>
+          <p class="cmd">$ cat status.json</p>
+          <div class="json-block">
+            <p>{'{'}</p>
+            <p class="indent">
+              <span class="json-key">"status":</span>
+              <span class="json-status"> "{heroCard.status.toLowerCase()}"</span>,
+            </p>
+            <p class="indent">
+              <span class="json-key">"focus":</span>
+              <span> "{heroCard.focus.toLowerCase()}"</span>,
+            </p>
+            <p class="indent">
+              <span class="json-key">"open_to":</span>
+              <span> "{heroCard.availability.toLowerCase()}"</span>
+            </p>
+            <p>{'}'}</p>
+          </div>
+          <p class="cmd">$ ▋</p>
+        </div>
+      </figure>
+    </div>
+  </body>
+</html>

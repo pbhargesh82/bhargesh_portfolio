@@ -1,6 +1,6 @@
 {
   "pageTitle": "Bhargesh Patel — Software Engineer",
-  "pageDescription": "Bhargesh Patel — software engineer building full-stack and AI-powered web products with Angular, React, Next.js, Node, and OpenAI. Open to contract work.",
+  "pageDescription": "Bhargesh Patel — software engineer building full-stack and AI-powered web products. Open to contract work.",
   "email": "pbhargesh82@gmail.com",
   "heroEyebrow": "Software engineer",
   "heroBio": "Five years shipping full-stack web products — and building AI-powered features on top of them. I own work from the interface through the API to the data, with AI in the loop to ship faster.",
@@ -17,16 +17,33 @@
     "1,000+ concurrent users"
   ],
   "stats": [
-    { "value": "16+", "label": "Production projects" },
-    { "value": "100+", "label": "REST APIs shipped" },
-    { "value": "400+", "label": "Issues resolved" },
-    { "value": "1,000+", "label": "Concurrent users" }
+    {
+      "value": "16+",
+      "label": "Production projects"
+    },
+    {
+      "value": "100+",
+      "label": "REST APIs shipped"
+    },
+    {
+      "value": "400+",
+      "label": "Issues resolved"
+    },
+    {
+      "value": "1,000+",
+      "label": "Concurrent users"
+    }
   ],
   "heroCard": {
     "site": "Portfolio",
     "status": "Available",
     "focus": "AI-powered product",
     "availability": "Contract & freelance"
+  },
+  "socialPreview": {
+    "terminalPath": "~/portfolio",
+    "whoami": "bhargesh — full-stack engineer",
+    "imageAlt": "Terminal status card for Bhargesh Patel"
   },
   "manifesto": [
     "I'm a software engineer who builds complete web products — the interface, the API, and the data model underneath — and increasingly the AI features that make them smarter. You get one person who can take a feature from a rough idea to something running in production.",

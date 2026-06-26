@@ -150,11 +150,11 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
               <span class="h-3 w-3 rounded-full bg-[#ff5f56]"></span>
               <span class="h-3 w-3 rounded-full bg-[#ffbd2e]"></span>
               <span class="h-3 w-3 rounded-full bg-[#27c93f]"></span>
-              <span class="ml-2 text-xs text-white/40">~/portfolio</span>
+              <span class="ml-2 text-xs text-white/40">{profile.socialPreview?.terminalPath ?? '~/portfolio'}</span>
             </div>
             <div class="space-y-2 p-3 text-[13px] leading-relaxed" aria-hidden="true" id="terminal-lines">
               <p class="text-white/40" data-line="cmd">$ whoami</p>
-              <p class="text-accent" data-line="out"><a href={resume?.url ?? '#'} download={resume?.download} class="no-underline transition-colors hover:text-white">bhargesh — full-stack engineer</a></p>
+              <p class="text-accent" data-line="out"><a href={resume?.url ?? '#'} download={resume?.download} class="no-underline transition-colors hover:text-white">{profile.socialPreview?.whoami ?? 'bhargesh — full-stack engineer'}</a></p>
               <p class="text-white/40" data-line="cmd">$ cat status.json</p>
               <p class="text-white" data-line="out">
                 {'{'}<br />

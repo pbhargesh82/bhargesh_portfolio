@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import profile from '../content/profile.json';
 
 interface Props {
   title?: string;
@@ -12,8 +13,10 @@ const {
     'Bhargesh Patel — software engineer shipping end-to-end web products. Angular, React, Node, Supabase. Open to contract work.',
 } = Astro.props;
 
-const siteUrl = 'https://pbhargesh82.netlify.app';
-const ogImage = `${siteUrl}/images/projects/auction-io.png`;
+const siteUrl = Astro.site?.href.replace(/\/$/, '') ?? 'https://bhargeshpatel.com';
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const ogImage = new URL('/og/terminal.png', siteUrl).href;
+const ogImageAlt = profile.socialPreview?.imageAlt ?? 'Terminal status card for Bhargesh Patel';
 ---
 
 <!doctype html>
@@ -25,10 +28,15 @@ const ogImage = `${siteUrl}/images/projects/auction-io.png`;
     <meta name="author" content="Bhargesh Patel" />
     <meta name="generator" content={Astro.generator} />
 
+    <link rel="canonical" href={canonicalUrl} />
+
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:url" content={siteUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
 
     <meta name="twitter:card" content="summary_large_image" />
