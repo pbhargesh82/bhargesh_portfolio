@@ -96,10 +96,16 @@ body {
 /* ---- Marquee band ---- */
 .marquee {
   overflow: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 .marquee-track {
   display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .marquee-group {
@@ -110,11 +116,7 @@ body {
 
 @media (prefers-reduced-motion: no-preference) {
   .marquee-track {
-    flex-wrap: nowrap;
-    width: max-content;
     animation: marquee 60s linear infinite;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
   }
 
   .marquee-track.marquee--js {
@@ -228,34 +230,11 @@ dialog#case-study-modal[open] {
 
   .marquee-track {
     animation: none;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
-    gap: 0.5rem 1rem;
-    padding: 0.25rem 1rem;
-  }
-
-  .marquee-group {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem 1rem;
-    flex-shrink: 1;
+    transform: none;
   }
 
   /* Show one static copy of the band when motion is reduced */
   .marquee-group[aria-hidden='true'] {
-    display: none;
-  }
-
-  .marquee-item {
-    margin: 0;
-    padding: 0.25rem 0.75rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 2px;
-  }
-
-  .marquee-sep {
     display: none;
   }
 
