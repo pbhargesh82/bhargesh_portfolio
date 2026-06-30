@@ -777,7 +777,7 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
   </script>
 
   <script is:inline>
-    // Marquee: rAF fallback when CSS animation stalls (skipped under reduced motion)
+    // Marquee: JS-driven on touch/mobile; CSS fallback detection on desktop
     (function () {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
@@ -785,51 +785,134 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
       if (!track) return;
 
       var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var touchDevice =
+        window.matchMedia('(hover: none) and (pointer: coarse)').matches ||
+        (window.matchMedia('(max-width: 768px)').matches && 'ontouchstart' in window);
       var jsActive = false;
       var rafId = 0;
       var offset = 0;
-      var halfWidth = 0;
+      var loopWidth = 0;
       var pixelsPerMs = 0;
       var lastTs = 0;
+      var resizeObserver = null;
+
+      function measureLoopWidth() {
+        var group = track.querySelector('.marquee-group');
+        if (group) {
+          return group.getBoundingClientRect().width;
+        }
+        return track.scrollWidth / 2;
+      }
+
+      function applyTransform() {
+        track.style.transform = 'translate3d(' + -offset + 'px, 0, 0)';
+        track.style.webkitTransform = 'translate3d(' + -offset + 'px, 0, 0)';
+      }
 
       function startJsMarquee() {
-        if (jsActive) return;
+        if (jsActive || reducedMotion.matches) return;
         jsActive = true;
         track.classList.add('marquee--js');
-        halfWidth = track.scrollWidth / 2;
-        if (halfWidth <= 0) return;
-        pixelsPerMs = halfWidth / 60000;
+        loopWidth = measureLoopWidth();
+        if (loopWidth <= 0) {
+          jsActive = false;
+          track.classList.remove('marquee--js');
+          return;
+        }
+        pixelsPerMs = loopWidth / 60000;
         offset = 0;
         lastTs = 0;
+        applyTransform();
 
         function tick(ts) {
           if (!lastTs) lastTs = ts;
           var delta = ts - lastTs;
           lastTs = ts;
-          offset = (offset + delta * pixelsPerMs) % halfWidth;
-          track.style.transform = 'translate3d(' + -offset + 'px, 0, 0)';
+          offset = (offset + delta * pixelsPerMs) % loopWidth;
+          applyTransform();
           rafId = requestAnimationFrame(tick);
         }
         rafId = requestAnimationFrame(tick);
+
+        if (!resizeObserver && 'ResizeObserver' in window) {
+          resizeObserver = new ResizeObserver(function () {
+            if (!jsActive) return;
+            var nextWidth = measureLoopWidth();
+            if (nextWidth > 0) loopWidth = nextWidth;
+            pixelsPerMs = loopWidth / 60000;
+          });
+          resizeObserver.observe(track);
+        }
       }
 
-      function checkAnimation() {
+      function stopJsMarquee() {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = 0;
+        jsActive = false;
+        track.classList.remove('marquee--js');
+        track.style.transform = '';
+        track.style.webkitTransform = '';
+      }
+
+      function isCssAnimationProgressing() {
+        if (!track.getAnimations) return Promise.resolve(false);
+        var animations = track.getAnimations();
+        if (!animations.length) return Promise.resolve(false);
+        var anim = animations[0];
+        var start = anim.currentTime;
+        return new Promise(function (resolve) {
+          window.setTimeout(function () {
+            resolve(anim.currentTime !== start && anim.currentTime !== null);
+          }, 400);
+        });
+      }
+
+      function initMarquee() {
         if (jsActive || reducedMotion.matches) return;
-        var pos1 = track.getBoundingClientRect().left;
-        window.setTimeout(function () {
-          if (jsActive || reducedMotion.matches) return;
-          var pos2 = track.getBoundingClientRect().left;
-          if (Math.abs(pos2 - pos1) < 0.5) startJsMarquee();
-        }, 1000);
+
+        // Touch/mobile: CSS marquee is unreliable on Android Chrome / Samsung —
+        // use JS from the start instead of waiting for a stalled CSS animation.
+        if (touchDevice) {
+          startJsMarquee();
+          return;
+        }
+
+        isCssAnimationProgressing().then(function (progressing) {
+          if (!progressing) startJsMarquee();
+        });
       }
 
       reducedMotion.addEventListener('change', function (e) {
         if (e.matches) {
-          if (rafId) cancelAnimationFrame(rafId);
-          jsActive = false;
-          track.classList.remove('marquee--js');
-          track.style.transform = '';
+          stopJsMarquee();
+        } else {
+          initMarquee();
         }
+      });
+
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+          if (rafId) cancelAnimationFrame(rafId);
+          rafId = 0;
+        } else if (jsActive) {
+          lastTs = 0;
+          rafId = requestAnimationFrame(function tick(ts) {
+            if (!lastTs) lastTs = ts;
+            var delta = ts - lastTs;
+            lastTs = ts;
+            offset = (offset + delta * pixelsPerMs) % loopWidth;
+            applyTransform();
+            rafId = requestAnimationFrame(tick);
+          });
+        }
+      });
+
+      window.addEventListener('orientationchange', function () {
+        if (!jsActive) return;
+        window.setTimeout(function () {
+          loopWidth = measureLoopWidth();
+          if (loopWidth > 0) pixelsPerMs = loopWidth / 60000;
+        }, 150);
       });
 
       var ready = document.fonts && document.fonts.ready
@@ -837,7 +920,7 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
         : Promise.resolve();
       ready.then(function () {
         requestAnimationFrame(function () {
-          requestAnimationFrame(checkAnimation);
+          requestAnimationFrame(initMarquee);
         });
       });
     })();
