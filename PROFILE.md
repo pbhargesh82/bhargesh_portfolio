@@ -1,18 +1,32 @@
 # Profile — source of truth
 
-Approved from discovery chat (June 2026). Update this file before changing site copy.
+Synced with Master Resume (Aug 2026). Update this file before changing site copy.
 
 ## Positioning
 
-**One line:** Software engineer building end-to-end web products — interfaces, APIs, and data layers.
+**One line:** Software engineer building enterprise web applications, AI-powered products, backend services, and modern frontend experiences.
 
 **Eyebrow:** Software engineer · Bridginex · Surat
 
-**Hero bio:** Five years shipping web products for clients. I own features from the interface through to the data — not just the UI handoff.
+**Hero bio:** Five years building enterprise web apps, AI-powered products, and full-stack features — from Angular and React frontends through Node APIs, PostgreSQL, and OpenAI integrations. I own work from architecture through deployment.
 
 **Tone:** Warm and approachable. Direct about what was built, not buzzwords.
 
 **Open to:** Contract and freelance work. Based in Surat, comfortable remote.
+
+## Career highlights
+
+- 5+ years of professional software engineering experience
+- 16+ production projects delivered
+- 100+ REST APIs designed and implemented
+- 400+ engineering tasks completed
+- 400+ production issues resolved
+- 5+ enterprise admin dashboards
+- 10+ production deployments
+- Applications supporting 1,000+ concurrent users
+- Mentored junior developers and interns
+- Built AI-powered recruitment, matching, and automation platforms
+- Worked in teams of up to 10 engineers
 
 ## Skills (hero — split rows)
 
@@ -21,36 +35,45 @@ Approved from discovery chat (June 2026). Update this file before changing site 
 - JavaScript
 - Angular
 - React
+- Next.js
+- Vue.js
+- Svelte
 
 ### Backend & data
 - Node.js
-- Supabase
+- Express
 - PostgreSQL
+- MySQL
+- Supabase
+- Prisma
+- Docker
 
 ### AI & tooling
 - OpenAI API
 - Cursor
 - ChatGPT
-- Antigravity
+- Claude
+- MCP
+- Playwright
 
-Styling tools (Tailwind, CSS) are used but not highlighted in the hero per preference.
+Styling tools (Tailwind, CSS, SCSS) and additional stack (MongoDB, Redis, Socket.IO, Stripe, GitLab CI, Netlify, Vercel) are used but not all highlighted in the hero per preference.
 
 ## Experience
 
 ### Bridginex — Software Engineer
 - **Period:** Oct 2023 — Present
 - **Type:** Full time · Remote
-- **Summary:** End-to-end client web apps and SaaS features — UI in Angular or React, APIs and data with Node, Supabase, and PostgreSQL.
+- **Summary:** Delivered 16+ production projects across enterprise CRM, AI platforms, automotive, event ecosystems, and marketing websites. Built 100+ REST APIs, architected The Bridge CRM from scratch, and developed AI-powered recruitment, matching, and automation with OpenAI. Contributed to MotoExpert, HR AI Recruitment Platform, and AgentMesh. Mentored juniors, reviewed PRs, and shipped 10+ production deployments.
 
-### Quatntsapp Pvt. Ltd. — Frontend Developer
+### Quantsapp — Software Engineer
 - **Period:** Jun 2023 — Sep 2023
 - **Type:** Full time · On site
-- **Summary:** Four-month contract building product UI in Angular — forms, routing, and feature delivery with the team on site.
+- **Summary:** Built features for a real-time options trading platform with Angular and Node. Implemented WebSocket-based live market data updates and event-driven, high-frequency UI rendering.
 
-### Adis Technology — Frontend Developer
+### Adis Technology — Software Developer
 - **Period:** May 2021 — May 2023
 - **Type:** Full time · On site
-- **Summary:** Two years on enterprise Angular apps — dashboards, internal tools, and long-lived codebases with a small on-site team.
+- **Summary:** Built CRM and ERP systems for the diamond manufacturing industry with Angular and Node. Developed workflows tracking diamonds from rough stones through cutting, polishing, inventory, and production. Mentored interns across frontend and backend.
 
 ## Projects
 
@@ -66,6 +89,18 @@ Styling tools (Tailwind, CSS) are used but not highlighted in the hero per prefe
 - **Summary:** Fantasy sports auction admin — teams, player pools, bidding flow, and dashboards. Angular with Supabase auth and PostgreSQL.
 - **Stack:** Angular, Supabase, PostgreSQL, TypeScript
 
+### The Bridge CRM (client work · private)
+- **Summary:** Enterprise CRM built from scratch using Angular SSR and Node.js. Operational platform for The Bridge community — events, registrations, and administration.
+
+### HR AI Recruitment Platform (client work · private)
+- **Summary:** AI-powered recruitment workflows using OpenAI, browser automation, scraping, and backend APIs.
+
+### MotoExpert (client work · private)
+- **Summary:** Modernized automotive web/mobile applications with React Native, Angular, Express, and Prisma.
+
+### AgentMesh (client work · private)
+- **Summary:** AI-driven profile matching platform with authentication, backend APIs, and intelligent recommendations.
+
 ## Not shown
 
 Periodic Table (hidden until v2 is ready), Clash Spy, Angular CRUD, Natours, and other tutorial-era projects.
@@ -74,7 +109,7 @@ Periodic Table (hidden until v2 is ready), Clash Spy, Angular CRUD, Natours, and
 
 **Page title:** Bhargesh Patel — Software Engineer
 
-**Meta description:** Bhargesh Patel — software engineer at Bridginex, Surat. End-to-end web apps in Angular, React, Node, and Supabase. Open to contract work.
+**Meta description:** Bhargesh Patel — software engineer with 5+ years building enterprise web apps, AI-powered products, and full-stack features. Angular, React, Next.js, Node, PostgreSQL, OpenAI. Open to contract work.
 
 **Contact heading:** Say hello
 
@@ -82,9 +117,9 @@ Periodic Table (hidden until v2 is ready), Clash Spy, Angular CRUD, Natours, and
 
 ## Section intros
 
-**Experience:** Five years from on-site frontend work to end-to-end product builds — now shipping full features, not just UI.
+**Experience:** Five years from on-site frontend work to full-stack and AI-powered product delivery — now shipping enterprise features end to end.
 
-**Projects:** Apps I’ve shipped outside client work — live demos with real code behind them.
+**Projects:** Apps I've shipped outside client work — live demos with real code behind them.
 
 ## Marquee
 
@@ -94,11 +129,11 @@ Ship end-to-end · Own the feature · Build what lasts · Reliable delivery · P
 
 - **Site:** Portfolio
 - **Status:** Available
-- **Focus:** Full-stack product
+- **Focus:** AI-powered product
 - **Open:** Contract & freelance
 
 ## Manifesto (about section — brutalist voice)
 
-1. I build end-to-end web products — interfaces, APIs, and data layers. Not slides. Not handoffs. The full path from UI to database.
-2. Five years from on-site frontend work to full product builds at Bridginex — client delivery, remote, owning the whole feature.
-3. Direct about what was built. No buzzwords. Based in Surat, open to contract and remote work.
+1. I build enterprise web products — interfaces, APIs, data layers, and the AI features on top. Not slides. Not handoffs. The full path from UI to database.
+2. Five years from on-site frontend work to full-stack and AI-powered delivery at Bridginex — 16+ production projects, 100+ REST APIs, and AI-driven recruitment, matching, and automation built with Angular, React, Next.js, Node, and OpenAI.
+3. I build with AI in the loop — Cursor, ChatGPT, Claude, and MCP to move from requirements to shipped features faster. Based in Surat, open to contract and remote work.

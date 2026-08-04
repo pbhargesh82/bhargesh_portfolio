@@ -5,7 +5,7 @@
 -->
 
 <h1 align="center">Hi, I'm Bhargesh Patel</h1>
-<h3 align="center">Software engineer building full-stack &amp; AI-powered web products</h3>
+<h3 align="center">Software engineer · AI-powered product development · Full stack</h3>
 <p align="center">Surat, India · Remote · Open to contract &amp; freelance work</p>
 
 <p align="center">
@@ -22,14 +22,14 @@
 
 ### About
 
-- 🚀 5+ years shipping full-stack web products — now building AI-powered features end to end.
-- 👨‍💻 Currently a **Software Engineer at Bridginex**, owning work from the UI through the API to the data, with AI in the loop to ship faster.
-- 🧩 I take features from a rough idea to running in production — interfaces, REST APIs, and data models.
+- 🚀 5+ years building enterprise web apps, AI-powered products, backend services, and modern frontend experiences.
+- 👨‍💻 Currently a **Software Engineer at Bridginex** — 16+ production projects, 100+ REST APIs, and AI-driven recruitment, matching, and automation.
+- 🧩 I take features from architecture through deployment — interfaces, REST APIs, data models, and OpenAI integrations.
 - 📫 Reach me at **pbhargesh82@gmail.com**
 - ⚡ Fun fact: *"Just a developer navigating the bugs of life, one commit at a time."*
 
 <p align="center">
-  <b>16+ production projects</b> &nbsp;·&nbsp; <b>100+ REST APIs shipped</b> &nbsp;·&nbsp; <b>1,000+ concurrent users</b> &nbsp;·&nbsp; <b>400+ issues resolved</b>
+  <b>16+ production projects</b> &nbsp;·&nbsp; <b>100+ REST APIs shipped</b> &nbsp;·&nbsp; <b>10+ production deployments</b> &nbsp;·&nbsp; <b>1,000+ concurrent users</b>
 </p>
 
 ---
@@ -44,8 +44,8 @@
   <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular" />
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
   <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
-  <img src="https://img.shields.io/badge/RxJS-B7178C?style=for-the-badge&logo=reactivex&logoColor=white" alt="RxJS" />
-  <img src="https://img.shields.io/badge/NgRx-BA2BD2?style=for-the-badge&logo=ngrx&logoColor=white" alt="NgRx" />
+  <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white" alt="Vue.js" />
+  <img src="https://img.shields.io/badge/Svelte-FF3E00?style=for-the-badge&logo=svelte&logoColor=white" alt="Svelte" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
 </p>
 
@@ -54,9 +54,10 @@
 <p>
   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
   <img src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express" />
-  <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase" />
   <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
   <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
+  <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
+  <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" alt="Redis" />
   <img src="https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white" alt="Prisma" />
   <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
 </p>
@@ -68,8 +69,8 @@
   <img src="https://img.shields.io/badge/Claude-D97757?style=for-the-badge&logo=anthropic&logoColor=white" alt="Claude" />
   <img src="https://img.shields.io/badge/Cursor-000000?style=for-the-badge&logo=cursor&logoColor=white" alt="Cursor" />
   <img src="https://img.shields.io/badge/ChatGPT-74AA9C?style=for-the-badge&logo=openai&logoColor=white" alt="ChatGPT" />
+  <img src="https://img.shields.io/badge/MCP-000000?style=for-the-badge&logo=openai&logoColor=white" alt="MCP" />
   <img src="https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white" alt="Playwright" />
-  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
 </p>
 
 ---
