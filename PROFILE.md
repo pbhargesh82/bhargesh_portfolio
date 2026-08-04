@@ -77,11 +77,11 @@ Styling tools (Tailwind, CSS, SCSS) and additional stack (MongoDB, Redis, Socket
 
 ## Projects
 
-### ClientSpace
-- **URL:** https://clientspace-app.netlify.app/login?email=admin@example.com&password=123
-- **Repo:** https://github.com/pbhargesh82/client.io
-- **Summary:** Dual-role client portal — admins manage clients, projects, tasks, and file sharing; clients get a focused view of their work. React, Node.js, and Supabase with row-level security.
-- **Stack:** React, Node.js, Supabase, PostgreSQL, TypeScript
+### AI Guardrails
+- **URL:** https://ai-guradrails.netlify.app/
+- **Repo:** https://github.com/pbhargesh82/ai-guradrails
+- **Summary:** Reusable guardrail system for keeping AI-assisted code simple and on-scope — behavioral rules, local pre-commit checks, and CI enforcement. Next.js docs site with playbook, manual, and Cursor integration guides.
+- **Stack:** Next.js, React, TypeScript, Tailwind CSS, MDX
 
 ### Auction.io
 - **URL:** https://auction-io.netlify.app/

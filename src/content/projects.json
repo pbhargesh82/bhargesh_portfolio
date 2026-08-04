@@ -1,13 +1,13 @@
 [
   {
     "id": 1,
-    "name": "ClientSpace",
-    "description": "Dual-role client portal: admins manage clients, projects, tasks, and file sharing; clients get a focused view of their work. React, Node.js, and Supabase with row-level security.",
-    "url": "https://clientspace-app.netlify.app/login?email=admin@example.com&password=123",
-    "uiRepoUrl": "https://github.com/pbhargesh82/client.io",
-    "stack": ["React", "Node.js", "Supabase", "PostgreSQL", "TypeScript"],
-    "thumbnail": "/images/projects/clientspace.webp",
-    "thumbnailAlt": "ClientSpace login screen for the admin and client portal"
+    "name": "AI Guardrails",
+    "description": "Reusable guardrail system for keeping AI-assisted code simple and on-scope — behavioral rules, local pre-commit checks, and CI enforcement. Next.js docs site with playbook, manual, and Cursor integration guides.",
+    "url": "https://ai-guradrails.netlify.app/",
+    "uiRepoUrl": "https://github.com/pbhargesh82/ai-guradrails",
+    "stack": ["Next.js", "React", "TypeScript", "Tailwind CSS", "MDX"],
+    "thumbnail": "/images/projects/ai-guradrails.webp",
+    "thumbnailAlt": "AI Guardrails homepage — anti-AI-bloat playbook and setup guides"
   },
   {
     "id": 2,

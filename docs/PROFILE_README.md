@@ -77,7 +77,7 @@
 
 ### Selected work
 
-- **[ClientSpace](https://clientspace-app.netlify.app/login?email=admin@example.com&password=123)** — dual-role client portal: admins manage clients, projects, tasks, and file sharing; clients get a focused view of their work. React, Node.js, and Supabase with row-level security. &nbsp;·&nbsp; [Code](https://github.com/pbhargesh82/client.io)
+- **[AI Guardrails](https://ai-guradrails.netlify.app/)** — reusable guardrail system for keeping AI-assisted code simple and on-scope: behavioral rules, local pre-commit checks, and CI enforcement. Next.js docs site with playbook, manual, and Cursor integration guides. &nbsp;·&nbsp; [Code](https://github.com/pbhargesh82/ai-guradrails)
 - **[Auction.io](https://auction-io.netlify.app/)** — fantasy sports auction admin: teams, player pools, bidding flow, and dashboards. Angular with Supabase auth and PostgreSQL. &nbsp;·&nbsp; [Code](https://github.com/pbhargesh82/auction.io)
 - **The Bridge CRM** *(client work · private)* — enterprise CRM built from scratch into the operational platform for The Bridge community. Angular SSR with a Node/Express API layer.
 - **HR AI Recruitment Platform** *(client work · private)* — AI-powered recruitment automation: candidate ranking, matching, and sourcing built with the OpenAI API, browser automation, and backend APIs.
