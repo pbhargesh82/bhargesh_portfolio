@@ -26,6 +26,3 @@ pnpm-debug.log*
 # impeccable / agent tooling (not part of the site)
 .impeccable/
 .gemini/
-
-# cursor workspace-only skills (keep repo portfolio-only)
-.cursor/skills/
