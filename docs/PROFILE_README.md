@@ -12,7 +12,7 @@
   <a href="https://pbhargesh82.netlify.app/home" target="_blank"><img src="https://img.shields.io/badge/Portfolio-0a0a0a?style=for-the-badge&logo=astro&logoColor=ffe600" alt="Portfolio" /></a>
   <a href="https://www.linkedin.com/in/bhargesh-patel-2b6a111b9/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
   <a href="mailto:pbhargesh82@gmail.com"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
-  <a href="https://rxresu.me/pbhargesh82/bhargesh-patel" target="_blank"><img src="https://img.shields.io/badge/R%C3%A9sum%C3%A9-22c55e?style=for-the-badge&logo=readdotcv&logoColor=white" alt="Résumé" /></a>
+  <a href="https://pbhargesh82.netlify.app/cv.pdf" target="_blank"><img src="https://img.shields.io/badge/R%C3%A9sum%C3%A9-22c55e?style=for-the-badge&logo=readdotcv&logoColor=white" alt="Résumé" /></a>
   <a href="https://app.daily.dev/pbhargesh82" target="_blank"><img src="https://img.shields.io/badge/daily.dev-CE3DF3?style=for-the-badge&logo=dailydotdev&logoColor=white" alt="daily.dev" /></a>
   <a href="https://codepen.io/pbhargesh82" target="_blank"><img src="https://img.shields.io/badge/CodePen-000000?style=for-the-badge&logo=codepen&logoColor=white" alt="CodePen" /></a>
   <a href="https://wa.me/919033719592" target="_blank"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp" /></a>
