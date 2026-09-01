@@ -1,9 +1,12 @@
 {
-  "pageTitle": "Bhargesh Patel — Software Engineer",
-  "pageDescription": "Bhargesh Patel — software engineer with 5+ years building enterprise web apps, AI-powered products, and full-stack features. Angular, React, Next.js, Node, PostgreSQL, OpenAI. Open to contract work.",
+  "name": "Bhargesh Patel",
+  "handle": "bhargesh",
+  "siteUrl": "https://bhargeshpatel.com",
+  "pageTitle": "Bhargesh Patel — Full Stack Software Engineer",
+  "pageDescription": "Bhargesh Patel — full-stack software engineer with 5+ years shipping enterprise web apps and AI-powered products. Angular, React, Next.js, Node.js, PostgreSQL, OpenAI API. Open to contract work.",
   "email": "pbhargesh82@gmail.com",
-  "heroEyebrow": "Software engineer",
-  "heroBio": "Five years building enterprise web apps, AI-powered products, and full-stack features — from Angular and React frontends through Node APIs, PostgreSQL, and OpenAI integrations. I own work from architecture through deployment.",
+  "heroEyebrow": "Full Stack Software Engineer",
+  "heroBio": "Full-stack software engineer with 5+ years shipping enterprise web applications and AI-powered products, with a frontend-leaning core in Angular and React. Owns features end-to-end — from UI and API design through data modeling and deployment.",
   "location": "Surat · Remote",
   "contactBody": "Open to contract and freelance projects. Based in Surat, happy to work remote. Email is the fastest way to reach me.",
   "projectsIntro": "Selected deployments /// [2024-2026]",
@@ -13,25 +16,25 @@
     "100+ REST APIs shipped",
     "AI-powered products",
     "5+ years shipping",
-    "10+ production deployments",
-    "1,000+ concurrent users"
+    "1,500+ profiles processed",
+    "1,000+ member community"
   ],
   "stats": [
     {
-      "value": "16+",
-      "label": "Production projects"
-    },
-    {
-      "value": "100+",
-      "label": "REST APIs shipped"
-    },
-    {
-      "value": "400+",
-      "label": "Issues resolved"
+      "value": "1,500+",
+      "label": "Profiles processed"
     },
     {
       "value": "1,000+",
-      "label": "Concurrent users"
+      "label": "Community members"
+    },
+    {
+      "value": "100+",
+      "label": "Production REST APIs"
+    },
+    {
+      "value": "16+",
+      "label": "Production projects"
     }
   ],
   "heroCard": {
@@ -45,9 +48,14 @@
     "whoami": "bhargesh — full-stack engineer",
     "imageAlt": "Terminal status card for Bhargesh Patel"
   },
+  "education": {
+    "degree": "Bachelor of Computer Applications (BCA)",
+    "institution": "Veer Narmad South Gujarat University, Surat",
+    "period": "2017 – 2020"
+  },
   "manifesto": [
     "I'm a software engineer who builds enterprise web products — the interface, the API, the data model underneath, and the AI features on top. You get one person who can take a feature from a rough idea to something running in production.",
-    "Over five years I've moved from frontend work on enterprise Angular apps to full-stack and AI-powered delivery at Bridginex: 16+ production projects, 100+ REST APIs, and AI-driven recruitment, matching, and automation tools built with Angular, React, Next.js, Node, and the OpenAI API.",
-    "I build with AI in the loop — using Cursor, ChatGPT, Claude, and MCP to move from requirements to shipped features faster, without dropping quality. Based in Surat and available for contract and freelance work, anywhere remote."
+    "Over five years I've moved from frontend work on enterprise Angular apps to full-stack and AI-powered delivery at Bridginex: built and shipped AI recruitment and matching platforms processing 1,500+ candidate profiles, an enterprise CRM now running operations for a 1,000+ member community, and 100+ production REST APIs.",
+    "I build with AI in the loop — using OpenAI APIs, Cursor, and MCP to move faster from requirements to shipped features without cutting quality. Based in Surat and available for contract and freelance work, anywhere remote."
   ]
 }

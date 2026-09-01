@@ -1,9 +1,9 @@
 ---
-import profile from '../content/profile.json';
+import { siteConfig } from '../lib/site';
 
-const { heroCard, socialPreview } = profile;
+const { heroCard, socialPreview } = siteConfig;
 const terminalPath = socialPreview?.terminalPath ?? '~/portfolio';
-const whoami = socialPreview?.whoami ?? 'bhargesh — full-stack engineer';
+const whoami = socialPreview?.whoami ?? `${siteConfig.handle} — full-stack engineer`;
 ---
 
 <!doctype html>
@@ -125,7 +125,7 @@ const whoami = socialPreview?.whoami ?? 'bhargesh — full-stack engineer';
       Edit <code>src/content/profile.json</code> (<code>socialPreview</code> + <code>heroCard</code>)
       → refresh this page → run <code>npm run generate:og</code> → deploy.
       <br />
-      OG text: <strong>{profile.pageTitle}</strong> — {profile.pageDescription}
+      OG text: <strong>{siteConfig.title}</strong> — {siteConfig.description}
     </p>
     <div class="frame" id="og-canvas">
       <figure class="terminal">

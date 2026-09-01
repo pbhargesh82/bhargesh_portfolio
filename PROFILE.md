@@ -1,14 +1,14 @@
 # Profile — source of truth
 
-Synced with Master Resume (Aug 2026). Update this file before changing site copy.
+Synced with Master Resume (Sep 2026). Update this file before changing site copy.
 
 ## Positioning
 
-**One line:** Software engineer building enterprise web applications, AI-powered products, backend services, and modern frontend experiences.
+**One line:** Full-stack software engineer building enterprise web applications, AI-powered products, backend services, and modern frontend experiences.
 
-**Eyebrow:** Software engineer · Bridginex · Surat
+**Eyebrow:** Full Stack Software Engineer · Bridginex · Surat
 
-**Hero bio:** Five years building enterprise web apps, AI-powered products, and full-stack features — from Angular and React frontends through Node APIs, PostgreSQL, and OpenAI integrations. I own work from architecture through deployment.
+**Hero bio:** Full-stack software engineer with 5+ years shipping enterprise web applications and AI-powered products, with a frontend-leaning core in Angular and React. Owns features end-to-end — from UI and API design through data modeling and deployment.
 
 **Tone:** Warm and approachable. Direct about what was built, not buzzwords.
 
@@ -19,14 +19,19 @@ Synced with Master Resume (Aug 2026). Update this file before changing site copy
 - 5+ years of professional software engineering experience
 - 16+ production projects delivered
 - 100+ REST APIs designed and implemented
-- 400+ engineering tasks completed
-- 400+ production issues resolved
+- 1,500+ candidate profiles processed via AI pipelines
+- 1,000+ member community operational CRM built from scratch
 - 5+ enterprise admin dashboards
 - 10+ production deployments
-- Applications supporting 1,000+ concurrent users
 - Mentored junior developers and interns
 - Built AI-powered recruitment, matching, and automation platforms
 - Worked in teams of up to 10 engineers
+
+## Education
+
+- **Degree:** Bachelor of Computer Applications (BCA)
+- **Institution:** Veer Narmad South Gujarat University, Surat
+- **Period:** 2017 – 2020
 
 ## Skills (hero — split rows)
 
@@ -60,56 +65,66 @@ Styling tools (Tailwind, CSS, SCSS) and additional stack (MongoDB, Redis, Socket
 
 ## Experience
 
-### Bridginex — Software Engineer
+### Bridginex Pvt. Ltd. — Software Engineer
 - **Period:** Oct 2023 — Present
-- **Type:** Full time · Remote
-- **Summary:** Delivered 16+ production projects across enterprise CRM, AI platforms, automotive, event ecosystems, and marketing websites. Built 100+ REST APIs, architected The Bridge CRM from scratch, and developed AI-powered recruitment, matching, and automation with OpenAI. Contributed to MotoExpert, HR AI Recruitment Platform, and AgentMesh. Mentored juniors, reviewed PRs, and shipped 10+ production deployments.
+- **Type:** Full time · Remote (Sofia, Bulgaria)
+- **Summary:** Architected The Bridge CRM from scratch (Angular SSR, Node.js, Express, PostgreSQL) into the operational system of record for a 1,000+ member community, backed by 40+ REST APIs. Built AI recruitment & candidate matching platforms (AgentMesh) processing 1,500+ candidate profiles with GPT scoring and Playwright scraping. Rebuilt MotoExpert into a high-performance React Native app backed by Express and Prisma. Mentored junior engineers across a team of up to 10 and resolved 400+ production issues across 10+ deployments.
 
-### Quantsapp — Software Engineer
+### Quantsapp Pvt. Ltd. — Angular Developer
 - **Period:** Jun 2023 — Sep 2023
-- **Type:** Full time · On site
-- **Summary:** Built features for a real-time options trading platform with Angular and Node. Implemented WebSocket-based live market data updates and event-driven, high-frequency UI rendering.
+- **Type:** Full time · On site (Mumbai)
+- **Summary:** Built live, real-time UI features for a production options-trading webapp used by 5,000+ traders (Angular, Node.js, WebSockets), streaming continuous stock market data. Optimized rendering and state management for high-frequency data updates in an event-driven architecture.
 
-### Adis Technology — Software Developer
+### Adis Technology — Web Developer
 - **Period:** May 2021 — May 2023
-- **Type:** Full time · On site
-- **Summary:** Built CRM and ERP systems for the diamond manufacturing industry with Angular and Node. Developed workflows tracking diamonds from rough stones through cutting, polishing, inventory, and production. Mentored interns across frontend and backend.
+- **Type:** Full time · On site (Surat)
+- **Summary:** Engineered a diamond manufacturing ERP/CRM used by a 2,000-person production and back-office team, tracking rough stones end-to-end from laser sawing through cutting, polishing, and inventory grading for 500–1,000+ stones monthly. Built employee payroll and RBAC security modules; mentored 3 interns.
 
 ## Projects
 
 ### AI Guardrails
 - **URL:** https://ai-guradrails.netlify.app/
 - **Repo:** https://github.com/pbhargesh82/ai-guradrails
-- **Summary:** Reusable guardrail system for keeping AI-assisted code simple and on-scope — behavioral rules, local pre-commit checks, and CI enforcement. Next.js docs site with playbook, manual, and Cursor integration guides.
+- **Summary:** Reusable framework enforcing scope and behavioral constraints on AI-assisted coding, with pre-commit and CI checks plus Cursor/MCP integration guides. Next.js docs site with playbook, manual, and Cursor integration guides.
 - **Stack:** Next.js, React, TypeScript, Tailwind CSS, MDX
 
 ### Auction.io
 - **URL:** https://auction-io.netlify.app/
 - **Repo:** https://github.com/pbhargesh82/auction.io
-- **Summary:** Fantasy sports auction admin — teams, player pools, bidding flow, and dashboards. Angular with Supabase auth and PostgreSQL.
+- **Summary:** Real-time fantasy sports auction platform built out of personal necessity for cricket league recurring player auctions: live dynamic bidding, player pools, team budget management, and live leaderboards. Angular, Supabase, and PostgreSQL.
 - **Stack:** Angular, Supabase, PostgreSQL, TypeScript
 
+### JobMind
+- **Repo:** https://github.com/pbhargesh82/jobmind
+- **Summary:** Personal AI-powered job discovery and candidate profile matching system using LLM pipelines.
+- **Stack:** Python, OpenAI API, Data Pipelines
+
+### Spotify Manager
+- **Repo:** https://github.com/pbhargesh82/spotify-manager
+- **Summary:** Modern web application for curating, batch managing, and organizing Spotify playlists.
+- **Stack:** TypeScript, Spotify API, Web Architecture
+
 ### The Bridge CRM (client work · private)
-- **Summary:** Enterprise CRM built from scratch using Angular SSR and Node.js. Operational platform for The Bridge community — events, registrations, and administration.
+- **Summary:** Enterprise CRM built from scratch using Angular SSR and Node.js. Operational system of record for 1,000+ member community — events, registrations, subscriptions, and donations.
 
 ### HR AI Recruitment Platform (client work · private)
-- **Summary:** AI-powered recruitment workflows using OpenAI, browser automation, scraping, and backend APIs.
+- **Summary:** AI-powered recruitment workflows using OpenAI, browser automation, scraping, and backend APIs. Processed 1,500+ candidate profiles.
 
 ### MotoExpert (client work · private)
-- **Summary:** Modernized automotive web/mobile applications with React Native, Angular, Express, and Prisma.
+- **Summary:** Rebuilt from a legacy Angular/Capacitor web-wrapper into a React Native app with Express + Prisma backend — live and in active commercial use.
 
 ### AgentMesh (client work · private)
-- **Summary:** AI-driven profile matching platform with authentication, backend APIs, and intelligent recommendations.
+- **Summary:** AI-driven profile matching platform with authentication, backend APIs, and intelligent recommendations powered by OpenAI semantic matching.
 
 ## Not shown
 
-Periodic Table (hidden until v2 is ready), Clash Spy, Angular CRUD, Natours, and other tutorial-era projects.
+Periodic Table (hidden until v2 is ready), Clash Royale UI/API, Angular CRUD, Natours, Trillo, Nexter, and early foundation projects.
 
 ## Meta & contact
 
-**Page title:** Bhargesh Patel — Software Engineer
+**Page title:** Bhargesh Patel — Full Stack Software Engineer
 
-**Meta description:** Bhargesh Patel — software engineer with 5+ years building enterprise web apps, AI-powered products, and full-stack features. Angular, React, Next.js, Node, PostgreSQL, OpenAI. Open to contract work.
+**Meta description:** Bhargesh Patel — full-stack software engineer with 5+ years shipping enterprise web apps and AI-powered products. Angular, React, Next.js, Node.js, PostgreSQL, OpenAI API. Open to contract work.
 
 **Contact heading:** Say hello
 
@@ -135,5 +150,5 @@ Ship end-to-end · Own the feature · Build what lasts · Reliable delivery · P
 ## Manifesto (about section — brutalist voice)
 
 1. I build enterprise web products — interfaces, APIs, data layers, and the AI features on top. Not slides. Not handoffs. The full path from UI to database.
-2. Five years from on-site frontend work to full-stack and AI-powered delivery at Bridginex — 16+ production projects, 100+ REST APIs, and AI-driven recruitment, matching, and automation built with Angular, React, Next.js, Node, and OpenAI.
-3. I build with AI in the loop — Cursor, ChatGPT, Claude, and MCP to move from requirements to shipped features faster. Based in Surat, open to contract and remote work.
+2. Five years from on-site frontend work to full-stack and AI-powered delivery at Bridginex — built and shipped AI recruitment and matching platforms processing 1,500+ candidate profiles, an enterprise CRM now running operations for a 1,000+ member community, and 100+ production REST APIs.
+3. I build with AI in the loop — using OpenAI APIs, Cursor, and MCP to move faster from requirements to shipped features without cutting quality. Based in Surat, open to contract and remote work.

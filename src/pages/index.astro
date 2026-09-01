@@ -6,20 +6,17 @@ import experience from '../content/experience.json';
 import socials from '../content/socials.json';
 import stack from '../content/stack.json';
 import profile from '../content/profile.json';
+import { siteConfig } from '../lib/site';
 
-const github = socials.find((s) => s.name === 'GitHub');
-const linkedin = socials.find((s) => s.name === 'LinkedIn');
-const dailyDev = socials.find((s) => s.name === 'Daily Dev');
-const whatsapp = socials.find((s) => s.name === 'WhatsApp');
-const resume = socials.find((s) => s.name === 'Resume');
+const { github, linkedin, dailyDev, whatsapp, resume, footerSocials } = siteConfig;
 const year = new Date().getFullYear();
 
 const current = experience.find((j) => j.current) ?? experience[0];
 const facts = [
-  { label: 'Experience', value: `${parseInt(profile.yearsExperience, 10)}+ years` },
+  { label: 'Experience', value: `${parseInt(siteConfig.yearsExperience, 10)}+ years` },
   { label: 'Now', value: `${current.title} · ${current.company}` },
-  { label: 'Based in', value: profile.location },
-  { label: 'Availability', value: profile.heroCard.availability },
+  { label: 'Based in', value: siteConfig.location },
+  { label: 'Availability', value: siteConfig.heroCard.availability },
 ];
 
 const navLinks = [
@@ -28,8 +25,6 @@ const navLinks = [
   { href: '#work', label: 'Work' },
   { href: '#experience', label: 'Experience' },
 ];
-
-const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
 ---
 
 <BaseLayout title={profile.pageTitle} description={profile.pageDescription}>
@@ -37,7 +32,7 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
   <header class="sticky top-0 z-40 border-b border-line bg-paper/90 backdrop-blur-md">
     <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:px-8">
       <a class="font-mono text-base font-bold tracking-tight" href="#top">
-        bhargesh<span class="text-ink/60">.dev</span>
+        {siteConfig.handle}<span class="text-ink/60">.dev</span>
       </a>
 
       <div class="hidden items-center gap-1 md:flex">
@@ -353,7 +348,7 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
                   </div>
                 ) : (
                   <a
-                    href={project.url}
+                    href={project.url || project.uiRepoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     class="block aspect-[16/10] overflow-hidden border-b-2 border-ink bg-surface"
@@ -388,24 +383,28 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
                     </div>
                   ) : (
                     <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-line pt-5">
-                      <a
-                        class="inline-flex items-center gap-1.5 text-sm font-bold hover:underline"
-                        href={project.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Live demo
-                        <Icon name="north_east" class="text-[18px]" />
-                      </a>
-                      <a
-                        class="inline-flex items-center gap-1.5 text-sm font-bold text-muted hover:text-ink"
-                        href={project.uiRepoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Code
-                        <Icon name="code" class="text-[18px]" />
-                      </a>
+                      {project.url && (
+                        <a
+                          class="inline-flex items-center gap-1.5 text-sm font-bold hover:underline"
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Live demo
+                          <Icon name="north_east" class="text-[18px]" />
+                        </a>
+                      )}
+                      {project.uiRepoUrl && (
+                        <a
+                          class="inline-flex items-center gap-1.5 text-sm font-bold text-muted hover:text-ink"
+                          href={project.uiRepoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Code
+                          <Icon name="code" class="text-[18px]" />
+                        </a>
+                      )}
                     </div>
                   )}
                 </div>
@@ -632,7 +631,7 @@ const footerSocials = [github, linkedin, dailyDev, whatsapp].filter(Boolean);
       class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-5 md:flex-row md:px-8"
     >
       <div class="font-mono text-sm text-white/60">
-        © {year} Bhargesh Patel
+        © {year} {siteConfig.name}
       </div>
       <div class="flex flex-wrap justify-center gap-6 text-sm font-bold">
         {

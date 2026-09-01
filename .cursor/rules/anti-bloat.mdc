@@ -1,0 +1,14 @@
+---
+description: Anti-AI-Bloat Guardrails — Keep code minimal, on-scope, and adhere to design tokens
+globs: ["src/**/*", "scripts/**/*", "*.json", "*.astro", "*.ts", "*.md"]
+alwaysApply: true
+---
+
+# Anti-AI-Bloat Guardrails
+
+1. **No Drive-by Refactoring:** Only touch code directly relevant to the user request.
+2. **Minimal Architecture:** Do not create layers of abstraction for one-off operations.
+3. **No Unrequested Packages:** Do not install new npm packages unless specifically requested.
+4. **Preserve Design Tokens:** Respect the existing color tokens (`bg-paper`, `text-ink`, `bg-accent`, `border-line`, `text-muted`) from `src/styles/global.css`.
+5. **Keep Copy Factual:** All biographical, project, and career data must match `PROFILE.md` and `src/content/`.
+6. **Verify Build:** Always ensure `npm run build` succeeds cleanly.

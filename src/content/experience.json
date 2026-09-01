@@ -4,26 +4,26 @@
     "title": "Software Engineer",
     "period": "Oct 2023 – Present",
     "duration": "2yr 8mo",
-    "type": "Full Time · Remote",
+    "type": "Full Time · Remote (Sofia, Bulgaria)",
     "current": true,
-    "summary": "Delivered 16+ production projects across enterprise CRM, AI platforms, automotive, event ecosystems, and marketing websites. Built 100+ REST APIs, architected The Bridge CRM from scratch, and developed AI-powered recruitment, matching, and automation with OpenAI. Contributed to MotoExpert, HR AI Recruitment Platform, and AgentMesh. Mentored juniors, reviewed PRs, and shipped 10+ production deployments."
+    "summary": "Architected The Bridge CRM from scratch (Angular SSR, Node.js, Express, PostgreSQL) into the operational system of record for a 1,000+ member community, backed by 40+ REST APIs. Built AI recruitment & candidate matching platforms (AgentMesh) processing 1,500+ candidate profiles with GPT scoring and Playwright scraping. Rebuilt MotoExpert into a high-performance React Native app backed by Express and Prisma. Mentored junior engineers across a team of up to 10 and resolved 400+ production issues across 10+ deployments."
   },
   {
     "company": "Quantsapp",
-    "title": "Software Engineer",
+    "title": "Angular Developer",
     "period": "Jun 2023 – Sep 2023",
     "duration": "4mo",
-    "type": "Full Time · On Site",
+    "type": "Full Time · On Site (Mumbai)",
     "current": false,
-    "summary": "Built features for a real-time options trading platform with Angular and Node. Implemented WebSocket-based live market data updates and optimized event-driven, high-frequency UI rendering."
+    "summary": "Built live, real-time UI features for a production options-trading webapp used by 5,000+ traders (Angular, Node.js, WebSockets), streaming continuous stock market data. Optimized rendering and state management for high-frequency data updates in an event-driven architecture."
   },
   {
     "company": "Adis Technology",
-    "title": "Software Developer",
+    "title": "Web Developer",
     "period": "May 2021 – May 2023",
     "duration": "2yr 1mo",
-    "type": "Full Time · On Site",
+    "type": "Full Time · On Site (Surat)",
     "current": false,
-    "summary": "Built CRM and ERP systems for the diamond manufacturing industry with Angular and Node. Developed workflows tracking diamonds from rough stones through cutting, polishing, inventory, and production. Mentored interns across frontend and backend."
+    "summary": "Engineered a diamond manufacturing ERP/CRM used by a 2,000-person production and back-office team, tracking rough stones end-to-end from laser sawing through cutting, polishing, and inventory grading for 500–1,000+ stones monthly. Built employee payroll and RBAC security modules; mentored 3 interns."
   }
 ]

@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import profile from '../content/profile.json';
+import { siteConfig } from '../lib/site';
 
 interface Props {
   title?: string;
@@ -8,15 +8,14 @@ interface Props {
 }
 
 const {
-  title = 'Bhargesh Patel — Software Engineer',
-  description =
-    'Bhargesh Patel — software engineer shipping end-to-end web products. Angular, React, Node, Supabase. Open to contract work.',
+  title = siteConfig.title,
+  description = siteConfig.description,
 } = Astro.props;
 
-const siteUrl = Astro.site?.href.replace(/\/$/, '') ?? 'https://bhargeshpatel.com';
+const siteUrl = Astro.site?.href.replace(/\/$/, '') ?? siteConfig.siteUrl;
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
 const ogImage = new URL('/og/terminal.png', siteUrl).href;
-const ogImageAlt = profile.socialPreview?.imageAlt ?? 'Terminal status card for Bhargesh Patel';
+const ogImageAlt = siteConfig.socialPreview?.imageAlt ?? `Terminal status card for ${siteConfig.name}`;
 ---
 
 <!doctype html>
@@ -25,7 +24,7 @@ const ogImageAlt = profile.socialPreview?.imageAlt ?? 'Terminal status card for 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="author" content="Bhargesh Patel" />
+    <meta name="author" content={siteConfig.name} />
     <meta name="generator" content={Astro.generator} />
 
     <link rel="canonical" href={canonicalUrl} />
