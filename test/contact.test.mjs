@@ -71,3 +71,19 @@ test('forwards normalized valid submissions to Netlify Forms', async () => {
     globalThis.fetch = originalFetch;
   }
 });
+
+
+test('returns a generic failure when Netlify Forms is unavailable', async () => {
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () => { throw new Error('network unavailable'); };
+  try {
+    const response = await handler(new Request('https://example.test/.netlify/functions/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'form-name=contact&bot-field=&name=Bhargesh&email=bhargesh%40example.com&message=Hello',
+    }));
+    assert.equal(response.status, 502);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
