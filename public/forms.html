@@ -6,12 +6,12 @@
   </head>
   <body>
     <!-- Static form for Netlify build-time detection. Not shown to visitors. -->
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <form name="contact" method="POST" action="/.netlify/functions/contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
       <input type="hidden" name="form-name" value="contact" />
       <input name="bot-field" type="text" />
-      <input name="name" type="text" />
-      <input name="email" type="email" />
-      <textarea name="message"></textarea>
+      <input name="name" type="text" required />
+      <input name="email" type="email" required />
+      <textarea name="message" required></textarea>
     </form>
   </body>
 </html>
