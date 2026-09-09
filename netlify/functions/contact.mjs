@@ -33,7 +33,11 @@ export default async function handler(request) {
   }
 
   const contentType = request.headers.get('content-type') || '';
-  if (!contentType.startsWith('application/x-www-form-urlencoded')) {
+  const [mediaType, ...parameters] = contentType.split(';').map((part) => part.trim());
+  if (
+    mediaType.toLowerCase() !== 'application/x-www-form-urlencoded' ||
+    parameters.some((parameter) => !/^charset=(utf-8|utf8)$/i.test(parameter))
+  ) {
     return response(415, 'Unsupported media type.');
   }
 
@@ -49,7 +53,7 @@ export default async function handler(request) {
     return response(400, 'Unable to read submission.');
   }
 
-  if (body.length > MAX_BODY_BYTES) {
+  if (new TextEncoder().encode(body).byteLength > MAX_BODY_BYTES) {
     return response(413, 'Payload too large.');
   }
 
