@@ -683,6 +683,21 @@ const navLinks = [
     if (form) {
       form.addEventListener('submit', async (event) => {
         event.preventDefault();
+
+        const requiredFields = [
+          { field: form.elements.namedItem('name'), message: 'Please enter your name.' },
+          { field: form.elements.namedItem('email'), message: 'Please enter your email address.' },
+          { field: form.elements.namedItem('message'), message: 'Please enter a message.' },
+        ];
+
+        requiredFields.forEach(({ field, message }) => {
+          if (!field || typeof field.value !== 'string') return;
+          field.value = field.value.trim();
+          field.setCustomValidity(field.value ? '' : message);
+        });
+
+        if (!form.reportValidity()) return;
+
         const button = form.querySelector('button[type="submit"]');
         const errorEl = document.getElementById('form-error');
         const successEl = document.getElementById('form-success');
