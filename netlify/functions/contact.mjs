@@ -42,7 +42,13 @@ export default async function handler(request) {
     return response(413, 'Payload too large.');
   }
 
-  const body = await request.text();
+  let body;
+  try {
+    body = await request.text();
+  } catch {
+    return response(400, 'Unable to read submission.');
+  }
+
   if (body.length > MAX_BODY_BYTES) {
     return response(413, 'Payload too large.');
   }
@@ -78,14 +84,18 @@ export default async function handler(request) {
     message: result.message,
   });
 
-  const formsResponse = await fetch(new URL('/', request.url), {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: forwarded.toString(),
-    redirect: 'manual',
-  });
+  try {
+    const formsResponse = await fetch(new URL('/', request.url), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: forwarded.toString(),
+      redirect: 'manual',
+    });
 
-  if (formsResponse.status >= 400) {
+    if (formsResponse.status >= 400) {
+      return response(502, 'Unable to submit the form.');
+    }
+  } catch {
     return response(502, 'Unable to submit the form.');
   }
 
