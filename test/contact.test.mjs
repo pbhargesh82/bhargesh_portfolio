@@ -34,6 +34,14 @@ test('rejects unsupported methods and content types', async () => {
     }))).status,
     415,
   );
+  assert.equal(
+    (await handler(new Request('https://example.test/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded-invalid' },
+      body: 'form-name=contact',
+    }))).status,
+    415,
+  );
 });
 
 test('absorbs honeypot submissions without forwarding', async () => {
@@ -86,4 +94,14 @@ test('returns a generic failure when Netlify Forms is unavailable', async () => 
   } finally {
     globalThis.fetch = originalFetch;
   }
+});
+
+
+test('enforces the body limit in UTF-8 bytes', async () => {
+  const response = await handler(new Request('https://example.test/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'form-name=contact&name=Bhargesh&email=bhargesh%40example.com&message=' + '😀'.repeat(2_500),
+  }));
+  assert.equal(response.status, 413);
 });
