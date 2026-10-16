@@ -18,13 +18,13 @@
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@fontsource/jetbrains-mono": "^5.2.8",
     "@tailwindcss/vite": "^4.3.0",
-    "astro": "^6.4.5",
+    "astro": "^7.2.8",
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "satori": "^0.26.0",
-    "sharp": "^0.35.2"
+    "sharp": "^0.35.4"
   }
 }
